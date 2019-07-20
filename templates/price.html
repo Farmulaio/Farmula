@@ -1,0 +1,98 @@
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+{% block body %}
+<div id="card_content">
+{% from "includes/_formhelpers.html" import render_field %} 
+<form action="" method="POST">
+    <div class="row">
+        <div class="col-7">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                                <th scope="col">Date</th>
+                                <th scope="col">Produce</th>
+                                <th scope="col">Predict Price (GHS)</th>
+                                <th scope="col">Average Price (GHS)</th>
+                                <th scope="col">Accuray %</th>
+                        </thead>
+                        <tbody>
+                                {% for row in data %}
+                            <tr>
+                                <td>{{ row.3 }}-{{ row.2 }}</td>
+                                <td>{{ row.1 }}</td>
+                                <td>{{ row.4 }}</td>
+                                <td>{{ row.5 }}</td>
+                                <td>{{ (( ( (row.5)|int  - (row.4)|int ) / (row.5)|int ) * 100 )|round(2) }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+            <div class="col-5">
+                <div class="card">
+                    <div class="card-body">
+                    <h6>Predict Red Irish Potato Price</h6>
+                    <br>
+                        <div class="container ">
+                        <div class="row ">
+                            <div class="col-12">
+                                {{ render_field(form.month, class_="form-control") }}                         
+                            </div>       
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row ">
+                            <div class="col-12">
+                                {{ render_field(form.day, class_="form-control") }}                         
+                            </div>       
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-12">
+                                {{ render_field(form.year, class_="form-control") }}                         
+                            </div>       
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                    <div class="w-100"></div>
+                    <div class="col center">
+                        <br>
+                         <h6>{{month_i}}</h6>
+                         <h6>{{year}} </h6>
+                         <h6>{{day}} </h6>
+                         <h6>{{ price }} </h6>
+                </div>
+                        <div class="container center">
+                            <div class="row row-btn"></div>
+                                <button class="btn btn-primary py-3 px-5 text-white">Predict</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+        <!-- <div class="line"></div>
+        <div id="card_content">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Chart</h4>
+                        <div class="line-title"></div>
+                          <div class="container">
+                            <div class="row">
+              
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div> -->
+{% endblock%}
