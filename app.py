@@ -72,7 +72,7 @@ def price():
 
     
     
-    return render_template('price.html',form=form , data=data)     
+    return render_template('price.html',form=form)     
 
 
 
