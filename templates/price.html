@@ -1,18 +1,34 @@
 {% extends 'layout.html' %} 
 {% block body %}
-<div class="banner" style="background-image: url('static/images/navbar.png');">
+<div class="banner-blocks-cover overlay" style="background-image: url('static/images/nav.jpg');">
     <div class="banner-text">
     </div>
   </div>
+
+  <!-- <div class="row_slider">
+    <div class="container">
+        <section class="customer-logos slider">
+            <div class="slide"><img src="https://www.solodev.com/assets/carousel/image8.png"></div>
+            <div class="slide"><img src="https://www.solodev.com/assets/carousel/image8.png"></div>
+            <div class="slide"><img src="https://www.solodev.com/assets/carousel/image8.png"></div>
+            <div class="slide"><img src="https://www.solodev.com/assets/carousel/image8.png"></div>
+       </section>
+    </div>
+</div> -->
+
   <div class="site-section">
     <div class="container">
       <div class="row mb-5">
         <div class="col-md-12 order-md-1" data-aos="fade-up">
           <div class="text-left pb-1 border-primary mb-4">
-            <h2 class="text-primary">About Us</h2>
+            <h2 class="text-primary">Price Model Predection</h2>
           </div>
-          <p>At Farmula we are making farmers earn up to 25% more while buyers spend 45% less.</p>
-          <p class="mb-5">We achieve this using a price mechanism that takes into account factors affecting produce prices such as input cost, weather, logistics, supply and demand. The mechanism we use is transparent to both farmers and buyers and with fair price information, farmers get improved access to market while buyers spend less for good quality produce.</p>
+          <p>At Farmula, we have designed a price prediction model to help stakeholders in the agricultural sector get access to future prices of produce and use that information to plan better.</p>
+          <p>Our model leverages on key factors including weather and supply & demand. 	<br> 
+            You can currently test our price predictor for Potatoes in Kenya.
+        </p>
+        <p class="mb-5"></p>
+        
           {% from "includes/_formhelpers.html" import render_field %} 
           <form action="" method="POST">
               <div class="row">
