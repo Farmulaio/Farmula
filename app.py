@@ -37,7 +37,8 @@ def index():
 @app.route('/price', methods=['GET','POST'])
 def price():
     try:
-        db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
+        # db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
+        db = pymysql.connect("localhost","root","","yfarm")
         cursor = db.cursor()
         cursor.execute("SELECT  * FROM  prediction where crop = 'Red Irish Potato'")
         data = cursor.fetchall()
@@ -71,7 +72,7 @@ def price():
 
     
     
-    return render_template('price.html', form=form , data=data)     
+    return render_template('price.html',form=form , data=data)     
 
 
 

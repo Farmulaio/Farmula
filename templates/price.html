@@ -1,98 +1,124 @@
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-
+{% extends 'layout.html' %} 
 {% block body %}
-<div id="card_content">
-{% from "includes/_formhelpers.html" import render_field %} 
-<form action="" method="POST">
-    <div class="row">
-        <div class="col-7">
-            <div class="card">
-                <div class="card-body">
-                    <table class="table table-hover">
-                        <thead>
-                                <th scope="col">Date</th>
-                                <th scope="col">Produce</th>
-                                <th scope="col">Predict Price (GHS)</th>
-                                <th scope="col">Average Price (GHS)</th>
-                                <th scope="col">Accuray %</th>
-                        </thead>
-                        <tbody>
-                                {% for row in data %}
-                            <tr>
-                                <td>{{ row.3 }}-{{ row.2 }}</td>
-                                <td>{{ row.1 }}</td>
-                                <td>{{ row.4 }}</td>
-                                <td>{{ row.5 }}</td>
-                                <td>{{ (( ( (row.5)|int  - (row.4)|int ) / (row.5)|int ) * 100 )|round(2) }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-            <div class="col-5">
-                <div class="card">
-                    <div class="card-body">
-                    <h6>Predict Red Irish Potato Price</h6>
-                    <br>
-                        <div class="container ">
-                        <div class="row ">
-                            <div class="col-12">
-                                {{ render_field(form.month, class_="form-control") }}                         
-                            </div>       
-                        </div>
-                        <br>
-                        <br>
-                        <div class="row ">
-                            <div class="col-12">
-                                {{ render_field(form.day, class_="form-control") }}                         
-                            </div>       
-                        </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-12">
-                                {{ render_field(form.year, class_="form-control") }}                         
-                            </div>       
+<div class="banner" style="background-image: url('static/images/hero_bg_4.jpg');">
+    <div class="banner-text">
+    </div>
+  </div>
+
+  <div class="site-section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-12 order-md-1" data-aos="fade-up">
+          <div class="text-left pb-1 border-primary mb-4">
+            <h2 class="text-primary">About Us</h2>
+          </div>
+          <p>At Farmula we are making farmers earn up to 25% more while buyers spend 45% less.</p>
+          <p class="mb-5">We achieve this using a price mechanism that takes into account factors affecting produce prices such as input cost, weather, logistics, supply and demand. The mechanism we use is transparent to both farmers and buyers and with fair price information, farmers get improved access to market while buyers spend less for good quality produce.</p>
+          {% from "includes/_formhelpers.html" import render_field %} 
+          <form action="" method="POST">
+              <div class="row">
+                <div class="col-7">
+                 <!-- <h5 class="text-primary">Daily Prices</h5>
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Produce</th>
+                                        <th scope="col">Market</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Price (KSH)</th>
+                                </thead>
+                                <tbody>
+                                        {% for row in data %}
+                                    <tr>
+                                        <td>{{ row.3 }}-{{ row.2 }}</td>
+                                        <td>{{ row.1 }}</td>
+                                        <td>{{ row.4 }}</td>
+                                        <td>{{ row.5 }}</td>
+                                        <td>{{ (( ( (row.5)|int  - (row.4)|int ) / (row.5)|int ) * 100 )|round(2) }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div class="col"></div>
-                    <div class="w-100"></div>
-                    <div class="col center">
-                        <br>
-                         <h6>{{month_i}}</h6>
-                         <h6>{{year}} </h6>
-                         <h6>{{day}} </h6>
-                         <h6>{{ price }} </h6>
-                </div>
-                        <div class="container center">
-                            <div class="row row-btn"></div>
-                                <button class="btn btn-primary py-3 px-5 text-white">Predict</button>
+                 <div class="line"></div> -->
+                 <h5 class="text-primary">Predicted Prices</h5>
+                    <div class="card">
+                            <div class="card-body">
+                                <table class="table table-hover">
+                                    <thead>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Produce</th>
+                                            <th scope="col">Predict Price (KSH)</th>
+                                            <th scope="col">Average Price (KSH)</th>
+                                            <th scope="col">Accuray %</th>
+                                    </thead>
+                                    <tbody>
+                                            {% for row in data %}
+                                        <tr>
+                                            <td>{{ row.3 }}-{{ row.2 }}</td>
+                                            <td>{{ row.1 }}</td>
+                                            <td>{{ row.4 }}</td>
+                                            <td>{{ row.5 }}</td>
+                                            <td>{{ (( ( (row.5)|int  - (row.4)|int ) / (row.5)|int ) * 100 )|round(2) }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
                             </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-        <!-- <div class="line"></div>
-        <div id="card_content">
-                <div class="card">
-                    <div class="card-body">
-                        <h4>Chart</h4>
-                        <div class="line-title"></div>
-                          <div class="container">
-                            <div class="row">
-              
                         </div>
-                    </div>
                 </div>
-            </div>
-</div> -->
-{% endblock%}
+                      <div class="col-5">
+                            <h5 class="text-primary">Price Prediction Model</h5>
+                            <div class="card">
+                              <div class="card-body">
+                              <h6>Predict Red Irish Potato Price</h6>
+                              <br>
+                                  <div class="container ">
+                                  <div class="row ">
+                                      <div class="col-12">
+                                          {{ render_field(form.month, class_="form-control") }}                         
+                                      </div>       
+                                  </div>
+                                  <br>
+                                  <br>
+                                  <div class="row ">
+                                      <div class="col-12">
+                                          {{ render_field(form.day, class_="form-control") }}                         
+                                      </div>       
+                                  </div>
+                                  <br>
+                                  <br>
+                                  <div class="row">
+                                      <div class="col-12">
+                                          {{ render_field(form.year, class_="form-control") }}                         
+                                      </div>       
+                                  </div>
+                              </div>
+                              <div class="col"></div>
+                              <div class="w-100"></div>
+                              <div class="col center">
+                                  <br>
+                                   <h6>{{month_i}}</h6>
+                                   <h6>{{year}} </h6>
+                                   <h6>{{day}} </h6>
+                                   <h6>{{ price }} </h6>
+                          </div>
+                                  <div class="container center">
+                                      <div class="row row-btn"></div>
+                                          <button class="btn btn-outline-success-overide-save center custom-width  my-2 my-sm-0 mr-sm-2 save">Predict</button>
+                                      </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </form>        
+        </div>       
+      </div>
+    </div>
+  </div>
+
+{% endblock%} 
+    
