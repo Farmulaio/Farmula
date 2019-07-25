@@ -40,9 +40,9 @@ def price():
         # db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
         db = pymysql.connect("localhost","root","","farmula_dashboard")
         cursor = db.cursor()
-        cursor.execute("SELECT  * FROM  prediction where crop = 'Cocoyam'")
-        data = cursor.fetchall()
-        print(data)
+        cursor.execute("SELECT  * FROM  prediction ")
+        price_data = cursor.fetchall()
+        print(price_data)
         cursor.close()
     except:
         print('Cant connect to database ')
@@ -68,11 +68,11 @@ def price():
         pre_prams = str(response['values'][0][3])
         price_round = ("%.2f" % round(response['values'][0][4],2))
         price = str("Predict Price :  "+ price_round + " KSH (50KG)")
-        return render_template('price.html', form=form, month_i=month_i, day=day, year=year, price=price)
+        return render_template('price.html', form=form, month_i=month_i, day=day, year=year, price=price, price_data=price_data)
 
     
     
-    return render_template('price.html',form=form, data=data)     
+    return render_template('price.html',form=form, price_data=price_data)     
 
 
 

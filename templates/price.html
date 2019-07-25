@@ -46,13 +46,13 @@
                                             <th scope="col">Accuray %</th>
                                     </thead>
                                     <tbody>
-                                            {% for row in data %}
+                                            {% for row in price_data %}
                                         <tr>
-                                            <td>{{ row.3 }}-{{ row.2 }}</td>
+                                            <td>{{ row.3 }} - {{ row.2 }}</td>
                                             <td>{{ row.1 }}</td>
                                             <td>{{ row.4 }}</td>
                                             <td>{{ row.5 }}</td>
-                                            <td>{{ (( ( (row.5)|int  - (row.4)|int ) / (row.5)|int ) * 100 )|round(2) }}</td>
+                                            <td>{{ (( ( (row.5)|int  - (row.4)|int ) / (row.5)|int ) * 100 )|round(2)|abs  }}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
