@@ -38,9 +38,9 @@ def index():
 def price():
     try:
         # db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
-        db = pymysql.connect("localhost","root","","yfarm")
+        db = pymysql.connect("localhost","root","","farmula_dashboard")
         cursor = db.cursor()
-        cursor.execute("SELECT  * FROM  prediction where crop = 'Red Irish Potato'")
+        cursor.execute("SELECT  * FROM  prediction where crop = 'Cocoyam'")
         data = cursor.fetchall()
         print(data)
         cursor.close()
@@ -72,7 +72,7 @@ def price():
 
     
     
-    return render_template('price.html',form=form)     
+    return render_template('price.html',form=form, data=data)     
 
 
 
