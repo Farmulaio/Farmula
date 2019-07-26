@@ -1563,9 +1563,14 @@ h1, h2, h3, h4, h5,
 }
 
 .row_slider {
-    background-color: #ececec;
+    /* background-color: #ececec;
 		background-color: rgba(233,230,230,0.79);
-		padding: 2% 0;
+    padding: 2% 0; */
+    background-color: #ececec;
+    background-color: #2a7c4f;
+    padding: 2% 0;
+    color: white;
+
 }
 
 
