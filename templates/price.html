@@ -4,21 +4,16 @@
     <div class="banner-text">
     </div>
   </div>
-
+<!-- 
   <div class="row_slider">
     <div class="container">
         <section class="customer-logos slider">
-            <div class="slide"><p> Farmula Price sh30000 </p></div>
-            <div class="slide"><p> Farmula Price sh30000 </p></div>
-            <div class="slide"><p> Farmula Price sh30000 </p></div>
-            <div class="slide"><p> Farmula Price sh30000 </p></div>
-            <div class="slide"><p> Farmula Price sh30000 </p></div>
-            <div class="slide"><p> Farmula Price sh30000 </p></div>
-            <div class="slide"><p> Farmula Price sh30000 </p></div>
-            <div class="slide"><p> Farmula Price sh30000 </p></div>
+                {% for row in price_data %}
+            <div class="slide"><p> {{ row.1 }} {{ row.4 }} at {{ row.2 }} = Sh{{ row.3 }} </p></div>
+            {% endfor %}
        </section>
     </div>
-</div>
+</div> -->
 
   <div class="site-section">
     <div class="container">
@@ -50,7 +45,7 @@
                                             <th scope="col">Relative Error %</th>
                                     </thead>
                                     <tbody>
-                                            {% for row in price_data %}
+                                            {% for row in pred_data %}
                                         <tr>
                                             <td>{{ row.3 }} - {{ row.2 }}</td>
                                             <td>{{ row.1 }}</td>
@@ -102,7 +97,7 @@
                           </div>
                                   <div class="container center">
                                       <div class="row row-btn"></div>
-                                          <button class="btn btn-outline-success-overide-save center custom-width  my-2 my-sm-0 mr-sm-2 save">Predict</button>
+                                          <button class="btn save">Predict</button>
                                       </div>
                               </div>
                           </div>

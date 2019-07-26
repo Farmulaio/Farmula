@@ -3,6 +3,7 @@ from wtforms import Form, StringField, IntegerField, validators, SelectField
 import urllib3, json, requests, calendar
 import pymysql
 from flaskext.mysql import MySQL
+import datetime
 import os
 
 
@@ -23,6 +24,7 @@ mltoken = json.loads(response.text).get('token')
 
 header = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + mltoken}
 
+today = datetime.date.today()
 
 class PredicitForm(Form):
     month = SelectField(u'Pick a Month', choices=[('1', 'January'), ('2', 'February'), ('3', 'March'), ('3', 'March'), ('4', 'April'), ('5', 'May'), ('6', 'June'), ('7', 'July'), ('8', 'August'), ('9', 'September'), ('10', 'October'), ('11', 'Novmber'), ('12', 'December')])
@@ -37,13 +39,17 @@ def index():
 @app.route('/price', methods=['GET','POST'])
 def price():
     try:
-        # db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
-        db = pymysql.connect("localhost","root","","farmula_dashboard")
-        cursor = db.cursor()
-        cursor.execute("SELECT  * FROM  prediction ")
-        price_data = cursor.fetchall()
+        db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
+        # db = pymysql.connect("localhost","root","","farmula_dashboard")
+        predicition = db.cursor()
+        price = db.cursor()
+        predicition.execute("SELECT  * FROM  prediction ")
+        print(today)
+        price.execute("SELECT  * FROM  market_price where statu = 'PUBLISHED' && create_date = %s",(today))
+        pred_data = predicition.fetchall()
+        price_data = price.fetchall()
         print(price_data)
-        cursor.close()
+        predicition.close()
     except:
         print('Cant connect to database ')
 
@@ -68,11 +74,11 @@ def price():
         pre_prams = str(response['values'][0][3])
         price_round = ("%.2f" % round(response['values'][0][4],2))
         price = str("Predict Price :  "+ price_round + " KSH (50KG)")
-        return render_template('price.html', form=form, month_i=month_i, day=day, year=year, price=price, price_data=price_data)
+        return render_template('price.html', form=form, month_i=month_i, day=day, year=year, price=price, pred_data=pred_data, price_data=price_data)
 
     
     
-    return render_template('price.html',form=form, price_data=price_data)     
+    return render_template('price.html',form=form, pred_data=pred_data, price_data=price_data)     
 
 
 

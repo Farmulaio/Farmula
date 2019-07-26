@@ -333,7 +333,7 @@ jQuery(document).ready(function($) {
 
 $(document).ready(function(){
 	$('.customer-logos').slick({
-		slidesToShow: 6,
+		slidesToShow: 3,
 		slidesToScroll: 1,
 		autoplay: true,
 		autoplaySpeed: 1000,
@@ -343,7 +343,7 @@ $(document).ready(function(){
 			responsive: [{
 			breakpoint: 768,
 			settings: {
-				slidesToShow: 4
+				slidesToShow: 3
 			}
 		}, {
 			breakpoint: 520,
