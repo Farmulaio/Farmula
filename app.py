@@ -27,6 +27,7 @@ header = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + mltok
 today = datetime.date.today()
 
 class PredicitForm(Form):
+    crop = SelectField(u'Pick a Crop', choices=[('1', 'Red Irish Patoto'), ('2', 'White Irish Patoto')])
     month = SelectField(u'Pick a Month', choices=[('1', 'January'), ('2', 'February'), ('3', 'March'), ('3', 'March'), ('4', 'April'), ('5', 'May'), ('6', 'June'), ('7', 'July'), ('8', 'August'), ('9', 'September'), ('10', 'October'), ('11', 'Novmber'), ('12', 'December')])
     day = IntegerField(u'Enter a Day', [validators.NumberRange(min=1, max=31)])
     year = IntegerField(u'Enter a Year', [validators.NumberRange(min=1970, max=2050)])
@@ -55,12 +56,13 @@ def price():
 
     form = PredicitForm(request.form)
     if request.method == 'POST' and form.validate():
+        crop = form.crop.data
         month = form.month.data
         year = form.year.data
         day = form.day.data
 
-        payload_scoring = {"fields":["Year", "Month", "Day"],"values":[[year,int(month),day]]}
-        response_scoring = requests.post('https://eu-gb.ml.cloud.ibm.com/v3/wml_instances/6a216236-adcc-48b5-901f-41e4cafbf033/deployments/9a8fbb2d-9198-4ac1-a4e0-54f4788561db/online', json=payload_scoring, headers=header)
+        payload_scoring = {"fields":["Year", "Month", "Day", "Type"],"values":[[year,int(month),day,int(crop)]]}
+        response_scoring = requests.post('https://eu-gb.ml.cloud.ibm.com/v3/wml_instances/6a216236-adcc-48b5-901f-41e4cafbf033/deployments/09f168fd-9867-476b-a943-bb4d92acb1fd/online', json=payload_scoring, headers=header)
         print("Scoring response")
         print(json.loads(response_scoring.text)) 
         print(month)
@@ -71,15 +73,20 @@ def price():
         month_i = "Month : " + calendar.month_name[month_num]
         year =  "Year : " + str(response['values'][0][0])
         day =  "Day : " + str(response['values'][0][2])
-        pre_prams = str(response['values'][0][3])
-        price_round = ("%.2f" % round(response['values'][0][4],2))
+        crop = int(response['values'][0][3])
+        if crop == 1 :
+            crop_txt = 'Red Irish Potato'
+        else :
+            crop_txt = 'White Irish Potato'
+        crop_txt_temp = "Crop : " + crop_txt
+        pre_prams = str(response['values'][0][4])
+        price_round = ("%.2f" % round(response['values'][0][5],2))
         price = str("Predict Price :  "+ price_round + " KSH (50KG)")
-        return render_template('price.html', form=form, month_i=month_i, day=day, year=year, price=price, pred_data=pred_data, price_data=price_data)
+        return render_template('price.html', form=form, month_i=month_i, day=day, year=year, price=price, crop_txt_temp=crop_txt_temp, pred_data=pred_data, price_data=price_data)
 
     
     
-    return render_template('price.html',form=form, pred_data=pred_data, price_data=price_data)     
-
+    return render_template('price.html', form=form, pred_data=pred_data, price_data=price_data)
 
 
 

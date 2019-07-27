@@ -63,9 +63,16 @@
                             <h5 class="text-primary">Price Prediction Model</h5>
                             <div class="card">
                               <div class="card-body">
-                              <h6>Predict Red Irish Potato Price</h6>
+                              <h6>Predict Potato Price</h6>
                               <br>
                                   <div class="container ">
+                                  <div class="row ">
+                                      <div class="col-12">
+                                          {{ render_field(form.crop, class_="form-control") }}                         
+                                      </div>       
+                                  </div>
+                                  <br>
+                                  <br>
                                   <div class="row ">
                                       <div class="col-12">
                                           {{ render_field(form.month, class_="form-control") }}                         
@@ -90,9 +97,10 @@
                               <div class="w-100"></div>
                               <div class="col center">
                                   <br>
-                                   <h6>{{month_i}}</h6>
-                                   <h6>{{year}} </h6>
-                                   <h6>{{day}} </h6>
+                                  <h6>{{ crop_txt_temp }}</h6>
+                                   <h6>{{ month_i }}</h6>
+                                   <h6>{{ year }} </h6>
+                                   <h6>{{ day }} </h6>
                                    <h6>{{ price }} </h6>
                           </div>
                                   <div class="container center">
