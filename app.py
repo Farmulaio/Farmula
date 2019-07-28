@@ -40,8 +40,8 @@ def index():
 @app.route('/price', methods=['GET','POST'])
 def price():
     try:
-        # db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
-        db = pymysql.connect("localhost","root","","farmula_dashboard")
+        db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
+        # db = pymysql.connect("localhost","root","","farmula_dashboard")
         predicition = db.cursor()
         price = db.cursor()
         predicition.execute("SELECT  * FROM  prediction ")
