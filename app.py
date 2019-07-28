@@ -40,8 +40,8 @@ def index():
 @app.route('/price', methods=['GET','POST'])
 def price():
     try:
-        db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
-        # db = pymysql.connect("localhost","root","","farmula_dashboard")
+        # db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
+        db = pymysql.connect("localhost","root","","farmula_dashboard")
         predicition = db.cursor()
         price = db.cursor()
         predicition.execute("SELECT  * FROM  prediction ")
@@ -51,6 +51,7 @@ def price():
         price_data = price.fetchall()
         print(price_data)
         predicition.close()
+        price.close()
     except:
         print('Cant connect to database ')
 
@@ -87,6 +88,22 @@ def price():
     
     
     return render_template('price.html', form=form, pred_data=pred_data, price_data=price_data)
+
+
+@app.route('/get_price', methods=['GET','POST'])
+def get_price():
+    try:
+        db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
+        # db = pymysql.connect("localhost","root","","farmula_dashboard")
+        predicition = db.cursor()
+        price = db.cursor()
+        price.execute("SELECT  * FROM  market_price where statu = 'PUBLISHED' && DATE(create_date) = %s",(today))
+        price_data = price.fetchall()
+        print(price_data)
+        price.close()
+    except:
+        print('Cant connect to database ')
+    return jsonify(price_data)
 
 
 
