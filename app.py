@@ -46,7 +46,7 @@ def price():
         price = db.cursor()
         predicition.execute("SELECT  * FROM  prediction ")
         print(today)
-        price.execute("SELECT  * FROM  market_price where statu = 'PUBLISHED' && create_date = %s",(today))
+        price.execute("SELECT  * FROM  market_price where statu = 'PUBLISHED' && DATE(create_date) = %s",(today))
         pred_data = predicition.fetchall()
         price_data = price.fetchall()
         print(price_data)
