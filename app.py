@@ -9,20 +9,32 @@ import os
 
 app = Flask(__name__)
 
-#IBM Watson Credenials 
-wml_credentials={
-    "url":'https://eu-gb.ml.cloud.ibm.com',
-    "username": '461336f2-8984-492a-b72a-9376b8e9d1c2',
-    "password": 'de3136e2-2a65-48cd-85f7-77dd03715ba3'
-    }
+# #IBM Watson Credenials 
+# wml_credentials={
+#     "url":'https://eu-gb.ml.cloud.ibm.com',
+#     "username": '461336f2-8984-492a-b72a-9376b8e9d1c2',
+#     "password": 'de3136e2-2a65-48cd-85f7-77dd03715ba3'
+#     }
 
-#init header and request and getting response 
-headers = urllib3.util.make_headers(basic_auth='{username}:{password}'.format(username=wml_credentials['username'], password=wml_credentials['password']))
-url = '{}/v3/identity/token'.format(wml_credentials['url'])
-response = requests.get(url, headers=headers)
-mltoken = json.loads(response.text).get('token')
+# #init header and request and getting response 
+# headers = urllib3.util.make_headers(basic_auth='{username}:{password}'.format(username=wml_credentials['username'], password=wml_credentials['password']))
+# url = '{}/v3/identity/token'.format(wml_credentials['url'])
+# response = requests.get(url, headers=headers)
+# mltoken = json.loads(response.text).get('token')
 
-header = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + mltoken}
+
+apikey = "1R4mWJ92xj2R37hvydNj8qvNREL_au-0NQfhOK35O6uS"
+
+# Get an IAM token from IBM Cloud
+url     = "https://iam.bluemix.net/oidc/token"
+headers = { "Content-Type" : "application/x-www-form-urlencoded" }
+data    = "apikey=" + apikey + "&grant_type=urn:ibm:params:oauth:grant-type:apikey"
+IBM_cloud_IAM_uid = "bx"
+IBM_cloud_IAM_pwd = "bx"
+response  = requests.post( url, headers=headers, data=data, auth=( IBM_cloud_IAM_uid, IBM_cloud_IAM_pwd ) )
+iam_token = response.json()["access_token"]
+
+header = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + iam_token, 'ML-Instance-ID': "6a216236-adcc-48b5-901f-41e4cafbf033"}
 
 today = datetime.date.today()
 
@@ -93,8 +105,8 @@ def price():
 @app.route('/get_price', methods=['GET','POST'])
 def get_price():
     try:
-        db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
-        # db = pymysql.connect("localhost","root","","farmula_dashboard")
+        # db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
+        db = pymysql.connect("localhost","root","","farmula_dashboard")
         predicition = db.cursor()
         price = db.cursor()
         price.execute("SELECT  * FROM  market_price where statu = 'PUBLISHED' && DATE(create_date) = %s",(today))
