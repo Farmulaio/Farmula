@@ -58,7 +58,8 @@ def price():
         price = db.cursor()
         predicition.execute("SELECT  * FROM  prediction ")
         print(today)
-        price.execute("SELECT  * FROM  market_price where statu = 'PUBLISHED' && DATE(create_date) = %s",(today))
+        # price.execute("SELECT  * FROM  market_price where statu = 'PUBLISHED' && DATE(create_date) = %s",(today))
+        price.execute("SELECT  * FROM  market_price where statu = 'PUBLISHED' ")
         pred_data = predicition.fetchall()
         price_data = price.fetchall()
         print(price_data)
@@ -105,8 +106,8 @@ def price():
 @app.route('/get_price', methods=['GET','POST'])
 def get_price():
     try:
-        # db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
-        db = pymysql.connect("localhost","root","","farmula_dashboard")
+        db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
+        # db = pymysql.connect("localhost","root","","farmula_dashboard")
         predicition = db.cursor()
         price = db.cursor()
         price.execute("SELECT  * FROM  market_price where statu = 'PUBLISHED' && DATE(create_date) = %s",(today))
