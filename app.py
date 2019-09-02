@@ -114,10 +114,12 @@ def ussd_callback():
     text =  request.values.get("text", "default")
 
     if text == '':
-        response = "CON what would you want to check \n "
-        response += "1. My account \n"
-        response += "2. My Phone Number \n"
-            
+        response = "CON Welcome to Farmula pricing platform \n "
+        response += "1. Check prices \n"
+        response += "2. Order \n"
+        response += "3. Price produce \n"
+
+
     return response
 
 if __name__ == '__main__':
