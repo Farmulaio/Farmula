@@ -120,8 +120,11 @@ def ussd_callback():
         response += "3. Price produce \n"
 
     elif text != '1' or text != '2' or text != '3':
-        response = "END Please enter valid number"
-    
+        response = "CON Enter vaild number please  \n "
+        response += "1. Check prices \n"
+        response += "2. Order \n"
+        response += "3. Price produce \n"  
+
     return response
 
 if __name__ == '__main__':
