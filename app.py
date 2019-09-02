@@ -105,35 +105,20 @@ def get_price():
         print('Cant connect to database ')
     return jsonify(price_data)
 
-# @app.route('/ussd', methods=['GET','POST'])
-# def ussd_callback():
-#     global response
-#     session_id = request.values.get("sessionId", None)
-#     service_code = request.values.get("serviceCode", None)
-#     phone_number = request.values.get("phoneNumber", None)
-#     text =  request.values.get("text", "default")
+@app.route('/ussd', methods=['GET','POST'])
+def ussd_callback():
+    global response
+    session_id = request.values.get("sessionId", None)
+    service_code = request.values.get("serviceCode", None)
+    phone_number = request.values.get("phoneNumber", None)
+    text =  request.values.get("text", "default")
 
-#     if text == '':
-#         response = "CON what would you want to check \n "
-#         response += "1. My account \n"
-#         response += "2. My Phone Number \n"
-
-#     elif text == '1':
-#         response = "CON Choose account information you want to view \n"
-#         response += "1. Account number \n"
-#         response += "2. Account balance"
-
-#     elif text == '1*1':
-#         accountNumber  = "ACC1001"
-#         response = "END Your account number is " + accountNumber
-
-#     elif text == '1*2':
-#         balance  = "KES 10,000"
-#         response = "END Your balance is " + balance
-
-#     elif text == '2':
-#         response = "This is your phone number " + phone_number
-# return response
+    if text == '':
+        response = "CON what would you want to check \n "
+        response += "1. My account \n"
+        response += "2. My Phone Number \n"
+            
+    return response
 
 if __name__ == '__main__':
     app.secret_key = 'farmula'
