@@ -9,20 +9,7 @@ import os
 
 app = Flask(__name__)
 
-# #IBM Watson Credenials 
-# wml_credentials={
-#     "url":'https://eu-gb.ml.cloud.ibm.com',
-#     "username": '461336f2-8984-492a-b72a-9376b8e9d1c2',
-#     "password": 'de3136e2-2a65-48cd-85f7-77dd03715ba3'
-#     }
-
-# #init header and request and getting response 
-# headers = urllib3.util.make_headers(basic_auth='{username}:{password}'.format(username=wml_credentials['username'], password=wml_credentials['password']))
-# url = '{}/v3/identity/token'.format(wml_credentials['url'])
-# response = requests.get(url, headers=headers)
-# mltoken = json.loads(response.text).get('token')
-
-
+response = ""
 apikey = "1R4mWJ92xj2R37hvydNj8qvNREL_au-0NQfhOK35O6uS"
 
 # Get an IAM token from IBM Cloud
@@ -118,7 +105,35 @@ def get_price():
         print('Cant connect to database ')
     return jsonify(price_data)
 
+@app.route('/ussd', methods=['GET','POST'])
+def ussd_callback():
+    global response
+    session_id = request.values.get("sessionId", None)
+    service_code = request.values.get("serviceCode", None)
+    phone_number = request.values.get("phoneNumber", None)
+    text =  request.values.get("text", "default")
 
+    if text == '':
+        response = "CON what would you want to check \n "
+        response += "1. My account \n"
+        response += "2. My Phone Number \n"
+
+    elif text == '1':
+        response = "CON Choose account information you want to view \n"
+        response += "1. Account number \n"
+        response += "2. Account balance"
+
+    elif text == '1*1':
+        accountNumber  = "ACC1001"
+        response = "END Your account number is " + accountNumber
+
+    elif text == '1*2':
+        balance  = "KES 10,000"
+        response = "END Your balance is " + balance
+
+    elif text == '2':
+        response = "This is your phone number " + phone_number
+ return response
 
 if __name__ == '__main__':
     app.secret_key = 'farmula'
