@@ -105,27 +105,25 @@ def get_price():
         print('Cant connect to database ')
     return jsonify(price_data)
 
-@app.route('/ussd', methods=['GET','POST'])
-def ussd_callback():
-    global response
-    session_id = request.values.get("sessionId", None)
-    service_code = request.values.get("serviceCode", None)
-    phone_number = request.values.get("phoneNumber", None)
-    text =  request.values.get("text", "default")
+# @app.route('/ussd', methods=['GET','POST'])
+# def ussd_callback():
+#     global response
+#     session_id = request.values.get("sessionId", None)
+#     service_code = request.values.get("serviceCode", None)
+#     phone_number = request.values.get("phoneNumber", None)
+#     text =  request.values.get("text", "default")
 
-    if text == '':
-        response = "CON Welcome to Farmula pricing platform \n "
-        response += "1. Check prices \n"
-        response += "2. Order \n"
-        response += "3. Price produce \n"
+#     if text == '':
+#         response = "CON Welcome to Farmula pricing platform \n "
+#         response += "1. Check prices \n"
+#         response += "2. Order \n"
+#         response += "3. Price produce \n"
 
-    elif text != '1' or text != '2' or text != '3':
-        response = "CON Enter vaild number please  \n "
-        response += "1. Check prices \n"
-        response += "2. Order \n"
-        response += "3. Price produce \n"  
-
-    return response
+#     elif text != '1' or text != '2' or text != '3':
+#         response = "END Please enter valid number"
+    
+    
+#     return response
 
 if __name__ == '__main__':
     app.secret_key = 'farmula'
