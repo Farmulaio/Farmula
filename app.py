@@ -119,6 +119,13 @@ def ussd_callback():
         response += "2. Order \n"
         response += "3. Price produce \n" 
 
+    elif text == '1' :
+        response  = "CON Pick produce \n"
+        response += "1. Red Irish Potatoes \n"
+        response += "2. White Irish Potatoes \n"                                              
+        response += "3. Cowpeas \n"               
+        response += "4. Carrots \n" 
+
     return response
 
 if __name__ == '__main__':
