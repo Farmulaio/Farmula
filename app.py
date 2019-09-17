@@ -118,14 +118,50 @@ def ussd_callback():
         response += "1. Check prices \n"
         response += "2. Order \n"
         response += "3. Price produce \n" 
-
+    
+    # check price 
     elif text == '1' :
         response  = "CON Pick produce \n"
         response += "1. Red Irish Potatoes \n"
         response += "2. White Irish Potatoes \n"                                              
         response += "3. Cowpeas \n"               
         response += "4. Carrots \n"
+    
+    # red Irish
+    elif text == '1*1' :
+        response = "CON Check Red Irish potato price for \n"
+        response += "1. 50kg Bag \n"
+        response += "2. 90kg Bag \n"
+    
+    # red irsih 50kg
+    elif text == '1*1*1' :
+        response = "CON Red Irish Potato (50kg) "
+        response += "1. Accept \n"
+        response += "2. Decline "
+        # insert session into database
 
+    elif text == '1*1*1*1' :
+        response = "END insert order into database"
+
+    elif text == '1*1*1*2' :
+        response = "END Thanks for using Farmula Services \n"
+    
+     # red irsih 90kg
+    elif text == '1*1*2' :
+        response = "CON Red Irish Potato (50kg) "
+        response += "1. Accept \n"
+        response += "2. Decline "
+        # insert session into database
+
+    elif text == '1*1*2*1' :
+        response = "END insert order into database"
+
+    elif text == '1*1*2*2' :
+        response = "END Thanks for using Farmula Services \n"
+
+    
+
+    # order
     elif text == '2' :
         response  = "CON "
         response += "1. Red Irish Potatoes \n"
@@ -133,17 +169,15 @@ def ussd_callback():
         response += "3. Cowpeas \n"               
         response += "4. Carrots \n"
     
+    # price mechanism
     elif text == '3' :
         response  = "CON Source of seeds : \n"
         response += "1. Government \n"
         response += "2. Agrovet \n"  
 
     elif text != '1' or text != '2' or text != '3' :
-        response = "END Please enter valid option \n "
-        # response += "1. Check prices \n"
-        # response += "2. Order \n"
-        # response += "3. Price produce \n"                                             
-
+        response = "END Please enter valid option 1 , 2 or 3 \n "
+                                           
     return response
 
 if __name__ == '__main__':
