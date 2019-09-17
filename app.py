@@ -39,14 +39,14 @@ def index():
 @app.route('/price', methods=['GET','POST'])
 def price():
     try:
-        db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
-        # db = pymysql.connect("localhost","root","","farmula_dashboard")
+        # db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
+        db = pymysql.connect("localhost","root","","farmula_dashboard")
         predicition = db.cursor()
         price = db.cursor()
         predicition.execute("SELECT  * FROM  prediction ")
         print(today)
         # price.execute("SELECT  * FROM  market_price where statu = 'PUBLISHED' && DATE(create_date) = %s",(today))
-        price.execute("SELECT  * FROM  market_price where statu = 'PUBLISHED' ")
+        price.execute("SELECT  * FROM  market_price where statu = 'PUBLISHED'")
         pred_data = predicition.fetchall()
         price_data = price.fetchall()
         print(price_data)
@@ -118,6 +118,9 @@ def ussd_callback():
         response += "1. Check prices \n"
         response += "2. Order \n"
         response += "3. Price produce \n" 
+
+    elif text != '1' and text != '2' and text != '3' :
+        response = "END Enter valid option"
     
     return response
 
