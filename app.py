@@ -139,10 +139,10 @@ def ussd_callback():
         response += "2. Agrovet \n"  
 
     elif text != '1' or text != '2' or text != '3' :
-        response = "CON Please enter valid option \n "
-        response += "1. Check prices \n"
-        response += "2. Order \n"
-        response += "3. Price produce \n"                                             
+        response = "END Please enter valid option \n "
+        # response += "1. Check prices \n"
+        # response += "2. Order \n"
+        # response += "3. Price produce \n"                                             
 
     return response
 
