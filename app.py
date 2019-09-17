@@ -135,7 +135,7 @@ def ussd_callback():
     
     # red irsih 50kg
     elif text == '1*1*1' :
-        response = "CON Red Irish Potato (50kg) "
+        response = "CON Red Irish Potato (50kg) \n"
         response += "1. Accept \n"
         response += "2. Decline "
         # insert session into database
@@ -148,7 +148,7 @@ def ussd_callback():
     
      # red irsih 90kg
     elif text == '1*1*2' :
-        response = "CON Red Irish Potato (50kg) "
+        response = "CON Red Irish Potato (50kg) \n"
         response += "1. Accept \n"
         response += "2. Decline "
         # insert session into database
@@ -159,8 +159,39 @@ def ussd_callback():
     elif text == '1*1*2*2' :
         response = "END Thanks for using Farmula Services \n"
 
-    
 
+ # white Irish
+    elif text == '1*2' :
+        response = "CON Check White Irish potato price for \n"
+        response += "1. 50kg Bag \n"
+        response += "2. 90kg Bag \n"
+    
+    # red irsih 50kg
+    elif text == '1*2*1' :
+        response = "CON White Irish Potato (50kg) \n"
+        response += "1. Accept \n"
+        response += "2. Decline "
+        # insert session into database
+
+    elif text == '1*2*1*1' :
+        response = "END insert order into database"
+
+    elif text == '1*2*1*2' :
+        response = "END Thanks for using Farmula Services \n"
+    
+     # white irsih 90kg
+    elif text == '1*2*2' :
+        response = "CON White Irish Potato (50kg) \n"
+        response += "1. Accept \n"
+        response += "2. Decline "
+        # insert session into database
+
+    elif text == '1*2*2*1' :
+        response = "END insert order into database"
+
+    elif text == '1*2*2*2' :
+        response = "END Thanks for using Farmula Services \n"
+   
     # order
     elif text == '2' :
         response  = "CON "
@@ -176,7 +207,7 @@ def ussd_callback():
         response += "2. Agrovet \n"  
 
     elif text != '1' or text != '2' or text != '3' :
-        response = "END Please enter valid option 1 , 2 or 3 \n "
+        response = "END Please enter valid option  \n "
                                            
     return response
 
