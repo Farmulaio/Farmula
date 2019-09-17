@@ -39,8 +39,8 @@ def index():
 @app.route('/price', methods=['GET','POST'])
 def price():
     try:
-        # db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
-        db = pymysql.connect("localhost","root","","farmula_dashboard")
+        db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
+        # db = pymysql.connect("localhost","root","","farmula_dashboard")
         predicition = db.cursor()
         price = db.cursor()
         predicition.execute("SELECT  * FROM  prediction ")
@@ -89,6 +89,28 @@ def price():
     
     return render_template('price.html', form=form, pred_data=pred_data, price_data=price_data)
 
+
+@app.route('/order', methods=['GET','POST'])
+def order():
+    try:
+        # db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
+        db = pymysql.connect("localhost","root","","farmula_dashboard")
+
+    except:
+        print('Cant connect to database ')
+
+    form = PredicitForm(request.form)
+    if request.method == 'POST' and form.validate():
+        crop = form.crop.data
+        month = form.month.data
+        year = form.year.data
+        day = form.day.data
+
+        return render_template('order.html', form=form, month_i=month_i, day=day, year=year, price=price, crop_txt_temp=crop_txt_temp, pred_data=pred_data, price_data=price_data)
+
+    
+    
+    return render_template('order.html', form=form)
 
 @app.route('/get_price', methods=['GET','POST'])
 def get_price():

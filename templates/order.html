@@ -1,0 +1,84 @@
+{% extends 'layout.html' %} 
+{% block body %}
+<div class="banner-blocks-cover overlay" style="background-image: url('static/images/nav.jpg');">
+    <div class="banner-text">
+    </div>
+  </div>
+
+  <div class="site-section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-12 order-md-1" data-aos="fade-up">
+          <div class="text-left pb-1 border-primary mb-4">
+            <h2 class="text-primary">Lorem ipsum</h2>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  	<br> 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        </p>
+        <p class="mb-5"></p>
+        
+          {% from "includes/_formhelpers.html" import render_field %} 
+          <form action="" method="POST">
+              <div class="row">
+                <div class="col-7">
+               <div class="line"></div> 
+                            <h5 class="text-primary">Lorem ipsum</h5>
+                            <div class="card">
+                              <div class="card-body">
+                              <h6>Lorem ipsum</h6>
+                              <br>
+                                  <div class="container ">
+                                  <div class="row ">
+                                      <div class="col-12">
+                                          {{ render_field(form.crop, class_="form-control") }}                         
+                                      </div>       
+                                  </div>
+                                  <br>
+                                  <br>
+                                  <div class="row ">
+                                      <div class="col-12">
+                                          {{ render_field(form.month, class_="form-control") }}                         
+                                      </div>       
+                                  </div>
+                                  <br>
+                                  <br>
+                                  <div class="row ">
+                                      <div class="col-12">
+                                          {{ render_field(form.day, class_="form-control") }}                         
+                                      </div>       
+                                  </div>
+                                  <br>
+                                  <br>
+                                  <div class="row">
+                                      <div class="col-12">
+                                          {{ render_field(form.year, class_="form-control") }}                         
+                                      </div>       
+                                  </div>
+                              </div>
+                              <div class="col"></div>
+                              <div class="w-100"></div>
+                              <div class="col center">
+                                  <br>
+                                  <h6>{{ crop_txt_temp }}</h6>
+                                   <h6>{{ month_i }}</h6>
+                                   <h6>{{ year }} </h6>
+                                   <h6>{{ day }} </h6>
+                                   <h6>{{ price }} </h6>
+                          </div>
+                                  <div class="container center">
+                                      <div class="row row-btn"></div>
+                                          <button class="btn save">Post Demand</button>
+                                      </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </form>        
+        </div>       
+      </div>
+    </div>
+  </div>
+
+{% endblock%} 
+    
