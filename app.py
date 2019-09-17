@@ -191,7 +191,16 @@ def ussd_callback():
 
     elif text == '1*2*2*2' :
         response = "END Thanks for using Farmula Services \n"
-   
+
+    # Cowpeas
+    elif text == '1*3' :
+        response = "END Cowpeas not availabe for now"
+
+    # Carrots
+    elif text == '1*4' :
+        response = "END Carrots not availabe for now"   
+
+
     # order
     elif text == '2' :
         response  = "CON "
