@@ -126,11 +126,6 @@ def get_price():
 
 @app.route('/ussd', methods=['GET','POST'])
 def ussd_callback():
-    global response
-    global session_id 
-    global service_code
-    global phone_number
-    global text
     sesssion_id = request.values.get("sessionId", None)
     service_code = request.values.get("serviceCode", None)
     phone_number = request.values.get("phoneNumber", None)
@@ -164,7 +159,7 @@ def ussd_callback():
         # insert session into database
         try :
             insert_price_sess = db.cursor()
-            insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,sessionId,service_code,text))
+            insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , ("test","test","test","test"))
             insert_price_sess.close()
         except :
             response = "END there is an error "
