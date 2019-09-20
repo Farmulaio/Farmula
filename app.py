@@ -125,6 +125,7 @@ def get_price():
 
 @app.route('/ussd', methods=['GET','POST'])
 def ussd_callback():
+    global response
     sesssion_id = request.values.get("sessionId", None)
     service_code = request.values.get("serviceCode", None)
     phone_number = request.values.get("phoneNumber", None)
