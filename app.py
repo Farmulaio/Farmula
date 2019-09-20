@@ -8,6 +8,7 @@ import os
 
 
 app = Flask(__name__)
+db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
 
 response = ""
 apikey = "1R4mWJ92xj2R37hvydNj8qvNREL_au-0NQfhOK35O6uS"
@@ -39,7 +40,6 @@ def index():
 @app.route('/price', methods=['GET','POST'])
 def price():
     try:
-        db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
         predicition = db.cursor()
         price = db.cursor()
         predicition.execute("SELECT  * FROM  prediction ")
@@ -113,7 +113,6 @@ def order():
 @app.route('/get_price', methods=['GET','POST'])
 def get_price():
     try:
-        db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
         predicition = db.cursor()
         price = db.cursor()
         price.execute("SELECT  * FROM  market_price where statu = 'PUBLISHED' && DATE(create_date) = %s",(today))
@@ -159,7 +158,7 @@ def ussd_callback():
         # insert session into database
         try :
             insert_price_sess = db.cursor()
-            insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , ("test","test","test","test"))
+            insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,sessionId,service_code,text))
             insert_price_sess.close()
         except :
             response = "END there is an error "
