@@ -162,9 +162,12 @@ def ussd_callback():
         response += "1. Accept \n"
         response += "2. Decline "
         # insert session into database
-        insert_price_sess = db.cursor()
-        insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,sessionId,service_code,text))
-        insert_price_sess.close()
+        try :
+            insert_price_sess = db.cursor()
+            insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,sessionId,service_code,text))
+            insert_price_sess.close()
+        except :
+            response = "END there is an error "
 
     elif text == '1*1*1*1' :
         response = "END insert order into database"
