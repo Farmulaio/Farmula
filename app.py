@@ -40,7 +40,6 @@ def index():
 def price():
     try:
         db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
-        # db = pymysql.connect("localhost","root","","farmula_dashboard")
         predicition = db.cursor()
         price = db.cursor()
         predicition.execute("SELECT  * FROM  prediction ")
@@ -93,8 +92,7 @@ def price():
 @app.route('/order', methods=['GET','POST'])
 def order():
     try:
-        # db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
-        db = pymysql.connect("localhost","root","","farmula_dashboard")
+        db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
 
     except:
         print('Cant connect to database ')
@@ -116,7 +114,6 @@ def order():
 def get_price():
     try:
         db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
-        # db = pymysql.connect("localhost","root","","farmula_dashboard")
         predicition = db.cursor()
         price = db.cursor()
         price.execute("SELECT  * FROM  market_price where statu = 'PUBLISHED' && DATE(create_date) = %s",(today))
@@ -161,6 +158,9 @@ def ussd_callback():
         response += "1. Accept \n"
         response += "2. Decline "
         # insert session into database
+        insert_price_sess = db.cursor()
+        insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,sessionId,service_code,text))
+        insert_price_sess.close()
 
     elif text == '1*1*1*1' :
         response = "END insert order into database"
@@ -174,6 +174,9 @@ def ussd_callback():
         response += "1. Accept \n"
         response += "2. Decline "
         # insert session into database
+        insert_price_sess = db.cursor()
+        insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,sessionId,service_code,text))
+        insert_price_sess.close()
 
     elif text == '1*1*2*1' :
         response = "END insert order into database"
@@ -194,6 +197,9 @@ def ussd_callback():
         response += "1. Accept \n"
         response += "2. Decline "
         # insert session into database
+        insert_price_sess = db.cursor()
+        insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,sessionId,service_code,text))
+        insert_price_sess.close()
 
     elif text == '1*2*1*1' :
         response = "END insert order into database"
@@ -207,6 +213,9 @@ def ussd_callback():
         response += "1. Accept \n"
         response += "2. Decline "
         # insert session into database
+        insert_price_sess = db.cursor()
+        insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,sessionId,service_code,text))
+        insert_price_sess.close()
 
     elif text == '1*2*2*1' :
         response = "END insert order into database"
@@ -233,9 +242,18 @@ def ussd_callback():
     
     # price mechanism
     elif text == '3' :
+        response  = "CON "
+        response += "1. Red Irish Potatoes \n"
+        response += "2. White Irish Potatoes \n"                                              
+        response += "3. Cowpeas \n"               
+        response += "4. Carrots \n"
+
+    elif text == "3*1" :
         response  = "CON Source of seeds : \n"
         response += "1. Government \n"
         response += "2. Agrovet \n"  
+
+    
 
     elif text != '1' or text != '2' or text != '3' :
         response = "END Please enter valid option  \n "
