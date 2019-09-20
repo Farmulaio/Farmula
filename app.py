@@ -159,7 +159,7 @@ def ussd_callback():
         try :
             insert_price_sess = db.cursor()
             insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (str(phone_number),str(sessionId),str(service_code),str(text)))
-            insert_price_sess.commit()
+            insert_price_sess.close()
         except :
             response = "END there is an error "
 
