@@ -1,5 +1,5 @@
-from flask import Flask, render_template, url_for, request, jsonify, flash
-from wtforms import Form, StringField, IntegerField, validators, SelectField
+from flask import Flask, render_template, url_for, request, jsonify, flash, redirect
+from wtforms import Form, StringField, IntegerField, validators, SelectField, DateField
 import urllib3, json, requests, calendar
 import pymysql
 from flaskext.mysql import MySQL
@@ -32,6 +32,15 @@ class PredicitForm(Form):
     day = IntegerField(u'Enter a Day', [validators.NumberRange(min=1, max=31)])
     year = IntegerField(u'Enter a Year', [validators.NumberRange(min=1970, max=2050)])
 
+
+class OrderForm(Form):
+    produce = SelectField(u'Pick a Crop', choices=[('Red Irish Patoto', 'Red Irish Patoto'), ('White Irish Patoto', 'White Irish Patoto')])
+    qty = SelectField(u'Pick a Quantity', choices=[('50kg', '50kg Bag'), ('90kg', '90kg Bag')])
+    customer_name = StringField(u'Enter your name', [validators.required()])
+    phone_number = StringField(u'Enter your phone number', [validators.Length(min=10)])
+    customer_address = StringField(u'Enter your address', [validators.required()])
+
+
 @app.route('/', methods=['GET','POST'])
 def index():
     return render_template('index.html')
@@ -44,7 +53,6 @@ def price():
         price = db.cursor()
         predicition.execute("SELECT  * FROM  prediction ")
         print(today)
-        # price.execute("SELECT  * FROM  market_price where statu = 'PUBLISHED' && DATE(create_date) = %s",(today))
         price.execute("SELECT  * FROM  market_price where statu = 'PUBLISHED'")
         pred_data = predicition.fetchall()
         price_data = price.fetchall()
@@ -52,7 +60,7 @@ def price():
         predicition.close()
         price.close()
     except:
-        print('Cant connect to database ')
+        print(" Cant connect to database ")
 
     form = PredicitForm(request.form)
     if request.method == 'POST' and form.validate():
@@ -91,23 +99,22 @@ def price():
 
 @app.route('/order', methods=['GET','POST'])
 def order():
-    try:
-        db = pymysql.connect("localhost","root","ahmed@12345","farmula_dashboard")
-
-    except:
-        print('Cant connect to database ')
-
-    form = PredicitForm(request.form)
+    form = OrderForm(request.form)
     if request.method == 'POST' and form.validate():
-        crop = form.crop.data
-        month = form.month.data
-        year = form.year.data
-        day = form.day.data
+        produce = form.produce.data
+        qty = form.qty.data
+        customer_name = form.customer_name.data
+        phone_number = form.phone_number.data
+        customer_address = form.customer_address.data
+        try :
+            insert_order = db.cursor()
+            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , (produce, customer_name, phone_number, customer_address, "", "", qty, "", ""))
+            db.commit()
+            return redirect(url_for('index'))
+        except :
+            print ("cant insert into database ")
 
-        return render_template('order.html', form=form, month_i=month_i, day=day, year=year, price=price, crop_txt_temp=crop_txt_temp, pred_data=pred_data, price_data=price_data)
-
-    
-    
+      
     return render_template('order.html', form=form)
 
 @app.route('/get_price', methods=['GET','POST'])
@@ -162,7 +169,7 @@ def ussd_callback():
             insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,session_id,service_code,text))
             insert_price_sess.close()
         except :
-            print "can't insert to database"
+            print ("can't insert to database")
 
     elif text == '1*1*1*1' :
         response = "END insert order into database"
@@ -181,7 +188,7 @@ def ussd_callback():
             insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,session_id,service_code,text))
             insert_price_sess.close()
         except :
-            print "can't insert to database"
+            print ("can't insert to database")
 
     elif text == '1*1*2*1' :
         response = "END insert order into database"
@@ -207,7 +214,7 @@ def ussd_callback():
             insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,session_id,service_code,text))
             insert_price_sess.close()
         except :
-            print "can't insert to database"
+            print ("can't insert to database")
 
     elif text == '1*2*1*1' :
         response = "END insert order into database"
@@ -226,7 +233,7 @@ def ussd_callback():
             insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,session_id,service_code,text))
             insert_price_sess.close()
         except :
-            print "can't insert to database"
+            print ("can't insert to database")
 
     elif text == '1*2*2*1' :
         response = "END insert order into database"

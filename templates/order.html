@@ -31,28 +31,35 @@
                                   <div class="container ">
                                   <div class="row ">
                                       <div class="col-12">
-                                          {{ render_field(form.crop, class_="form-control") }}                         
+                                          {{ render_field(form.produce, class_="form-control") }}                         
                                       </div>       
                                   </div>
                                   <br>
                                   <br>
                                   <div class="row ">
                                       <div class="col-12">
-                                          {{ render_field(form.month, class_="form-control") }}                         
+                                          {{ render_field(form.qty, class_="form-control") }}                         
                                       </div>       
                                   </div>
-                                  <br>
-                                  <br>
+                                <br>
+                                <br> 
                                   <div class="row ">
                                       <div class="col-12">
-                                          {{ render_field(form.day, class_="form-control") }}                         
+                                          {{ render_field(form.customer_name, class_="form-control") }}                         
                                       </div>       
                                   </div>
                                   <br>
                                   <br>
                                   <div class="row">
                                       <div class="col-12">
-                                          {{ render_field(form.year, class_="form-control") }}                         
+                                          {{ render_field(form.phone_number, class_="form-control") }}                         
+                                      </div>       
+                                  </div>
+                                  <br>
+                                  <br>
+                                  <div class="row">
+                                      <div class="col-12">
+                                          {{ render_field(form.customer_address, class_="form-control") }}                         
                                       </div>       
                                   </div>
                               </div>
@@ -60,12 +67,7 @@
                               <div class="w-100"></div>
                               <div class="col center">
                                   <br>
-                                  <h6>{{ crop_txt_temp }}</h6>
-                                   <h6>{{ month_i }}</h6>
-                                   <h6>{{ year }} </h6>
-                                   <h6>{{ day }} </h6>
-                                   <h6>{{ price }} </h6>
-                          </div>
+                              </div>
                                   <div class="container center">
                                       <div class="row row-btn"></div>
                                           <button class="btn save">Post Demand</button>
@@ -81,4 +83,3 @@
   </div>
 
 {% endblock%} 
-    
