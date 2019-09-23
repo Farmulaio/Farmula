@@ -186,7 +186,7 @@ def ussd_callback():
         try :
             insert_price_sess = db.cursor()
             insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,session_id,service_code,text))
-            insert_price_sess.close()
+            db.commit()
         except :
             print ("can't insert to database")
 
@@ -212,7 +212,7 @@ def ussd_callback():
         try :
             insert_price_sess = db.cursor()
             insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,session_id,service_code,text))
-            insert_price_sess.close()
+            db.commit()
         except :
             print ("can't insert to database")
 
@@ -231,7 +231,7 @@ def ussd_callback():
         try :
             insert_price_sess = db.cursor()
             insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,session_id,service_code,text))
-            insert_price_sess.close()
+            db.commit()
         except :
             print ("can't insert to database")
 
