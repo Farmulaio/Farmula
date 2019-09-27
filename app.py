@@ -163,44 +163,78 @@ def ussd_callback():
     for i in price_w50 :
         if i[2] == 'Farmula':
             farmula_w50 = "\n  Farmula = Sh" + i[3]
+        else :
+            farmula_w50 = ""
         if i[2] == 'Nairobi' :
-            nairobi_w50 = "\n  Nairobi = Sh" + i[3] 
+            nairobi_w50 = "\n  Nairobi = Sh" + i[3]
+        else :
+            nairobi_w50 = "" 
         if i[2] == 'Marikiti' :
             marikiti_w50 = "\n  Marikiti = Sh" + i[3]
+        else :
+            marikiti_w50 = ""
         if i[2] == 'Soweto' :
             soweto_w50 = "\n  Soweto = Sh" + i[3]
+        else :
+            soweto_w50 = ""
         if i[2] == 'Donholm' :
             donholm_w50 = "\n  Donholm = Sh" + i[3]
+        else :
+            donholm_w50 = ""
         if i[2] == 'Molo' :
             molo_w50 = "\n  Molo = Sh" + i[3]
+        else : 
+            molo_w50 = ""
 
     # market price for white 90kg
     for i in price_w90 :
         if i[2] == 'Farmula':
             farmula_w90 = "\n  Farmula = Sh" + i[3]
+        else :
+            farmula_w90 = ""
         if i[2] == 'Nairobi' :
             nairobi_w90 = "\n  Nairobi = Sh" + i[3]
+        else :
+            nairobi_w90 = ""
         if i[2] == 'Marikiti' :
             marikiti_w90 = "\n  Marikiti = Sh" + i[3]
+        else :
+            marikiti_w90 = ""
         if i[2] == 'Soweto' :
             soweto_w90 = "\n  Soweto = Sh" + i[3]
+        else :
+            soweto_w90 = ""
         if i[2] == 'Donholm' :
             donholm_w90 = "\n  Donholm = Sh" + i[3]
+        else :
+            donholm_w90 = ""
         if i[2] == 'Molo' :
             molo_w90 = "\n  Molo = Sh" + i[3]
+        else :
+            molo_w90 = ""
 
     # makert price for red 50 kg
     for i in price_r50 :
         if i[2] == 'Farmula':
             farmula_r50 = "\n  Farmula = Sh" + i[3]
+        else :
+            farmula_r50 = ""
         if i[2] == 'Nairobi' :
             nairobi_r50 = "\n  Nairobi = Sh" + i[3]
+        else :
+            nairobi_r50 = ""
         if i[2] == 'Marikiti' :
             marikiti_r50 = "\n  Marikiti = Sh" + i[3]
+        else :
+            marikiti_r50 = ""
         if i[2] == 'Soweto' :
             soweto_r50 = "\n  Soweto = Sh" + i[3]
+        else :
+            soweto_r50 = ""
         if i[2] == 'Donholm' :
             donholm_r50 = "\n  Donholm = Sh" + i[3]
+        else :
+            donholm_r50 = ""
         if i[2] == 'Molo' :
             molo_r50 = "\n  Molo = Sh" + i[3]
         else :
@@ -210,16 +244,28 @@ def ussd_callback():
     for i in price_r90 :
         if i[2] == 'Farmula':
             farmula_r90 = "\n  Farmula = Sh" + i[3]
+        else :
+            farmula_r90 = ""
         if i[2] == 'Nairobi' :
             nairobi_r90 = "\n  Nairobi = Sh" + i[3]
+        else :
+            nairobi_r90 = ""
         if i[2] == 'Marikiti' :
             marikiti_r90 = "\n  Marikiti = Sh" + i[3]
+        else :
+            marikiti_r90 = ""
         if i[2] == 'Soweto' :
             soweto_r90 = "\n  Soweto = Sh" + i[3]
+        else :
+            soweto_r90 = ""
         if i[2] == 'Donholm' :
             donholm_r90 = "\n  Donholm = Sh" + i[3]
+        else :
+            donholm_r90 = ""
         if i[2] == 'Molo' :
             molo_r90 = "\n  Molo = Sh" + i[3]    
+        else :
+            molo_r90 = ""
 
     if text == '':
         response = "CON Welcome to Farmula pricing platform \n "
