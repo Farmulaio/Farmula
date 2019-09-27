@@ -203,6 +203,8 @@ def ussd_callback():
             donholm_r50 = "\n  Donholm = Sh" + i[3]
         if i[2] == 'Molo' :
             molo_r50 = "\n  Molo = Sh" + i[3]
+        else :
+            molo_r50 = "" 
 
     # market price for red 90 kg
     for i in price_r90 :
