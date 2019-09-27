@@ -138,6 +138,87 @@ def ussd_callback():
     phone_number = request.values.get("phoneNumber", None)
     text =  request.values.get("text", "default")
 
+
+    price_qury_w50 = db.cursor()
+    price_qury_w50.execute("SELECT * FROM market_price where product = 'White Irish Potatoes' and qty = '50kg' order by create_date ")
+    price_w50 = price_qury_w50.fetchall()
+    price_qury_w50.close()
+
+    price_qury_w90 = db.cursor()
+    price_qury_w90.execute("SELECT * FROM market_price where product = 'White Irish Potatoes' and qty = '90kg' order by create_date ")
+    price_w90 = price_qury_w90.fetchall()
+    price_qury_w90.close()
+
+    price_qury_r50 = db.cursor()
+    price_qury_r50.execute("SELECT * FROM market_price where product = 'Red Irish Potatoes' and qty = '50kg' order by create_date ")
+    price_r50 = price_qury_r50.fetchall()
+    price_qury_r50.close()
+
+    price_qury_r90 = db.cursor()
+    price_qury_r90.execute("SELECT * FROM market_price where product = 'Red Irish Potatoes' and qty = '90kg' order by create_date ")
+    price_r90 = price_qury_r90.fetchall()
+    price_qury_r90.close()
+
+    # market price for white 50kg
+    for i in price_w50 :
+        if i[2] == 'Farmula':
+            farmula_w50 = "\n  Farmula = Sh" + i[3]
+        if i[2] == 'Nairobi' :
+            nairobi_w50 = "\n  Nairobi = Sh" + i[3] 
+        if i[2] == 'Marikiti' :
+            marikiti_w50 = "\n  Marikiti = Sh" + i[3]
+        if i[2] == 'Soweto' :
+            soweto_w50 = "\n  Soweto = Sh" + i[3]
+        if i[2] == 'Donholm' :
+            donholm_w50 = "\n  Donholm = Sh" + i[3]
+        if i[2] == 'Molo' :
+            molo_w50 = "\n  Molo = Sh" + i[3]
+
+    # market price for white 90kg
+    for i in price_w90 :
+        if i[2] == 'Farmula':
+            farmula_w90 = "\n  Farmula = Sh" + i[3]
+        if i[2] == 'Nairobi' :
+            nairobi_w90 = "\n  Nairobi = Sh" + i[3]
+        if i[2] == 'Marikiti' :
+            marikiti_w90 = "\n  Marikiti = Sh" + i[3]
+        if i[2] == 'Soweto' :
+            soweto_w90 = "\n  Soweto = Sh" + i[3]
+        if i[2] == 'Donholm' :
+            donholm_w90 = "\n  Donholm = Sh" + i[3]
+        if i[2] == 'Molo' :
+            molo_w90 = "\n  Molo = Sh" + i[3]
+
+    # makert price for red 50 kg
+    for i in price_r50 :
+        if i[2] == 'Farmula':
+            farmula_r50 = "\n  Farmula = Sh" + i[3]
+        if i[2] == 'Nairobi' :
+            nairobi_r50 = "\n  Nairobi = Sh" + i[3]
+        if i[2] == 'Marikiti' :
+            marikiti_r50 = "\n  Marikiti = Sh" + i[3]
+        if i[2] == 'Soweto' :
+            soweto_r50 = "\n  Soweto = Sh" + i[3]
+        if i[2] == 'Donholm' :
+            donholm_r50 = "\n  Donholm = Sh" + i[3]
+        if i[2] == 'Molo' :
+            molo_r50 = "\n  Molo = Sh" + i[3]
+
+    # market price for red 90 kg
+    for i in price_r90 :
+        if i[2] == 'Farmula':
+            farmula_r90 = "\n  Farmula = Sh" + i[3]
+        if i[2] == 'Nairobi' :
+            nairobi_r90 = "\n  Nairobi = Sh" + i[3]
+        if i[2] == 'Marikiti' :
+            marikiti_r90 = "\n  Marikiti = Sh" + i[3]
+        if i[2] == 'Soweto' :
+            soweto_r90 = "\n  Soweto = Sh" + i[3]
+        if i[2] == 'Donholm' :
+            donholm_r90 = "\n  Donholm = Sh" + i[3]
+        if i[2] == 'Molo' :
+            molo_r90 = "\n  Molo = Sh" + i[3]    
+
     if text == '':
         response = "CON Welcome to Farmula pricing platform \n "
         response += "1. Check prices \n"
@@ -160,7 +241,7 @@ def ussd_callback():
     
     # red irsih 50kg
     elif text == '1*1*1' :
-        response = "CON Red Irish Potato (50kg) \n"
+        response = "CON Red Irish Potato (50kg) \n" + farmula_w50 + nairobi_w50 + marikiti_w50 + soweto_w50 + donholm_w50 + molo_w50 
         response += "1. Accept \n"
         response += "2. Decline "
         # insert session into database
