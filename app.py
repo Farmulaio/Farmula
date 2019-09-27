@@ -241,8 +241,8 @@ def ussd_callback():
     
     # red irsih 50kg
     elif text == '1*1*1' :
-        response = "CON Red Irish Potato (50kg) \n" + farmula_w50 + nairobi_w50 + marikiti_w50 + soweto_w50 + donholm_w50 + molo_w50 
-        response += "1. Accept \n"
+        response = "CON Red Irish Potato (50kg)" + farmula_w50 + nairobi_w50 + marikiti_w50 + soweto_w50 + donholm_w50 + molo_w50 
+        response += "\n 1. Accept \n"
         response += "2. Decline "
         # insert session into database
         try :
