@@ -167,7 +167,7 @@ def ussd_callback():
         price_w50_dict[market] = price 
     print(price_w50_dict)
 
-    if 'Farmula' in price_w50_dict: farmula_w50 = "\n  Farmula = Sh" + price_w50_dict['Farmula']
+    if 'Farmula' in price_w50_dict: farmula_w50 = "\n  Farmula = Sh" + price_w50_dict['Farmula']; farmula_w50_p = price_w50_dict['Farmula']
     else : farmula_w50 = ""
 
     if 'Nairobi' in price_w50_dict : nairobi_w50 = "\n  Nairobi = Sh" + price_w50_dict['Nairobi'] 
@@ -193,7 +193,7 @@ def ussd_callback():
         price_w90_dict[market] = price 
     print(price_w90_dict)
 
-    if 'Farmula' in price_w90_dict: farmula_w90 = "\n  Farmula = Sh" + price_w90_dict['Farmula']
+    if 'Farmula' in price_w90_dict: farmula_w90 = "\n  Farmula = Sh" + price_w90_dict['Farmula']; farmula_w90_p = price_w90_dict['Farmula']
     else : farmula_w90 = ""
 
     if 'Nairobi' in price_w90_dict : nairobi_w90 = "\n  Nairobi = Sh" + price_w90_dict['Nairobi'] 
@@ -219,7 +219,7 @@ def ussd_callback():
         price_r50_dict[market] = price 
     print(price_r50_dict)
 
-    if 'Farmula' in price_r50_dict: farmula_r50 = "\n  Farmula = Sh" + price_r50_dict['Farmula']
+    if 'Farmula' in price_r50_dict: farmula_r50 = "\n  Farmula = Sh" + price_r50_dict['Farmula']; farmula_r50_p = price_r50_dict['Farmula']
     else : farmula_r50 = ""
 
     if 'Nairobi' in price_r50_dict : nairobi_r50 = "\n  Nairobi = Sh" + price_r50_dict['Nairobi'] 
@@ -245,7 +245,7 @@ def ussd_callback():
         price_r90_dict[market] = price 
     print(price_r90_dict)
 
-    if 'Farmula' in price_r90_dict: farmula_r90 = "\n  Farmula = Sh" + price_r90_dict['Farmula']
+    if 'Farmula' in price_r90_dict: farmula_r90 = "\n  Farmula = Sh" + price_r90_dict['Farmula']; farmula_r90_p = price_r90_dict['Farmula'] 
     else : farmula_r90 = ""
 
     if 'Nairobi' in price_r90_dict : nairobi_r90 = "\n  Nairobi = Sh" + price_r90_dict['Nairobi'] 
@@ -300,9 +300,9 @@ def ussd_callback():
     elif text == '1*1*1*1' :
         try :
             insert_order = db.cursor()
-            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("Red Irish Potato", "USSD", phone_number, "", farmula_r50, "", "50kg", "", ""))
+            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("Red Irish Potato", "USSD", phone_number, "", farmula_r50_p, "", "50kg", "", ""))
             db.commit()
-            response = "END You have Successfully Orderd 50kg bag at " + farmula_r50 + " \n Thanks for using Farmula Services"
+            response = "END You have Successfully Orderd 50kg bag at " + farmula_r50_p + " \n Thanks for using Farmula Services"
         except :
             response = "END Sorry your Order hasn't been Posted , Please try Again"
 
@@ -323,7 +323,13 @@ def ussd_callback():
             print ("can't insert to database")
 
     elif text == '1*1*2*1' :
-        response = "END insert order into database"
+        try :
+            insert_order = db.cursor()
+            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("Red Irish Potato", "USSD", phone_number, "", farmula_r90_p, "", "90kg", "", ""))
+            db.commit()
+            response = "END You have Successfully Orderd 90kg bag at " + farmula_r90_p + " \n Thanks for using Farmula Services"
+        except :
+            response = "END Sorry your Order hasn't been Posted , Please try Again"
 
     elif text == '1*1*2*2' :
         response = "END Thanks for using Farmula Services \n"
@@ -335,7 +341,7 @@ def ussd_callback():
         response += "1. 50kg Bag \n"
         response += "2. 90kg Bag \n"
     
-    # red irsih 50kg
+    # white irsih 50kg
     elif text == '1*2*1' :
         response = "CON White Irish Potato (50kg)" + farmula_w50 + nairobi_w50 + marikiti_w50 + soweto_w50 + donholm_w50 + molo_w50 
         response += "\n 1. Accept \n"
@@ -349,7 +355,13 @@ def ussd_callback():
             print ("can't insert to database")
 
     elif text == '1*2*1*1' :
-        response = "END insert order into database"
+        try :
+            insert_order = db.cursor()
+            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_w50_p, "", "50kg", "", ""))
+            db.commit()
+            response = "END You have Successfully Orderd 50kg bag at " + farmula_w50_p + " \n Thanks for using Farmula Services"
+        except :
+            response = "END Sorry your Order hasn't been Posted , Please try Again"
 
     elif text == '1*2*1*2' :
         response = "END Thanks for using Farmula Services \n"
@@ -368,7 +380,13 @@ def ussd_callback():
             print ("can't insert to database")
 
     elif text == '1*2*2*1' :
-        response = "END insert order into database"
+        try :
+            insert_order = db.cursor()
+            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_w90_p, "", "90kg", "", ""))
+            db.commit()
+            response = "END You have Successfully Orderd 50kg bag at " + farmula_w90_p + " \n Thanks for using Farmula Services"
+        except :
+            response = "END Sorry your Order hasn't been Posted , Please try Again"
 
     elif text == '1*2*2*2' :
         response = "END Thanks for using Farmula Services \n"
