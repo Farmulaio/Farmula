@@ -302,7 +302,7 @@ def ussd_callback():
             insert_order = db.cursor()
             insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("Red Irish Potato", "USSD", phone_number, "", farmula_r50_p, "", "50kg", "", ""))
             db.commit()
-            response = "END You have Successfully Orderd 50kg bag at " + farmula_r50_p + " \n Thanks for using Farmula Services"
+            response = "END You have Successfully Orderd 50kg bag at Sh" + farmula_r50_p + " \n Thanks for using Farmula Services"
         except :
             response = "END Sorry your Order hasn't been Posted , Please try Again"
 
@@ -327,7 +327,7 @@ def ussd_callback():
             insert_order = db.cursor()
             insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("Red Irish Potato", "USSD", phone_number, "", farmula_r90_p, "", "90kg", "", ""))
             db.commit()
-            response = "END You have Successfully Orderd 90kg bag at " + farmula_r90_p + " \n Thanks for using Farmula Services"
+            response = "END You have Successfully Orderd 90kg bag at Sh" + farmula_r90_p + " \n Thanks for using Farmula Services"
         except :
             response = "END Sorry your Order hasn't been Posted , Please try Again"
 
@@ -359,7 +359,7 @@ def ussd_callback():
             insert_order = db.cursor()
             insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_w50_p, "", "50kg", "", ""))
             db.commit()
-            response = "END You have Successfully Orderd 50kg bag at " + farmula_w50_p + " \n Thanks for using Farmula Services"
+            response = "END You have Successfully Orderd 50kg bag at Sh" + farmula_w50_p + " \n Thanks for using Farmula Services"
         except :
             response = "END Sorry your Order hasn't been Posted , Please try Again"
 
@@ -384,7 +384,7 @@ def ussd_callback():
             insert_order = db.cursor()
             insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_w90_p, "", "90kg", "", ""))
             db.commit()
-            response = "END You have Successfully Orderd 50kg bag at " + farmula_w90_p + " \n Thanks for using Farmula Services"
+            response = "END You have Successfully Orderd 50kg bag at Sh" + farmula_w90_p + " \n Thanks for using Farmula Services"
         except :
             response = "END Sorry your Order hasn't been Posted , Please try Again"
 
