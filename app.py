@@ -298,7 +298,13 @@ def ussd_callback():
             print ("can't insert to database")
 
     elif text == '1*1*1*1' :
-        response = "END insert order into database"
+        try :
+            insert_order = db.cursor()
+            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("Red Irish Potato", "USSD", phone_number, "", farmula_r50, "", "50kg", "", ""))
+            db.commit()
+            response = "END You have Successfully Orderd 50kg bag at " + farmula_r50 + " \n Thanks for using Farmula Services"
+        except :
+            response = "END Sorry your Order hasn't been Posted , Please try Again"
 
     elif text == '1*1*1*2' :
         response = "END Thanks for using Farmula Services \n"
