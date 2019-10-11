@@ -407,6 +407,14 @@ def ussd_callback():
         response += "2. White Irish Potatoes \n"                                              
         response += "3. Cowpeas \n"               
         response += "4. Carrots \n"
+
+      # Cowpeas
+    elif text == '2*3' :
+        response = "END Cowpeas not availabe for now"
+
+    # Carrots
+    elif text == '2*4' :
+        response = "END Carrots not availabe for now"   
     
     # order red irish potatoes
     elif text == '2*1' :
