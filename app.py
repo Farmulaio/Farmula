@@ -410,7 +410,7 @@ def ussd_callback():
     
     # order red irish potatoes
     elif text == '2*1' :
-        response  = "CON Order Red Irish Potatoes "
+        response  = "CON Order Red Irish Potatoes \n"
         response += "1. 50kg Bag \n"
         response += "2. 90kg Bag \n"
 
@@ -471,7 +471,7 @@ def ussd_callback():
 
  # order white irish potatoes
     elif text == '2*2' :
-        response  = "CON Order White Irish Potatoes "
+        response  = "CON Order White Irish Potatoes \n"
         response += "1. 50kg Bag \n"
         response += "2. 90kg Bag \n"
 
