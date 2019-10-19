@@ -571,12 +571,12 @@ def ussd_callback():
         response += "1. Government \n"
         response += "2. Agrovet \n" 
     
-    elif text == "3*1*1*1*1" :
+    elif text == "3*1*1*1*2" :
         response  = "CON Pesticide : \n"
         response += "1.Yes \n"
         response += "2. No \n"
     
-    elif text == "3*1*1*1*1*1" :
+    elif text == "3*1*1*1*1*2" :
         response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
 
 
