@@ -616,8 +616,8 @@ def ussd_callback():
         response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
 
 
-    elif text != '1' or text != '2' or text != '3' :
-        response = "END Please enter valid option  \n "
+    # elif text != '1' or text != '2' or text != '3' :
+    #     response = "END Please enter valid option  \n "
                                            
     return response
 
