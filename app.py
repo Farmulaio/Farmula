@@ -548,74 +548,11 @@ def ussd_callback():
         response += "1. Government \n"
         response += "2. Agrovet \n"  
 
-    # option one for Government
-    elif text == "3*1*1":
+    elif text == "3*1*1" or "3*1*2" :
         response  = "CON Tractor : \n"
         response += "1. Own \n"
         response += "2. Hired \n"
-    
-    elif text == "3*1*1*1" :
-        response  = "CON Source of fertilizer : \n"
-        response += "1. Government \n"
-        response += "2. Agrovet \n" 
-    
-    elif text == "3*1*1*1*1" :
-        response  = "CON Pesticide : \n"
-        response += "1.Yes \n"
-        response += "2. No \n"
-    
-    elif text == "3*1*1*1*1*1" :
-        response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
-
-# incase of otption 2 after tractor 
-    elif text == "3*1*1*2" :
-        response  = "CON Source of fertilizer : \n"
-        response += "1. Government \n"
-        response += "2. Agrovet \n" 
-    
-    elif text == "3*1*1*1*2" :
-        response  = "CON Pesticide : \n"
-        response += "1.Yes \n"
-        response += "2. No \n"
-    
-    elif text == "3*1*1*1*1*2" :
-        response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
-
-
- # option one for Agrovet
-    elif text == "3*1*2":
-        response  = "CON Tractor : \n"
-        response += "1. Own \n"
-        response += "2. Hired \n"
-    
-    elif text == "3*1*2*1" :
-        response  = "CON Source of fertilizer : \n"
-        response += "1. Government \n"
-        response += "2. Agrovet \n" 
-    
-    elif text == "3*1*2*1*1" :
-        response  = "CON Pesticide : \n"
-        response += "1.Yes \n"
-        response += "2. No \n"
-    
-    elif text == "3*1*2*1*1*1" :
-        response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
-
-# incase of otption 2 after tractor 
-    elif text == "3*1*2*2" :
-        response  = "CON Source of fertilizer : \n"
-        response += "1. Government \n"
-        response += "2. Agrovet \n" 
-    
-    elif text == "3*1*2*1*2" :
-        response  = "CON Pesticide : \n"
-        response += "1.Yes \n"
-        response += "2. No \n"
-    
-    elif text == "3*1*2*1*1*2" :
-        response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
-
-
+            
     # elif text != '1' or text != '2' or text != '3' :
     #     response = "END Please enter valid option  \n "
                                            
