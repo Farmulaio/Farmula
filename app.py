@@ -559,7 +559,7 @@ def ussd_callback():
         response += "1. Government \n"
         response += "2. Agrovet \n"   
     
-    elif text == "3*1*1*1*1" or text == "3*1*1*1*2" or text == "3*1*1*2*1" or text == "3*1*1*2*1" :
+    elif text == "3*1*1*1*1" or text == "3*1*1*1*2" or text == "3*1*1*2*1" or text == "3*1*1*2*1" or text == "3*1*2*1*1" or text == "3*1*2*1*2"  or text == "3*1*2*2*1" or text == "3*1*2*2*2":
         response  = "CON Pesticide : \n"
         response += "1.Yes \n"
         response += "2. No \n"
