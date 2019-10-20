@@ -564,8 +564,67 @@ def ussd_callback():
         response += "1.Yes \n"
         response += "2. No \n"
 
-    # elif text != '1' or text != '2' or text != '3' :
-    #     response = "END Please enter valid option  \n "
+    # start of block one of one 
+    elif text == "3*1*1*1*1*1" :
+            response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
+
+    elif text == "3*1*1*1*1*2" :
+            response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
+
+    elif text == "3*1*1*1*2*1" :
+            response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
+
+    elif text == "3*1*1*1*2*2" :
+            response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
+        # end of block one of one
+
+
+    # start of block two of one
+    elif text == "3*1*1*2*1*1" :
+            response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
+
+    elif text == "3*1*1*2*1*2" :
+            response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
+
+    elif text == "3*1*1*2*2*1" :
+            response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
+
+    elif text == "3*1*1*2*2*2" :
+            response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
+    # end of block two of one
+
+
+    # start of block one of two
+    elif text == "3*1*2*1*1*1" :
+            response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
+
+    elif text == "3*1*2*1*1*2" :
+            response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
+
+    elif text == "3*1*2*1*2*1" :
+            response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
+
+    elif text == "3*1*2*1*2*2" :
+            response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
+    # end of block one of two
+
+
+    # start of block two of two
+    elif text == "3*1*2*2*1*1" :
+            response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
+
+    elif text == "3*1*2*2*1*2" :
+            response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
+
+    elif text == "3*1*2*2*2*1" :
+            response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
+
+    elif text == "3*1*2*2*2*2" :
+            response  = "END Your production cost for Red Irish Potatoes per acre is Sh.X \n\n Thank you for using Farmula services"
+    # end of block two of two
+
+    elif text != '1' or text != '2' or text != '3' :
+        response = "END Please enter valid option  \n "
                                            
     return response
 
