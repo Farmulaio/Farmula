@@ -552,6 +552,11 @@ def ussd_callback():
         response  = "CON Tractor : \n"
         response += "1. Own \n"
         response += "2. Hired \n"
+
+    elif text == "3*1*2" :
+        response  = "CON Tractor : \n"
+        response += "1. Own \n"
+        response += "2. Hired \n"
     
     elif text == "3*1*1*1":
         response  = "CON Source of fertilizer : \n"
