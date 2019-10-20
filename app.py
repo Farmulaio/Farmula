@@ -535,8 +535,9 @@ def ussd_callback():
         response = "END Thanks for using Farmula Services \n"
     
     # price mechanism
-    ussd_red(text)
-
+    elif "3" in text :
+        ussd_red(text)
+        
     elif text != '1' or text != '2' or text != '3' :
         response = "END Please enter valid option  \n "
                                            
