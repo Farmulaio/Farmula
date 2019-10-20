@@ -1,15 +1,9 @@
 global response
 
 def ussd_red(text) :
-        if text == '3' :
-            response  = "CON "
-            response += "1. Red Irish Potatoes \n"
-            response += "2. White Irish Potatoes \n"                                              
-            response += "3. Cowpeas \n"               
-            response += "4. Carrots \n"
 
 # price mechanism for Red Irish
-        elif text == "3*1" :
+        if text == "3*1" :
             response  = "CON Source of seeds : \n"
             response += "1. Government \n"
             response += "2. Agrovet \n"  
