@@ -41,6 +41,14 @@ class OrderForm(Form):
     customer_address = StringField(u'Enter your address', [validators.required()])
 
 
+class FarmerForm(Form):
+    farmer_name = StringField(u'Enter your name', [validators.required()])
+    phone_number = StringField(u'Enter your phone number', [validators.Length(min=10)])
+    farmer_email = StringField(u'Enter your email', [validators.email()])
+    farm_address = StringField(u'Enter your address', [validators.required()])
+    produce = SelectField(u'Pick a Crop your farm', choices=[('Red Irish Patoto', 'Red Irish Patoto'), ('White Irish Patoto', 'White Irish Patoto'),('Both', 'Both')])
+   
+
 @app.route('/', methods=['GET','POST'])
 def index():
     return render_template('index.html')
@@ -98,7 +106,15 @@ def price():
 
 @app.route('/farmer', methods=['POST','GET'])
 def farmer():
-    return render_template('farmer.html')
+    form = FarmerForm(request.form)
+    if request.method == 'POST' and form.validate():
+        farmer_name = form.farmer_name.data
+        phone_number = form.phone_number.data
+        farmer_email = form.farmer_email.data
+        farm_address = form.farm_address.data
+        produce = form.produce.data
+
+    return render_template('farmer.html', form=form)
 
 @app.route('/order', methods=['GET','POST'])
 def order():
