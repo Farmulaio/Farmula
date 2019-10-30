@@ -96,6 +96,9 @@ def price():
     
     return render_template('price.html', form=form, pred_data=pred_data, price_data=price_data)
 
+@app.route('/farmer', methods=['POST','GET'])
+def farmer():
+    return render_template('farmer.html')
 
 @app.route('/order', methods=['GET','POST'])
 def order():
