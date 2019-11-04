@@ -185,6 +185,9 @@ def ussd_callback():
     if 'Molo' in price_w50_dict : molo_w50 = "\n  Molo = Sh" + price_w50_dict['Molo']
     else : molo_w50 = ""
 
+    if 'Kawagware' in price_w50_dict : Kawagware_w50 = "\n  Molo = Sh" + price_w50_dict['Kawagware']
+    else : Kawagware_w50 = ""
+
     # market price for white 90kg
     price_w90_dict = dict()
     for i in price_w90 :
@@ -286,7 +289,7 @@ def ussd_callback():
     
     # red irsih 50kg
     elif text == '1*1*1' :
-        response = "CON White Irish Potato (50kg)" + farmula_w50 + nairobi_w50 + marikiti_w50 + soweto_w50 + donholm_w50 + molo_w50 
+        response = "CON White Irish Potato (50kg)" + farmula_w50 + Kawagware_w50 + marikiti_w50 
         response += "\n 1. Accept \n"
         response += "2. Decline "
         # insert session into database
