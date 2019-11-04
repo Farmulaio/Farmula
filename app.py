@@ -406,10 +406,10 @@ def ussd_callback():
     # order
     elif text == '2' :
         response  = "CON "
-        response += "1. Red Irish Potatoes \n"
-        response += "2. White Irish Potatoes \n"                                              
-        response += "3. Cowpeas \n"               
-        response += "4. Carrots \n"
+        response += "1. White Irish Potatoes \n"
+        # response += "2. White Irish Potatoes \n"                                              
+        # response += "3. Cowpeas \n"               
+        # response += "4. Carrots \n"
 
       # Cowpeas
     elif text == '2*3' :
@@ -421,13 +421,13 @@ def ussd_callback():
     
     # order red irish potatoes
     elif text == '2*1' :
-        response  = "CON Order Red Irish Potatoes \n"
+        response  = "CON Order White Irish Potatoes \n"
         response += "1. 50kg Bag \n"
-        response += "2. 90kg Bag \n"
+        # response += "2. 90kg Bag \n"
 
     # order red irish 50kg
     elif text == "2*1*1":
-        response = "CON Red Irish Potato (50kg)" + farmula_r50 
+        response = "CON White Irish Potato (50kg)" + farmula_w50 
         response += "\n 1. Accept \n"
         response += "2. Decline "
         # insert session into database
@@ -441,9 +441,9 @@ def ussd_callback():
     elif text == "2*1*1*1" :
         try :
             insert_order = db.cursor()
-            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("Red Irish Potato", "USSD", phone_number, "", farmula_r50_p, "", "50kg", "", ""))
+            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_w50_p, "", "50kg", "", ""))
             db.commit()
-            response = "END You have Successfully Orderd 50kg bag at Sh" + farmula_r50_p + " \n Thanks for using Farmula Services"
+            response = "END You have Successfully Orderd 50kg bag at Sh" + farmula_w50_p + " \n Thanks for using Farmula Services"
         except :
             response = "END Sorry your Order hasn't been Posted , Please try Again"
 
