@@ -292,7 +292,7 @@ def ussd_callback():
     
     # red irsih 50kg
     elif text == '1*1*1' :
-        response = "CON Irish Potato (50kg)" + farmula_w50 + Kawagware_w50 + marikiti_w50 
+        response = "CON Irish Potato (50kg)"  + Kawagware_w50 + marikiti_w50 
         response += "\n 1. Accept \n"
         response += "2. Decline "
         # insert session into database
@@ -317,7 +317,7 @@ def ussd_callback():
     
      # red irsih 90kg
     elif text == '1*1*2' :
-        response = "CON Irish Potato (90kg)" + farmula_w90 + Kawagware_w90 + marikiti_w90 
+        response = "CON Irish Potato (90kg)"  + Kawagware_w90 + marikiti_w90 
         response += "\n 1. Accept \n"
         response += "2. Decline "
         # insert session into database
@@ -409,7 +409,7 @@ def ussd_callback():
     # order
     elif text == '2' :
         response  = "CON "
-        response += "1. White Irish Potatoes \n"
+        response += "1. Irish Potatoes \n"
         # response += "2. White Irish Potatoes \n"                                              
         # response += "3. Cowpeas \n"               
         # response += "4. Carrots \n"
@@ -424,13 +424,13 @@ def ussd_callback():
     
     # order red irish potatoes
     elif text == '2*1' :
-        response  = "CON Order White Irish Potatoes \n"
+        response  = "CON Order Irish Potatoes \n"
         response += "1. 50kg Bag \n"
         # response += "2. 90kg Bag \n"
 
     # order red irish 50kg
     elif text == "2*1*1":
-        response = "CON White Irish Potato (50kg)" + farmula_w50 
+        response = "CON Irish Potato (50kg)" 
         response += "\n 1. Accept \n"
         response += "2. Decline "
         # insert session into database
