@@ -194,6 +194,27 @@ def ussd_callback():
     else : Kawagware_w50 = ""
 
 
+    price_w50_dict_f = dict()
+    for i in price_w50_f :
+        market = i[2]
+        price = i[3]
+        price_w50_dict_f[market] = price 
+    print(price_w50_dict_f)
+
+    # if 'Farmula' in price_w50_dict: farmula_w50 = "\n  Farmula = Sh" + price_w50_dict['Farmula']; farmula_w50_p = price_w50_dict['Farmula']
+    # else : farmula_w50 = ""
+
+    # if 'Nairobi' in price_w50_dict : nairobi_w50 = "\n  Nairobi = Sh" + price_w50_dict['Nairobi'] 
+    # else : nairobi_w50 = ""
+
+    if 'Marikiti' in price_w50_dict_f : marikiti_w50_f = "\n  Marikiti = Sh" + price_w50_dict_f['Marikiti']
+    else : marikiti_w50_f = ""
+
+    if 'Kawagware' in price_w50_dict_f : Kawagware_w50_f = "\n  Kawagware = Sh" + price_w50_dict_f['Kawagware']
+    else : Kawagware_w50_f = ""
+
+
+
   
 
     # market price for white 90kg
@@ -484,7 +505,7 @@ def ussd_callback():
             insert_order = db.cursor()
             insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", "", "", "Raw", "", ""))
             db.commit()
-            response = "END You have Successfully Orderd sample " " \n Thanks for using Farmula Services"
+            response = "END You have Successfully Orderd Sample " " \n Thanks for using Farmula Services"
         except :
             response = "END Sorry your Order hasn't been Posted , Please try Again"
 
@@ -510,7 +531,7 @@ def ussd_callback():
             insert_order = db.cursor()
             insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", "", "", "peeled", "", ""))
             db.commit()
-            response = "END You have Successfully Orderd sample"  " \n Thanks for using Farmula Services"
+            response = "END You have Successfully Orderd Sample"  " \n Thanks for using Farmula Services"
         except :
             response = "END Sorry your Order hasn't been Posted , Please try Again"
 
