@@ -144,6 +144,11 @@ def ussd_callback():
     price_w50 = price_qury_w50.fetchall()
     price_qury_w50.close()
 
+    price_qury_w50_f = db.cursor()
+    price_qury_w50_f.execute("SELECT * FROM market_price where product = 'White Irish Potatoes' and qty = '50kg_flat' order by create_date ")
+    price_w50_f = price_qury_w50_f.fetchall()
+    price_qury_w50_f.close()
+
     price_qury_w90 = db.cursor()
     price_qury_w90.execute("SELECT * FROM market_price where product = 'White Irish Potatoes' and qty = '90kg' order by create_date ")
     price_w90 = price_qury_w90.fetchall()
@@ -187,6 +192,35 @@ def ussd_callback():
 
     if 'Kawagware' in price_w50_dict : Kawagware_w50 = "\n  Kawagware = Sh" + price_w50_dict['Kawagware']
     else : Kawagware_w50 = ""
+
+
+    price_w50_f_dict = dict()
+    for i in price_w50_f :
+        market = i[2]
+        price = i[3]
+        price_w50_f_dict[market] = price 
+    print(price_w50_f_dict)
+
+    if 'Farmula' in price_w50_f_dict: farmula_w50_f = "\n  Farmula = Sh" + price_w50_dict['Farmula']; farmula_w50_p = price_w50_dict['Farmula']
+    else : farmula_w50_f = ""
+
+    if 'Nairobi' in price_w50_f_dict : nairobi_w50_f = "\n  Nairobi = Sh" + price_w50_f_dict['Nairobi'] 
+    else : nairobi_w50_f = ""
+
+    if 'Marikiti' in price_w50_f_dict : marikiti_w50_f = "\n  Marikiti = Sh" + price_w50_f_dict['Marikiti']
+    else : marikiti_w50_f = ""
+
+    if 'Soweto' in price_w50_f_dict : soweto_w50_f = "\n  Soweto = Sh" + price_w50_f_dict['Soweto']
+    else : soweto_w50_f = ""
+
+    if 'Donholm' in price_w50_f_dict : donholm_w50_f = "\n  Donholm = Sh" + price_w50_f_dict['Donholm']
+    else : donholm_w50_f = ""
+
+    if 'Molo' in price_w50_dict : molo_w50_f = "\n  Molo = Sh" + price_w50_f_dict['Molo']
+    else : molo_w50_f = ""
+
+    if 'Kawagware' in price_w50_dict : Kawagware_w50_f = "\n  Kawagware = Sh" + price_w50_f_dict['Kawagware']
+    else : Kawagware_w50_f = ""
 
     # market price for white 90kg
     price_w90_dict = dict()
@@ -293,9 +327,9 @@ def ussd_callback():
     
     # red irsih 50kg
     elif text == '1*1*1' :
-        response = "CON Irish Potato (50kg extended)"  + Kawagware_w50 + marikiti_w50 
-        response += "\n 1. Accept \n"
-        response += "2. Decline "
+        response = "END Irish Potato (50kg extended)"  + Kawagware_w50 + marikiti_w50 
+        # response += "\n 1. Accept \n"
+        # response += "2. Decline "
         # insert session into database
         try :
             insert_price_sess = db.cursor()
@@ -318,9 +352,9 @@ def ussd_callback():
     
      # red irsih 90kg
     elif text == '1*1*2' :
-        response = "CON Irish Potato (50kg flat)"  + Kawagware_w90 + marikiti_w90 
-        response += "\n 1. Accept \n"
-        response += "2. Decline "
+        response = "END Irish Potato (50kg flat)"  + Kawagware_w50_f + marikiti_w50_f 
+        # response += "\n 1. Accept \n"
+        # response += "2. Decline "
         # insert session into database
         try :
             insert_price_sess = db.cursor()
@@ -332,7 +366,7 @@ def ussd_callback():
     elif text == '1*1*2*1' :
         try :
             insert_order = db.cursor()
-            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_r90_p, "", "90kg", "", ""))
+            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_r90_p, "", "50kg _flast", "", ""))
             db.commit()
             response = "END You have Successfully Orderd 90kg bag at Sh" + farmula_w90_p + " \n Thanks for using Farmula Services"
         except :
@@ -344,9 +378,9 @@ def ussd_callback():
 
 
     elif text == '1*1*3' :
-        response = "CON Irish Potato (90kg)"  + Kawagware_w90 + marikiti_w90 
-        response += "\n 1. Accept \n"
-        response += "2. Decline "
+        response = "END Irish Potato (90kg)"  + Kawagware_w90 + marikiti_w90 
+        # response += "\n 1. Accept \n"
+        # response += "2. Decline "
         # insert session into database
         try :
             insert_price_sess = db.cursor()
