@@ -300,7 +300,7 @@ def ussd_callback():
 
 
     if text == '':
-        response = "CON Welcome to Farmula pricing platform \n "
+        response = "CON Welcome to Farmula  \n "
         response += "1. Check today's price \n"
         response += "2. Order free sample \n"
         # response += "3. Price produce \n" 
@@ -316,12 +316,12 @@ def ussd_callback():
     # red Irish
     elif text == '1*1' :
         response = "CON Check Irish potato price for \n"
-        response += "1. 50kg extended Bag \n"
-        response += "2. 50kg flat Bag \n"
+        response += "1. 50kg flat Bag \n"
+        response += "2. 50kg extended Bag \n"
         response += "3. 90kg Bag \n"
     
     # red irsih 50kg
-    elif text == '1*1*1' :
+    elif text == '1*1*2' :
         response = "END Irish Potato (50kg extended)"  + Kawagware_w50 + marikiti_w50 
         # response += "\n 1. Accept \n"
         # response += "2. Decline "
@@ -346,7 +346,7 @@ def ussd_callback():
         response = "END Thanks for using Farmula Services \n"
     
      # red irsih 90kg
-    elif text == '1*1*2' :
+    elif text == '1*1*1' :
         response = "END Irish Potato (50kg flat)"  + Kawagware_w50_f + marikiti_w50_f 
         # response += "\n 1. Accept \n"
         # response += "2. Decline "
