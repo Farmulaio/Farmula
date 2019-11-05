@@ -201,7 +201,7 @@ def ussd_callback():
         price_w50_f_dict[market] = price 
     print(price_w50_f_dict)
 
-    if 'Farmula' in price_w50_f_dict: farmula_w50_f = "\n  Farmula = Sh" + price_w50_dict['Farmula']; farmula_w50_p = price_w50_dict['Farmula']
+    if 'Farmula' in price_w50_f_dict: farmula_w50_f = "\n  Farmula = Sh" + price_w50_f_dict['Farmula']; farmula_w50_p = price_w50_f_dict['Farmula']
     else : farmula_w50_f = ""
 
     if 'Nairobi' in price_w50_f_dict : nairobi_w50_f = "\n  Nairobi = Sh" + price_w50_f_dict['Nairobi'] 
