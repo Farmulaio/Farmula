@@ -214,6 +214,9 @@ def ussd_callback():
     if 'Molo' in price_w90_dict : molo_w90 = "\n  Molo = Sh" + price_w90_dict['Molo']
     else : molo_w90 = ""
 
+    if 'Kawagware' in price_w90_dict : Kawagware_w90 = "\n  Kawagware = Sh" + price_w90_dict['Kawagware']
+    else : Kawagware_w90 = ""
+
     # makert price for red 50 kg
     price_r50_dict = dict()
     for i in price_r50 :
@@ -269,27 +272,27 @@ def ussd_callback():
 
     if text == '':
         response = "CON Welcome to Farmula pricing platform \n "
-        response += "1. Check prices \n"
-        response += "2. Order sample \n"
+        response += "1. Check today's price \n"
+        response += "2. Order free sample \n"
         # response += "3. Price produce \n" 
     
     # check price 
     elif text == '1' :
         response  = "CON Pick produce \n"
-        response += "1. White Irish Potatoes \n"
+        response += "1. Irish Potatoes \n"
         # response += "2. White Irish Potatoes \n"                                              
         # response += "3. Cowpeas \n"               
         # response += "4. Carrots \n"
     
     # red Irish
     elif text == '1*1' :
-        response = "CON Check White Irish potato price for \n"
+        response = "CON Check Irish potato price for \n"
         response += "1. 50kg Bag \n"
-        # response += "2. 90kg Bag \n"
+        response += "2. 90kg Bag \n"
     
     # red irsih 50kg
     elif text == '1*1*1' :
-        response = "CON White Irish Potato (50kg)" + farmula_w50 + Kawagware_w50 + marikiti_w50 
+        response = "CON Irish Potato (50kg)" + farmula_w50 + Kawagware_w50 + marikiti_w50 
         response += "\n 1. Accept \n"
         response += "2. Decline "
         # insert session into database
@@ -314,7 +317,7 @@ def ussd_callback():
     
      # red irsih 90kg
     elif text == '1*1*2' :
-        response = "CON Red Irish Potato (90kg)" + farmula_r90 + nairobi_r90 + marikiti_r90 + soweto_r90 + donholm_r90 + molo_r90 
+        response = "CON Irish Potato (90kg)" + farmula_w90 + Kawagware_w90 + marikiti_w90 
         response += "\n 1. Accept \n"
         response += "2. Decline "
         # insert session into database
@@ -328,9 +331,9 @@ def ussd_callback():
     elif text == '1*1*2*1' :
         try :
             insert_order = db.cursor()
-            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("Red Irish Potato", "USSD", phone_number, "", farmula_r90_p, "", "90kg", "", ""))
+            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_r90_p, "", "90kg", "", ""))
             db.commit()
-            response = "END You have Successfully Orderd 90kg bag at Sh" + farmula_r90_p + " \n Thanks for using Farmula Services"
+            response = "END You have Successfully Orderd 90kg bag at Sh" + farmula_w90_p + " \n Thanks for using Farmula Services"
         except :
             response = "END Sorry your Order hasn't been Posted , Please try Again"
 
