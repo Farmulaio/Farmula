@@ -185,7 +185,7 @@ def ussd_callback():
     if 'Molo' in price_w50_dict : molo_w50 = "\n  Molo = Sh" + price_w50_dict['Molo']
     else : molo_w50 = ""
 
-    if 'Kawagware' in price_w50_dict : Kawagware_w50 = "\n  Molo = Sh" + price_w50_dict['Kawagware']
+    if 'Kawagware' in price_w50_dict : Kawagware_w50 = "\n  Kawagware = Sh" + price_w50_dict['Kawagware']
     else : Kawagware_w50 = ""
 
     # market price for white 90kg
