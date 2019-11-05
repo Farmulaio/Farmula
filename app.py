@@ -301,8 +301,8 @@ def ussd_callback():
 
     if text == '':
         response = "CON Welcome to Farmula  \n "
-        response += "1. Check today's price \n"
-        response += "2. Order free sample \n"
+        response += "1.Check today's price \n"
+        response += "2.Order free sample \n"
         # response += "3. Price produce \n" 
     
     # check price 
