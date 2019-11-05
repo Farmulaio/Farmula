@@ -194,33 +194,33 @@ def ussd_callback():
     else : Kawagware_w50 = ""
 
 
-    price_w50_f_dict = dict()
-    for i in price_w50_f :
-        market = i[2]
-        price = i[3]
-        price_w50_f_dict[market] = price 
-    print(price_w50_f_dict)
+    # price_w50_f_dict = dict()
+    # for i in price_w50_f :
+    #     market = i[2]
+    #     price = i[3]
+    #     price_w50_f_dict[market] = price 
+    # print(price_w50_f_dict)
 
-    if 'Farmula' in price_w50_f_dict: farmula_w50_f = "\n  Farmula = Sh" + price_w50_f_dict['Farmula']; farmula_w50_p = price_w50_f_dict['Farmula']
-    else : farmula_w50_f = ""
+    # if 'Farmula' in price_w50_f_dict: farmula_w50_f = "\n  Farmula = Sh" + price_w50_f_dict['Farmula']; farmula_w50_p = price_w50_f_dict['Farmula']
+    # else : farmula_w50_f = ""
 
-    if 'Nairobi' in price_w50_f_dict : nairobi_w50_f = "\n  Nairobi = Sh" + price_w50_f_dict['Nairobi'] 
-    else : nairobi_w50_f = ""
+    # if 'Nairobi' in price_w50_f_dict : nairobi_w50_f = "\n  Nairobi = Sh" + price_w50_f_dict['Nairobi'] 
+    # else : nairobi_w50_f = ""
 
-    if 'Marikiti' in price_w50_f_dict : marikiti_w50_f = "\n  Marikiti = Sh" + price_w50_f_dict['Marikiti']
-    else : marikiti_w50_f = ""
+    # if 'Marikiti' in price_w50_f_dict : marikiti_w50_f = "\n  Marikiti = Sh" + price_w50_f_dict['Marikiti']
+    # else : marikiti_w50_f = ""
 
-    if 'Soweto' in price_w50_f_dict : soweto_w50_f = "\n  Soweto = Sh" + price_w50_f_dict['Soweto']
-    else : soweto_w50_f = ""
+    # if 'Soweto' in price_w50_f_dict : soweto_w50_f = "\n  Soweto = Sh" + price_w50_f_dict['Soweto']
+    # else : soweto_w50_f = ""
 
-    if 'Donholm' in price_w50_f_dict : donholm_w50_f = "\n  Donholm = Sh" + price_w50_f_dict['Donholm']
-    else : donholm_w50_f = ""
+    # if 'Donholm' in price_w50_f_dict : donholm_w50_f = "\n  Donholm = Sh" + price_w50_f_dict['Donholm']
+    # else : donholm_w50_f = ""
 
-    if 'Molo' in price_w50_dict : molo_w50_f = "\n  Molo = Sh" + price_w50_f_dict['Molo']
-    else : molo_w50_f = ""
+    # if 'Molo' in price_w50_dict : molo_w50_f = "\n  Molo = Sh" + price_w50_f_dict['Molo']
+    # else : molo_w50_f = ""
 
-    if 'Kawagware' in price_w50_dict : Kawagware_w50_f = "\n  Kawagware = Sh" + price_w50_f_dict['Kawagware']
-    else : Kawagware_w50_f = ""
+    # if 'Kawagware' in price_w50_dict : Kawagware_w50_f = "\n  Kawagware = Sh" + price_w50_f_dict['Kawagware']
+    # else : Kawagware_w50_f = ""
 
     # market price for white 90kg
     price_w90_dict = dict()
