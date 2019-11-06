@@ -351,7 +351,7 @@ def ussd_callback():
         response = "END Thanks for using Farmula Services \n"
     
      # red irsih 90kg
-    elif text == '1*1*1' :
+    elif text == '1*1*1' or text == "1*1*1*1*1":
         response = "CON Irish Potato (50kg flat)"  + Kawagware_w50_f + marikiti_w50_f 
         response += "\n 1. Back \n"
         response += "2. End "
