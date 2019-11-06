@@ -321,7 +321,7 @@ def ussd_callback():
         response += "3. 90kg Bag \n"
     
     # red irsih 50kg
-    elif text == '1*1*2' :
+    elif text == '1*1*2' or text == "1*1*2*1*2":
         response = "CON Irish Potato (50kg extended)"  + Kawagware_w50 + marikiti_w50 
         response += "\n 1. Back \n"
         response += "2. End "
@@ -382,7 +382,7 @@ def ussd_callback():
 
 
 
-    elif text == '1*1*3' :
+    elif text == '1*1*3' or text == "1*1*3*1*3":
         response = "CON Irish Potato (90kg)"  + Kawagware_w90 + marikiti_w90 
         response += "\n 1. Back \n"
         response += "2. End "
