@@ -333,7 +333,7 @@ def ussd_callback():
         except :
             print ("can't insert to database")
 
-    elif text == '1*1*1*1' :
+    elif text == '1*1*1*1' or text == "1*1*2*1" or text == "1*1*3*1":
         response = "CON Check Irish potato price for \n"
         response += "1. 50kg flat Bag \n"
         response += "2. 50kg extended Bag \n"
@@ -347,7 +347,7 @@ def ussd_callback():
         # except :
         #     response = "END Sorry your Order hasn't been Posted , Please try Again"
 
-    elif text == '1*1*1*2' :
+    elif text == '1*1*1*2' or text == "1*1*2*2" or text == "1*1*3*2":
         response = "END Thanks for using Farmula Services \n"
     
      # red irsih 90kg
@@ -363,11 +363,11 @@ def ussd_callback():
         except :
             print ("can't insert to database")
 
-    elif text == '1*1*2*1' :
-        response = "CON Check Irish potato price for \n"
-        response += "1. 50kg flat Bag \n"
-        response += "2. 50kg extended Bag \n"
-        response += "3. 90kg Bag \n"
+    # elif text == '1*1*2*1' :
+    #     response = "CON Check Irish potato price for \n"
+    #     response += "1. 50kg flat Bag \n"
+    #     response += "2. 50kg extended Bag \n"
+    #     response += "3. 90kg Bag \n"
     
         # try :
         #     insert_order = db.cursor()
@@ -377,15 +377,15 @@ def ussd_callback():
         # except :
         #     response = "END Sorry your Order hasn't been Posted , Please try Again"
 
-    elif text == '1*1*2*2' :
-        response = "END Thanks for using Farmula Services \n"
+    # elif text == '1*1*2*2' :
+    #     response = "END Thanks for using Farmula Services \n"
 
 
 
     elif text == '1*1*3' :
         response = "END Irish Potato (90kg)"  + Kawagware_w90 + marikiti_w90 
-        # response += "\n 1. Accept \n"
-        # response += "2. Decline "
+        response += "\n 1. Back \n"
+        response += "2. End "
         # insert session into database
         try :
             insert_price_sess = db.cursor()
@@ -394,11 +394,11 @@ def ussd_callback():
         except :
             print ("can't insert to database")
 
-    elif text == '1*1*3*1' :
-        response = "CON Check Irish potato price for \n"
-        response += "1. 50kg flat Bag \n"
-        response += "2. 50kg extended Bag \n"
-        response += "3. 90kg Bag \n"
+    # elif text == '1*1*3*1' :
+    #     response = "CON Check Irish potato price for \n"
+    #     response += "1. 50kg flat Bag \n"
+    #     response += "2. 50kg extended Bag \n"
+    #     response += "3. 90kg Bag \n"
     
         # try :
         #     insert_order = db.cursor()
@@ -408,8 +408,8 @@ def ussd_callback():
         # except :
         #     response = "END Sorry your Order hasn't been Posted , Please try Again"
 
-    elif text == '1*1*3*2' :
-        response = "END Thanks for using Farmula Services \n"
+    # elif text == '1*1*3*2' :
+    #     response = "END Thanks for using Farmula Services \n"
 
 
 
