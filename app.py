@@ -383,7 +383,7 @@ def ussd_callback():
 
 
     elif text == '1*1*3' :
-        response = "END Irish Potato (90kg)"  + Kawagware_w90 + marikiti_w90 
+        response = "CON Irish Potato (90kg)"  + Kawagware_w90 + marikiti_w90 
         response += "\n 1. Back \n"
         response += "2. End "
         # insert session into database
