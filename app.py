@@ -139,21 +139,6 @@ def ussd_callback():
     text =  request.values.get("text", "default")
 
 
-    price_qury_w_10kg_peeled = db.cursor()
-    price_qury_w_10kg_peeled.execute("SELECT * FROM market_price where product = 'White Irish Potatoes' and qty = '10kg_peeled' order by create_date ")
-    price_w_10kg_peeled = price_qury_w_10kg_peeled.fetchall()
-    price_qury_w_10kg_peeled.close()
-
-    price_qury_w_20kg_peeled = db.cursor()
-    price_qury_w_20kg_peeled.execute("SELECT * FROM market_price where product = 'White Irish Potatoes' and qty = '20kg_peeled' order by create_date ")
-    price_w_20kg_peeled = price_qury_w_20kg_peeled.fetchall()
-    price_qury_w_20kg_peeled.close()
-
-    price_qury_w_20kg_unpeeled = db.cursor()
-    price_qury_w_20kg_unpeeled.execute("SELECT * FROM market_price where product = 'White Irish Potatoes' and qty = '20kg_unpeeled' order by create_date ")
-    price_w_20kg_unpeeled = price_qury_w_20kg_unpeeled.fetchall()
-    price_qury_w_20kg_unpeeled.close()
-
     price_qury_w50 = db.cursor()
     price_qury_w50.execute("SELECT * FROM market_price where product = 'White Irish Potatoes' and qty = '50kg' order by create_date ")
     price_w50 = price_qury_w50.fetchall()
@@ -190,85 +175,23 @@ def ussd_callback():
     if 'Farmula' in price_w50_dict: farmula_w50 = "\n  Farmula = Sh" + price_w50_dict['Farmula']; farmula_w50_p = price_w50_dict['Farmula']
     else : farmula_w50 = ""
 
-    if 'Nairobi' in price_w50_dict : nairobi_w50 = "\n  Nairobi = Sh" + price_w50_dict['Nairobi'] 
-    else : nairobi_w50 = ""
+    # if 'Nairobi' in price_w50_dict : nairobi_w50 = "\n  Nairobi = Sh" + price_w50_dict['Nairobi'] 
+    # else : nairobi_w50 = ""
 
     if 'Marikiti' in price_w50_dict : marikiti_w50 = "\n  Marikiti = Sh" + price_w50_dict['Marikiti']
     else : marikiti_w50 = ""
 
-    if 'Soweto' in price_w50_dict : soweto_w50 = "\n  Soweto = Sh" + price_w50_dict['Soweto']
-    else : soweto_w50 = ""
+    # if 'Soweto' in price_w50_dict : soweto_w50 = "\n  Soweto = Sh" + price_w50_dict['Soweto']
+    # else : soweto_w50 = ""
 
-    if 'Donholm' in price_w50_dict : donholm_w50 = "\n  Donholm = Sh" + price_w50_dict['Donholm']
-    else : donholm_w50 = ""
+    # if 'Donholm' in price_w50_dict : donholm_w50 = "\n  Donholm = Sh" + price_w50_dict['Donholm']
+    # else : donholm_w50 = ""
 
-    if 'Molo' in price_w50_dict : molo_w50 = "\n  Molo = Sh" + price_w50_dict['Molo']
-    else : molo_w50 = ""
+    # if 'Molo' in price_w50_dict : molo_w50 = "\n  Molo = Sh" + price_w50_dict['Molo']
+    # else : molo_w50 = ""
 
     if 'Kawagware' in price_w50_dict : Kawagware_w50 = "\n  Kawagware = Sh" + price_w50_dict['Kawagware']
     else : Kawagware_w50 = ""
-
-
-    price_w_10kg_peeled = dict()
-    for i in price_w_10kg_peeled :
-        market = i[2]
-        price = i[3]
-        price_w_10kg_peeled[market] = price 
-    print(price_w_10kg_peeled)
-
-    # if 'Farmula' in price_w50_dict: farmula_w50 = "\n  Farmula = Sh" + price_w50_dict['Farmula']; farmula_w50_p = price_w50_dict['Farmula']
-    # else : farmula_w50 = ""
-
-    # if 'Nairobi' in price_w50_dict : nairobi_w50 = "\n  Nairobi = Sh" + price_w50_dict['Nairobi'] 
-    # else : nairobi_w50 = ""
-
-    # if 'Marikiti' in price_w50_dict_f : marikiti_w50_f = "\n  Marikiti = Sh" + price_w50_dict_f['Marikiti']
-    # else : marikiti_w50_f = ""
-
-    if 'Farmula' in price_w_10kg_peeled : Farmula_w_10kg_peeled = "\n  Farmula = Sh" + price_w_10kg_peeled['Farmula']
-    else : Farmula_w_10kg_peeled = ""
-
-
-
-    price_w_20kg_peeled = dict()
-    for i in price_w_20kg_peeled :
-        market = i[2]
-        price = i[3]
-        price_w_20kg_peeled[market] = price 
-    print(price_w_20kg_peeled)
-
-    # if 'Farmula' in price_w50_dict: farmula_w50 = "\n  Farmula = Sh" + price_w50_dict['Farmula']; farmula_w50_p = price_w50_dict['Farmula']
-    # else : farmula_w50 = ""
-
-    # if 'Nairobi' in price_w50_dict : nairobi_w50 = "\n  Nairobi = Sh" + price_w50_dict['Nairobi'] 
-    # else : nairobi_w50 = ""
-
-    # if 'Marikiti' in price_w50_dict_f : marikiti_w50_f = "\n  Marikiti = Sh" + price_w50_dict_f['Marikiti']
-    # else : marikiti_w50_f = ""
-
-    if 'Farmula' in price_w_20kg_peeled : Farmula_w_20kg_peeled = "\n  Farmula = Sh" + price_w_20kg_peeled['Farmula']
-    else : Farmula_w_20kg_peeled = ""
-
-
-    price_w_20kg_unpeeled = dict()
-    for i in price_w_20kg_unpeeled :
-        market = i[2]
-        price = i[3]
-        price_w_20kg_unpeeled[market] = price 
-    print(price_w_20kg_unpeeled)
-
-    # if 'Farmula' in price_w50_dict: farmula_w50 = "\n  Farmula = Sh" + price_w50_dict['Farmula']; farmula_w50_p = price_w50_dict['Farmula']
-    # else : farmula_w50 = ""
-
-    # if 'Nairobi' in price_w50_dict : nairobi_w50 = "\n  Nairobi = Sh" + price_w50_dict['Nairobi'] 
-    # else : nairobi_w50 = ""
-
-    # if 'Marikiti' in price_w50_dict_f : marikiti_w50_f = "\n  Marikiti = Sh" + price_w50_dict_f['Marikiti']
-    # else : marikiti_w50_f = ""
-
-    if 'Farmula' in price_w_20kg_unpeeled : Farmula_w_20kg_unpeeled = "\n  Farmula = Sh" + price_w_20kg_unpeeled['Farmula']
-    else : Farmula_w_20kg_unpeeled = ""
-    
 
 
     price_w50_dict_f = dict()
@@ -278,17 +201,19 @@ def ussd_callback():
         price_w50_dict_f[market] = price 
     print(price_w50_dict_f)
 
-    # if 'Farmula' in price_w50_dict: farmula_w50 = "\n  Farmula = Sh" + price_w50_dict['Farmula']; farmula_w50_p = price_w50_dict['Farmula']
-    # else : farmula_w50 = ""
+    if 'Farmula' in price_w50_dict: farmula_w50 = "\n  Farmula = Sh" + price_w50_dict['Farmula']; farmula_w50_p = price_w50_dict['Farmula']
+    else : farmula_w50 = ""
 
     # if 'Nairobi' in price_w50_dict : nairobi_w50 = "\n  Nairobi = Sh" + price_w50_dict['Nairobi'] 
     # else : nairobi_w50 = ""
 
-    if 'Marikiti' in price_w50_dict_f : marikiti_w50_f = " Marikiti = Sh" + price_w50_dict_f['Marikiti']
+    if 'Marikiti' in price_w50_dict_f : marikiti_w50_f = "\n  Marikiti = Sh" + price_w50_dict_f['Marikiti']
     else : marikiti_w50_f = ""
 
-    if 'Kawagware' in price_w50_dict_f : Kawagware_w50_f = " Kawagware = Sh" + price_w50_dict_f['Kawagware']
+    if 'Kawagware' in price_w50_dict_f : Kawagware_w50_f = "\n  Kawagware = Sh" + price_w50_dict_f['Kawagware']
     else : Kawagware_w50_f = ""
+
+
 
   
 
@@ -303,75 +228,75 @@ def ussd_callback():
     if 'Farmula' in price_w90_dict: farmula_w90 = "\n  Farmula = Sh" + price_w90_dict['Farmula']; farmula_w90_p = price_w90_dict['Farmula']
     else : farmula_w90 = ""
 
-    if 'Nairobi' in price_w90_dict : nairobi_w90 = "\n  Nairobi = Sh" + price_w90_dict['Nairobi'] 
-    else : nairobi_w90 = ""
+    # if 'Nairobi' in price_w90_dict : nairobi_w90 = "\n  Nairobi = Sh" + price_w90_dict['Nairobi'] 
+    # else : nairobi_w90 = ""
 
-    if 'Marikiti' in price_w90_dict : marikiti_w90 = "  Marikiti = Sh" + price_w90_dict['Marikiti']
+    if 'Marikiti' in price_w90_dict : marikiti_w90 = "\n  Marikiti = Sh" + price_w90_dict['Marikiti']
     else : marikiti_w90 = ""
 
-    if 'Soweto' in price_w90_dict : soweto_w90 = "\n  Soweto = Sh" + price_w90_dict['Soweto']
-    else : soweto_w90 = ""
+    # if 'Soweto' in price_w90_dict : soweto_w90 = "\n  Soweto = Sh" + price_w90_dict['Soweto']
+    # else : soweto_w90 = ""
 
-    if 'Donholm' in price_w90_dict : donholm_w90 = "\n  Donholm = Sh" + price_w90_dict['Donholm']
-    else : donholm_w50 = ""
+    # if 'Donholm' in price_w90_dict : donholm_w90 = "\n  Donholm = Sh" + price_w90_dict['Donholm']
+    # else : donholm_w50 = ""
 
-    if 'Molo' in price_w90_dict : molo_w90 = "\n  Molo = Sh" + price_w90_dict['Molo']
-    else : molo_w90 = ""
+    # if 'Molo' in price_w90_dict : molo_w90 = "\n  Molo = Sh" + price_w90_dict['Molo']
+    # else : molo_w90 = ""
 
-    if 'Kawagware' in price_w90_dict : Kawagware_w90 = "  Kawagware = Sh" + price_w90_dict['Kawagware']
+    if 'Kawagware' in price_w90_dict : Kawagware_w90 = "\n  Kawagware = Sh" + price_w90_dict['Kawagware']
     else : Kawagware_w90 = ""
 
     # makert price for red 50 kg
-    price_r50_dict = dict()
-    for i in price_r50 :
-        market = i[2]
-        price = i[3]
-        price_r50_dict[market] = price 
-    print(price_r50_dict)
+    # price_r50_dict = dict()
+    # for i in price_r50 :
+    #     market = i[2]
+    #     price = i[3]
+    #     price_r50_dict[market] = price 
+    # print(price_r50_dict)
 
-    if 'Farmula' in price_r50_dict: farmula_r50 = "\n  Farmula = Sh" + price_r50_dict['Farmula']; farmula_r50_p = price_r50_dict['Farmula']
-    else : farmula_r50 = ""
+    # if 'Farmula' in price_r50_dict: farmula_r50 = "\n  Farmula = Sh" + price_r50_dict['Farmula']; farmula_r50_p = price_r50_dict['Farmula']
+    # else : farmula_r50 = ""
 
-    if 'Nairobi' in price_r50_dict : nairobi_r50 = "\n  Nairobi = Sh" + price_r50_dict['Nairobi'] 
-    else : nairobi_r50 = ""
+    # if 'Nairobi' in price_r50_dict : nairobi_r50 = "\n  Nairobi = Sh" + price_r50_dict['Nairobi'] 
+    # else : nairobi_r50 = ""
 
-    if 'Marikiti' in price_r50_dict : marikiti_r50 = "\n  Marikiti = Sh" + price_r50_dict['Marikiti']
-    else : marikiti_r50 = ""
+    # if 'Marikiti' in price_r50_dict : marikiti_r50 = "\n  Marikiti = Sh" + price_r50_dict['Marikiti']
+    # else : marikiti_r50 = ""
 
-    if 'Soweto' in price_r50_dict : soweto_r50 = "\n  Soweto = Sh" + price_r50_dict['Soweto']
-    else : soweto_r50 = ""
+    # if 'Soweto' in price_r50_dict : soweto_r50 = "\n  Soweto = Sh" + price_r50_dict['Soweto']
+    # else : soweto_r50 = ""
 
-    if 'Donholm' in price_r50_dict : donholm_r50 = "\n  Donholm = Sh" + price_r50_dict['Donholm']
-    else : donholm_w50 = ""
+    # if 'Donholm' in price_r50_dict : donholm_r50 = "\n  Donholm = Sh" + price_r50_dict['Donholm']
+    # else : donholm_w50 = ""
 
-    if 'Molo' in price_r50_dict : molo_r50 = "\n  Molo = Sh" + price_r50_dict['Molo']
-    else : molo_r50 = ""
+    # if 'Molo' in price_r50_dict : molo_r50 = "\n  Molo = Sh" + price_r50_dict['Molo']
+    # else : molo_r50 = ""
 
     # market price for red 90 kg
-    price_r90_dict = dict()
-    for i in price_r90 :
-        market = i[2]
-        price = i[3]
-        price_r90_dict[market] = price 
-    print(price_r90_dict)
+    # price_r90_dict = dict()
+    # for i in price_r90 :
+    #     market = i[2]
+    #     price = i[3]
+    #     price_r90_dict[market] = price 
+    # print(price_r90_dict)
 
-    if 'Farmula' in price_r90_dict: farmula_r90 = "\n  Farmula = Sh" + price_r90_dict['Farmula']; farmula_r90_p = price_r90_dict['Farmula'] 
-    else : farmula_r90 = ""
+    # if 'Farmula' in price_r90_dict: farmula_r90 = "\n  Farmula = Sh" + price_r90_dict['Farmula']; farmula_r90_p = price_r90_dict['Farmula'] 
+    # else : farmula_r90 = ""
 
-    if 'Nairobi' in price_r90_dict : nairobi_r90 = "\n  Nairobi = Sh" + price_r90_dict['Nairobi'] 
-    else : nairobi_r90 = ""
+    # if 'Nairobi' in price_r90_dict : nairobi_r90 = "\n  Nairobi = Sh" + price_r90_dict['Nairobi'] 
+    # else : nairobi_r90 = ""
 
-    if 'Marikiti' in price_r90_dict : marikiti_r90 = "\n  Marikiti = Sh" + price_r90_dict['Marikiti']
-    else : marikiti_r90 = ""
+    # if 'Marikiti' in price_r90_dict : marikiti_r90 = "\n  Marikiti = Sh" + price_r90_dict['Marikiti']
+    # else : marikiti_r90 = ""
 
-    if 'Soweto' in price_r90_dict : soweto_r90 = "\n  Soweto = Sh" + price_r90_dict['Soweto']
-    else : soweto_r90 = ""
+    # if 'Soweto' in price_r90_dict : soweto_r90 = "\n  Soweto = Sh" + price_r90_dict['Soweto']
+    # else : soweto_r90 = ""
 
-    if 'Donholm' in price_r90_dict : donholm_r90 = "\n  Donholm = Sh" + price_r90_dict['Donholm']
-    else : donholm_w90 = ""
+    # if 'Donholm' in price_r90_dict : donholm_r90 = "\n  Donholm = Sh" + price_r90_dict['Donholm']
+    # else : donholm_w90 = ""
 
-    if 'Molo' in price_r90_dict : molo_r90 = "\n  Molo = Sh" + price_r90_dict['Molo']
-    else : molo_r90 = ""
+    # if 'Molo' in price_r90_dict : molo_r90 = "\n  Molo = Sh" + price_r90_dict['Molo']
+    # else : molo_r90 = ""
 
 
     if text == '':
@@ -472,50 +397,34 @@ def ussd_callback():
     #     response = "END Thanks for using Farmula Services \n"
 
 
-    elif text == '1*1*1':
-        response = "CON Place order \n"
-        response += "\n 1. " + Kawagware_w50_f
-        response += "\n 2. " + marikiti_w50_f
-        response += "\n 3. " + Farmula_w_10kg_peeled
-        response += "\n 4. " + Farmula_w_20kg_peeled
-        response += "\n 5. " + Farmula_w_20kg_unpeeled
-
-    elif text == '1*2*1':
-        response = "CON Place order \n"
-        response += "\n 1. " + Kawagware_w50
-        response += "\n 2. " + marikiti_w50
-        response += "\n 3. " + Farmula_w_10kg_peeled
-        response += "\n 4. " + Farmula_w_20kg_peeled
-        response += "\n 5. " + Farmula_w_20kg_unpeeled
-
 
  # white Irish
-    # elif text == '1*2' :
-    #     response = "CON Check White Irish potato price for \n"
-    #     response += "1. 50kg Bag \n"
-    #     response += "2. 90kg Bag \n"
+    elif text == '1*2' :
+        response = "CON Check White Irish potato price for \n"
+        response += "1. 50kg Bag \n"
+        response += "2. 90kg Bag \n"
     
     # white irsih 50kg
-    # elif text == '1*2*1' :
-    #     response = "CON White Irish Potato (50kg)" + farmula_w50 + nairobi_w50 + marikiti_w50 + soweto_w50 + donholm_w50 + molo_w50 
-    #     response += "\n 1. Accept \n"
-    #     response += "2. Decline "
-    #     insert session into database
-    #     try :
-    #         insert_price_sess = db.cursor()
-    #         insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,session_id,service_code,text))
-    #         db.commit()
-    #     except :
-    #         print ("can't insert to database")
+    elif text == '1*2*1' :
+        response = "CON White Irish Potato (50kg)" + farmula_w50 + nairobi_w50 + marikiti_w50 + soweto_w50 + donholm_w50 + molo_w50 
+        response += "\n 1. Accept \n"
+        response += "2. Decline "
+        # insert session into database
+        try :
+            insert_price_sess = db.cursor()
+            insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,session_id,service_code,text))
+            db.commit()
+        except :
+            print ("can't insert to database")
 
-    # elif text == '1*2*1*1' :
-    #     try :
-    #         insert_order = db.cursor()
-    #         insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_w50_p, "", "50kg", "", ""))
-    #         db.commit()
-    #         response = "END You have Successfully Orderd 50kg bag at Sh" + farmula_w50_p + " \n Thanks for using Farmula Services"
-    #     except :
-    #         response = "END Sorry your Order hasn't been Posted , Please try Again"
+    elif text == '1*2*1*1' :
+        try :
+            insert_order = db.cursor()
+            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_w50_p, "", "50kg", "", ""))
+            db.commit()
+            response = "END You have Successfully Orderd 50kg bag at Sh" + farmula_w50_p + " \n Thanks for using Farmula Services"
+        except :
+            response = "END Sorry your Order hasn't been Posted , Please try Again"
 
     elif text == '1*2*1*2' :
         response = "END Thanks for using Farmula Services \n"
