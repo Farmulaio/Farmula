@@ -473,20 +473,20 @@ def ussd_callback():
 
 
     elif text == '1*1*1':
-        response = "CON Place order"
-        response += "\n 1.  " + Kawagware_w50_f
-        response += "\n 2.  " + marikiti_w50_f
-        response += "\n 3.  " + Farmula_w_10kg_peeled
-        response += "\n 4.  " + Farmula_w_20kg_peeled
-        response += "\n 5.  " + Farmula_w_20kg_unpeeled
+        response = "CON Place order \n"
+        response += "1.  \n" + Kawagware_w50_f
+        response += "2.  \n" + marikiti_w50_f
+        response += "3.  \n" + Farmula_w_10kg_peeled
+        response += "4.  \n" + Farmula_w_20kg_peeled
+        response += "5.  \n" + Farmula_w_20kg_unpeeled
 
     elif text == '1*2*1':
-        response = "CON Place order"
-        response += "\n 1. " + Kawagware_w50
-        response += "\n 2. " + marikiti_w50
-        response += "\n 3.  " + Farmula_w_10kg_peeled
-        response += "\n 4.  " + Farmula_w_20kg_peeled
-        response += "\n 5.  " + Farmula_w_20kg_unpeeled
+        response = "CON Place order \n"
+        response += "1.  \n" + Kawagware_w50
+        response += "2.  \n" + marikiti_w50
+        response += "3.  \n" + Farmula_w_10kg_peeled
+        response += "4.  \n" + Farmula_w_20kg_peeled
+        response += "5.  \n" + Farmula_w_20kg_unpeeled
 
 
  # white Irish
