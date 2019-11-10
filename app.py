@@ -139,6 +139,21 @@ def ussd_callback():
     text =  request.values.get("text", "default")
 
 
+    price_qury_w_10kg_peeled = db.cursor()
+    price_qury_w_10kg_peeled.execute("SELECT * FROM market_price where product = 'White Irish Potatoes' and qty = '10kg_peeled' order by create_date ")
+    price_w_10kg_peeled = price_qury_w_10kg_peeled.fetchall()
+    price_qury_w_10kg_peeled.close()
+
+    price_qury_w_20kg_peeled = db.cursor()
+    price_qury_w_20kg_peeled.execute("SELECT * FROM market_price where product = 'White Irish Potatoes' and qty = '20kg_peeled' order by create_date ")
+    price_w_20kg_peeled = price_qury_w_20kg_peeled.fetchall()
+    price_qury_w_20kg_peeled.close()
+
+    price_qury_w_20kg_unpeeled = db.cursor()
+    price_qury_w_20kg_unpeeled.execute("SELECT * FROM market_price where product = 'White Irish Potatoes' and qty = '20kg_unpeeled' order by create_date ")
+    price_w_20kg_unpeeled = price_qury_w_20kg_unpeeled.fetchall()
+    price_qury_w_20kg_unpeeled.close()
+
     price_qury_w50 = db.cursor()
     price_qury_w50.execute("SELECT * FROM market_price where product = 'White Irish Potatoes' and qty = '50kg' order by create_date ")
     price_w50 = price_qury_w50.fetchall()
@@ -194,6 +209,68 @@ def ussd_callback():
     else : Kawagware_w50 = ""
 
 
+    price_w_10kg_peeled = dict()
+    for i in price_w_10kg_peeled :
+        market = i[2]
+        price = i[3]
+        price_w_10kg_peeled[market] = price 
+    print(price_w_10kg_peeled)
+
+    # if 'Farmula' in price_w50_dict: farmula_w50 = "\n  Farmula = Sh" + price_w50_dict['Farmula']; farmula_w50_p = price_w50_dict['Farmula']
+    # else : farmula_w50 = ""
+
+    # if 'Nairobi' in price_w50_dict : nairobi_w50 = "\n  Nairobi = Sh" + price_w50_dict['Nairobi'] 
+    # else : nairobi_w50 = ""
+
+    # if 'Marikiti' in price_w50_dict_f : marikiti_w50_f = "\n  Marikiti = Sh" + price_w50_dict_f['Marikiti']
+    # else : marikiti_w50_f = ""
+
+    if 'Farmula' in price_w_10kg_peeled : Farmula_w_10kg_peeled = "\n  Farmula = Sh" + price_w_10kg_peeled['Farmula']
+    else : Farmula_w_10kg_peeled = ""
+
+
+
+    price_w_20kg_peeled = dict()
+    for i in price_w_20kg_peeled :
+        market = i[2]
+        price = i[3]
+        price_w_20kg_peeled[market] = price 
+    print(price_w_20kg_peeled)
+
+    # if 'Farmula' in price_w50_dict: farmula_w50 = "\n  Farmula = Sh" + price_w50_dict['Farmula']; farmula_w50_p = price_w50_dict['Farmula']
+    # else : farmula_w50 = ""
+
+    # if 'Nairobi' in price_w50_dict : nairobi_w50 = "\n  Nairobi = Sh" + price_w50_dict['Nairobi'] 
+    # else : nairobi_w50 = ""
+
+    # if 'Marikiti' in price_w50_dict_f : marikiti_w50_f = "\n  Marikiti = Sh" + price_w50_dict_f['Marikiti']
+    # else : marikiti_w50_f = ""
+
+    if 'Farmula' in price_w_20kg_peeled : Farmula_w_20kg_peeled = "\n  Farmula = Sh" + price_w_20kg_peeled['Farmula']
+    else : Farmula_w_20kg_peeled = ""
+
+
+    price_w_20kg_unpeeled = dict()
+    for i in price_w_20kg_unpeeled :
+        market = i[2]
+        price = i[3]
+        price_w_20kg_unpeeled[market] = price 
+    print(price_w_20kg_unpeeled)
+
+    # if 'Farmula' in price_w50_dict: farmula_w50 = "\n  Farmula = Sh" + price_w50_dict['Farmula']; farmula_w50_p = price_w50_dict['Farmula']
+    # else : farmula_w50 = ""
+
+    # if 'Nairobi' in price_w50_dict : nairobi_w50 = "\n  Nairobi = Sh" + price_w50_dict['Nairobi'] 
+    # else : nairobi_w50 = ""
+
+    # if 'Marikiti' in price_w50_dict_f : marikiti_w50_f = "\n  Marikiti = Sh" + price_w50_dict_f['Marikiti']
+    # else : marikiti_w50_f = ""
+
+    if 'Farmula' in price_w_20kg_unpeeled : Farmula_w_20kg_unpeeled = "\n  Farmula = Sh" + price_w_20kg_unpeeled['Farmula']
+    else : Farmula_w_20kg_unpeeled = ""
+    
+
+
     price_w50_dict_f = dict()
     for i in price_w50_f :
         market = i[2]
@@ -212,8 +289,6 @@ def ussd_callback():
 
     if 'Kawagware' in price_w50_dict_f : Kawagware_w50_f = "\n  Kawagware = Sh" + price_w50_dict_f['Kawagware']
     else : Kawagware_w50_f = ""
-
-
 
   
 
@@ -395,6 +470,19 @@ def ussd_callback():
 
     # elif text == '1*1*3*2' :
     #     response = "END Thanks for using Farmula Services \n"
+
+
+    elif text == '1*1*1':
+        response = "CON Place order"
+        response += "\n 1. Kawagware_w50_f "
+        response += "\n 2. marikiti_w50_f "
+        response += "\n 3. Kawagware_w50 "
+        response += "\n 4. marikiti_w50 "
+        response += "\n 5. Kawagware_w90 "
+        response += "\n 6. marikiti_w90 "
+        response += "\n 7. price_w_10kg_peeled "
+        response += "\n 8. price_w_20kg_peeled "
+        response += "\n 9. price_w_20kg_unpeeled "
 
 
 
