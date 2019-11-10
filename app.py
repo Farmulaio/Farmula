@@ -322,7 +322,7 @@ def ussd_callback():
     
     # red irsih 50kg
     elif text == '1*1' :
-        response = "END Irish Potato 50kg"  + Kawagware_w50_f + marikiti_w50_f 
+        response = "CON Today's price for Irish potatoes 50kg"  + Kawagware_w50_f + marikiti_w50_f 
         # response += "\n 1. Accept \n"
         # response += "2. Decline "
         # insert session into database
@@ -347,7 +347,7 @@ def ussd_callback():
     
      # red irsih 90kg
     elif text == '1*2' :
-        response = "END Irish Potato 90kg"  + Kawagware_w50 + marikiti_w50 
+        response = "CON Today's price for Irish potatoes 90kg"  + Kawagware_w50 + marikiti_w50 
         # response += "\n 1. Accept \n"
         # response += "2. Decline "
         # insert session into database
@@ -373,7 +373,7 @@ def ussd_callback():
 
 
     elif text == '1*3' :
-        response = "END Irish Potato 120kg"  + Kawagware_w90 + marikiti_w90 
+        response = "CON Today's price for Irish potatoes 120kg"  + Kawagware_w90 + marikiti_w90 
         # response += "\n 1. Accept \n"
         # response += "2. Decline "
         # insert session into database
