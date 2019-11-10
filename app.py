@@ -284,10 +284,10 @@ def ussd_callback():
     # if 'Nairobi' in price_w50_dict : nairobi_w50 = "\n  Nairobi = Sh" + price_w50_dict['Nairobi'] 
     # else : nairobi_w50 = ""
 
-    if 'Marikiti' in price_w50_dict_f : marikiti_w50_f = "\n  Marikiti = Sh" + price_w50_dict_f['Marikiti']
+    if 'Marikiti' in price_w50_dict_f : marikiti_w50_f = " Marikiti = Sh" + price_w50_dict_f['Marikiti']
     else : marikiti_w50_f = ""
 
-    if 'Kawagware' in price_w50_dict_f : Kawagware_w50_f = "\n  Kawagware = Sh" + price_w50_dict_f['Kawagware']
+    if 'Kawagware' in price_w50_dict_f : Kawagware_w50_f = " Kawagware = Sh" + price_w50_dict_f['Kawagware']
     else : Kawagware_w50_f = ""
 
   
@@ -306,7 +306,7 @@ def ussd_callback():
     if 'Nairobi' in price_w90_dict : nairobi_w90 = "\n  Nairobi = Sh" + price_w90_dict['Nairobi'] 
     else : nairobi_w90 = ""
 
-    if 'Marikiti' in price_w90_dict : marikiti_w90 = "\n  Marikiti = Sh" + price_w90_dict['Marikiti']
+    if 'Marikiti' in price_w90_dict : marikiti_w90 = "  Marikiti = Sh" + price_w90_dict['Marikiti']
     else : marikiti_w90 = ""
 
     if 'Soweto' in price_w90_dict : soweto_w90 = "\n  Soweto = Sh" + price_w90_dict['Soweto']
@@ -318,7 +318,7 @@ def ussd_callback():
     if 'Molo' in price_w90_dict : molo_w90 = "\n  Molo = Sh" + price_w90_dict['Molo']
     else : molo_w90 = ""
 
-    if 'Kawagware' in price_w90_dict : Kawagware_w90 = "\n  Kawagware = Sh" + price_w90_dict['Kawagware']
+    if 'Kawagware' in price_w90_dict : Kawagware_w90 = "  Kawagware = Sh" + price_w90_dict['Kawagware']
     else : Kawagware_w90 = ""
 
     # makert price for red 50 kg
