@@ -302,27 +302,27 @@ def ussd_callback():
     if text == '':
         response = "CON Welcome to Farmula  \n "
         response += "1.Check today's price \n"
-        response += "2.Order free sample \n"
-        # response += "3. Price produce \n" 
+        response += "2.Place Order \n"
+        response += "3.Order free sample \n" 
     
     # check price 
-    elif text == '1' :
-        response  = "CON Pick produce \n"
-        response += "1. Irish Potatoes \n"
+    # elif text == '1' :
+    #     response  = "CON Pick produce \n"
+    #     response += "1. Irish Potatoes \n"
         # response += "2. White Irish Potatoes \n"                                              
         # response += "3. Cowpeas \n"               
         # response += "4. Carrots \n"
     
     # red Irish
-    elif text == '1*1' :
+    elif text == '1' :
         response = "CON Check Irish potato price for \n"
-        response += "1. 50kg flat Bag \n"
-        response += "2. 50kg extended Bag \n"
-        response += "3. 90kg Bag \n"
+        response += "1. 50kg Bag \n"
+        response += "2. 90kg Bag \n"
+        response += "3. 120kg Bag \n"
     
     # red irsih 50kg
-    elif text == '1*1*2' :
-        response = "END Irish Potato (50kg extended)"  + Kawagware_w50 + marikiti_w50 
+    elif text == '1*1' :
+        response = "END Irish Potato 50kg"  + Kawagware_w50_f + marikiti_w50_f 
         # response += "\n 1. Accept \n"
         # response += "2. Decline "
         # insert session into database
@@ -333,21 +333,21 @@ def ussd_callback():
         except :
             print ("can't insert to database")
 
-    elif text == '1*1*1*1' :
-        try :
-            insert_order = db.cursor()
-            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_w50_p, "", "50kg", "", ""))
-            db.commit()
-            response = "END You have Successfully Orderd 50kg bag at Sh" + farmula_w50_p + " \n Thanks for using Farmula Services"
-        except :
-            response = "END Sorry your Order hasn't been Posted , Please try Again"
+    # elif text == '1*1*1*1' :
+    #     try :
+    #         insert_order = db.cursor()
+    #         insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_w50_p, "", "50kg", "", ""))
+    #         db.commit()
+    #         response = "END You have Successfully Orderd 50kg bag at Sh" + farmula_w50_p + " \n Thanks for using Farmula Services"
+    #     except :
+    #         response = "END Sorry your Order hasn't been Posted , Please try Again"
 
-    elif text == '1*1*1*2' :
-        response = "END Thanks for using Farmula Services \n"
+    # elif text == '1*1*1*2' :
+    #     response = "END Thanks for using Farmula Services \n"
     
      # red irsih 90kg
-    elif text == '1*1*1' :
-        response = "END Irish Potato (50kg flat)"  + Kawagware_w50_f + marikiti_w50_f 
+    elif text == '1*2' :
+        response = "END Irish Potato 90kg"  + Kawagware_w50 + marikiti_w50 
         # response += "\n 1. Accept \n"
         # response += "2. Decline "
         # insert session into database
@@ -358,22 +358,22 @@ def ussd_callback():
         except :
             print ("can't insert to database")
 
-    elif text == '1*1*2*1' :
-        try :
-            insert_order = db.cursor()
-            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_r90_p, "", "50kg _flast", "", ""))
-            db.commit()
-            response = "END You have Successfully Orderd 90kg bag at Sh" + farmula_w90_p + " \n Thanks for using Farmula Services"
-        except :
-            response = "END Sorry your Order hasn't been Posted , Please try Again"
+    # elif text == '1*1*2*1' :
+    #     try :
+    #         insert_order = db.cursor()
+    #         insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_r90_p, "", "50kg _flast", "", ""))
+    #         db.commit()
+    #         response = "END You have Successfully Orderd 90kg bag at Sh" + farmula_w90_p + " \n Thanks for using Farmula Services"
+    #     except :
+    #         response = "END Sorry your Order hasn't been Posted , Please try Again"
 
-    elif text == '1*1*2*2' :
-        response = "END Thanks for using Farmula Services \n"
+    # elif text == '1*1*2*2' :
+    #     response = "END Thanks for using Farmula Services \n"
 
 
 
-    elif text == '1*1*3' :
-        response = "END Irish Potato (90kg)"  + Kawagware_w90 + marikiti_w90 
+    elif text == '1*3' :
+        response = "END Irish Potato 120kg"  + Kawagware_w90 + marikiti_w90 
         # response += "\n 1. Accept \n"
         # response += "2. Decline "
         # insert session into database
@@ -384,17 +384,17 @@ def ussd_callback():
         except :
             print ("can't insert to database")
 
-    elif text == '1*1*3*1' :
-        try :
-            insert_order = db.cursor()
-            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_r90_p, "", "90kg", "", ""))
-            db.commit()
-            response = "END You have Successfully Orderd 90kg bag at Sh" + farmula_w90_p + " \n Thanks for using Farmula Services"
-        except :
-            response = "END Sorry your Order hasn't been Posted , Please try Again"
+    # elif text == '1*1*3*1' :
+    #     try :
+    #         insert_order = db.cursor()
+    #         insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_r90_p, "", "90kg", "", ""))
+    #         db.commit()
+    #         response = "END You have Successfully Orderd 90kg bag at Sh" + farmula_w90_p + " \n Thanks for using Farmula Services"
+    #     except :
+    #         response = "END Sorry your Order hasn't been Posted , Please try Again"
 
-    elif text == '1*1*3*2' :
-        response = "END Thanks for using Farmula Services \n"
+    # elif text == '1*1*3*2' :
+    #     response = "END Thanks for using Farmula Services \n"
 
 
 
