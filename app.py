@@ -474,7 +474,7 @@ def ussd_callback():
 
     elif text == '1*1*1':
         response = "CON Place order"
-        response += "\n 1.  " 
+        response += "\n 1.  " + Kawagware_w50_f
         # response += "\n 2.  " + marikiti_w50_f
         # response += "\n 3.  " + price_w_10kg_peeled
         # response += "\n 4.  " + price_w_20kg_peeled
