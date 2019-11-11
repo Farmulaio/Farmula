@@ -361,8 +361,8 @@ def ussd_callback():
 
     elif text == '1*2*1' :
         response = "CON Place order"
-        response += "1. " + Kawagware_w50
-        response += "2. Marikiti 50kg @" + marikiti_w50_p
+        response += "\n 1. Kawagware 50kg @" + Kawagware_w50_p
+        response += "\n 2. Marikiti 50kg @" + marikiti_w50_p
         # response += "2. Decline "
         # insert session into database
         try :
