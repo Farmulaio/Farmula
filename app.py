@@ -154,6 +154,27 @@ def ussd_callback():
     price_w90 = price_qury_w90.fetchall()
     price_qury_w90.close()
 
+    price_qury_w10 = db.cursor()
+    price_qury_w10.execute("SELECT * FROM market_price where product = 'White Irish Potatoes' and qty = '10kg_peeled' order by create_date ")
+    price_w10 = price_qury_w10.fetchall()
+    price_qury_w10.close()
+
+
+    price_qury_w20_peeled = db.cursor()
+    price_qury_w20_peeled.execute("SELECT * FROM market_price where product = 'White Irish Potatoes' and qty = '20kg_peeled' order by create_date ")
+    price_w20_peeled = price_qury_w20_peeled.fetchall()
+    price_qury_w20_peeled.close()
+
+    price_qury_w20_upeeled = db.cursor()
+    price_qury_w20_upeeled.execute("SELECT * FROM market_price where product = 'White Irish Potatoes' and qty = '20kg_unpeeled' order by create_date ")
+    price_w20_upeeled = price_qury_w20_upeeled.fetchall()
+    price_qury_w20_upeeled.close()
+
+    price_qury_w10 = db.cursor()
+    price_qury_w10.execute("SELECT * FROM market_price where product = 'White Irish Potatoes' and qty = '10kg_peeled' order by create_date ")
+    price_w10 = price_qury_w10.fetchall()
+    price_qury_w10.close()
+
     # price_qury_r50 = db.cursor()
     # price_qury_r50.execute("SELECT * FROM market_price where product = 'Red Irish Potatoes' and qty = '50kg' order by create_date ")
     # price_r50 = price_qury_r50.fetchall()
@@ -245,6 +266,37 @@ def ussd_callback():
 
     if 'Kawagware' in price_w90_dict : Kawagware_w90 = "\n  Kawagware = Sh" + price_w90_dict['Kawagware']
     else : Kawagware_w90 = ""
+
+    price_w10_dict = dict()
+    for i in price_w10 :
+        market = i[2]
+        price = i[3]
+        price_w10_dict[market] = price 
+    print(price_w10_dict)
+
+    if 'Farmula' in price_w10_dict: farmula_w10 = "\n  Farmula = Sh" + price_w10_dict['Farmula']; farmula_w10_p = price_w10_dict['Farmula']
+    else : farmula_w10 = ""
+
+
+    price_w20_peeled_dict = dict()
+    for i in price_w20_peeled :
+        market = i[2]
+        price = i[3]
+        price_w20_peeled_dict[market] = price 
+    print(price_w20_peeled_dict)
+
+    if 'Farmula' in price_w20_peeled_dict: farmula_w20_peeled = "\n  Farmula = Sh" + price_w20_peeled_dict['Farmula']; farmula_w20_peeled_p = price_w20_peeled_dict['Farmula']
+    else : farmula_w20_peeled = ""
+
+    price_w20_upeeled_dict = dict()
+    for i in price_w20_upeeled :
+        market = i[2]
+        price = i[3]
+        price_w20_upeeled_dict[market] = price 
+    print(price_w20_upeeled_dict)
+
+    if 'Farmula' in price_w20_upeeled_dict: farmula_w20_upeeled = "\n  Farmula = Sh" + price_w20_upeeled_dict['Farmula']; farmula_w20_upeeled_p = price_w20_upeeled_dict['Farmula']
+    else : farmula_w20_upeeled = ""
 
     # makert price for red 50 kg
     # price_r50_dict = dict()
