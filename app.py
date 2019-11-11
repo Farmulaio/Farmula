@@ -154,15 +154,15 @@ def ussd_callback():
     price_w90 = price_qury_w90.fetchall()
     price_qury_w90.close()
 
-    price_qury_r50 = db.cursor()
-    price_qury_r50.execute("SELECT * FROM market_price where product = 'Red Irish Potatoes' and qty = '50kg' order by create_date ")
-    price_r50 = price_qury_r50.fetchall()
-    price_qury_r50.close()
+    # price_qury_r50 = db.cursor()
+    # price_qury_r50.execute("SELECT * FROM market_price where product = 'Red Irish Potatoes' and qty = '50kg' order by create_date ")
+    # price_r50 = price_qury_r50.fetchall()
+    # price_qury_r50.close()
 
-    price_qury_r90 = db.cursor()
-    price_qury_r90.execute("SELECT * FROM market_price where product = 'Red Irish Potatoes' and qty = '90kg' order by create_date ")
-    price_r90 = price_qury_r90.fetchall()
-    price_qury_r90.close()
+    # price_qury_r90 = db.cursor()
+    # price_qury_r90.execute("SELECT * FROM market_price where product = 'Red Irish Potatoes' and qty = '90kg' order by create_date ")
+    # price_r90 = price_qury_r90.fetchall()
+    # price_qury_r90.close()
 
   # market price for white 50kg
     price_w50_dict = dict()
@@ -172,7 +172,7 @@ def ussd_callback():
         price_w50_dict[market] = price 
     print(price_w50_dict)
 
-    if 'Farmula' in price_w50_dict: farmula_w50 = "Farmula = Sh" + price_w50_dict['Farmula']; farmula_w50_p = price_w50_dict['Farmula']
+    if 'Farmula' in price_w50_dict: farmula_w50 = "\n  Farmula = Sh" + price_w50_dict['Farmula']; farmula_w50_p = price_w50_dict['Farmula']
     else : farmula_w50 = ""
 
     # if 'Nairobi' in price_w50_dict : nairobi_w50 = "\n  Nairobi = Sh" + price_w50_dict['Nairobi'] 
@@ -190,7 +190,7 @@ def ussd_callback():
     # if 'Molo' in price_w50_dict : molo_w50 = "\n  Molo = Sh" + price_w50_dict['Molo']
     # else : molo_w50 = ""
 
-    if 'Kawagware' in price_w50_dict : Kawagware_w50 = "Kawagware = Sh" + price_w50_dict['Kawagware']
+    if 'Kawagware' in price_w50_dict : Kawagware_w50 = "\n  Kawagware = Sh" + price_w50_dict['Kawagware']
     else : Kawagware_w50 = ""
 
 
@@ -201,8 +201,8 @@ def ussd_callback():
         price_w50_dict_f[market] = price 
     print(price_w50_dict_f)
 
-    if 'Farmula' in price_w50_dict: farmula_w50 = "\n  Farmula = Sh" + price_w50_dict['Farmula']; farmula_w50_p = price_w50_dict['Farmula']
-    else : farmula_w50 = ""
+    if 'Farmula' in price_w50_dict_f: farmula_w50_f = "\n  Farmula = Sh" + price_w50_dict_f['Farmula']; farmula_w50_f = price_w50_dict_f['Farmula']
+    else : farmula_w50_f = ""
 
     # if 'Nairobi' in price_w50_dict : nairobi_w50 = "\n  Nairobi = Sh" + price_w50_dict['Nairobi'] 
     # else : nairobi_w50 = ""
@@ -322,7 +322,7 @@ def ussd_callback():
     
     # red irsih 50kg
     elif text == '1*1' :
-        response = "CON Today's price for Irish potatoes 50kg"  + price_w50_dict_f['Marikiti'] + price_w50_dict_f['Kawagware'] 
+        response = "CON Today's price for Irish potatoes 50kg"  + Kawagware_w50_f + marikiti_w50_f + farmula_w50_f
         response += "\n 1. Place an order \n"
         # response += "2. Decline "
         # insert session into database
@@ -347,7 +347,7 @@ def ussd_callback():
     
      # red irsih 90kg
     elif text == '1*2' :
-        response = "CON Today's price for Irish potatoes 90kg \n"  + Kawagware_w50 + marikiti_w50 
+        response = "CON Today's price for Irish potatoes 90kg"  + Kawagware_w50 + marikiti_w50 
         response += "\n 1. Place an order \n"
         # response += "2. Decline "
         # insert session into database
@@ -360,9 +360,9 @@ def ussd_callback():
 
 
     elif text == '1*2*1' :
-        response = "CON Place order" 
-        response += "\n 1. Place an order " + Kawagware_w50
-        response += "\n 2. Place an order " + price_w50_dict['Marikiti']
+        response = "CON Place order"  + Kawagware_w50 + marikiti_w50 + farmula_w50
+        response += "\n 1. Place an order \n" + Kawagware_w50
+        response += "\n 2. Place an order " + marikiti_w50
         # response += "2. Decline "
         # insert session into database
         try :
@@ -387,7 +387,7 @@ def ussd_callback():
 
 
     elif text == '1*3' :
-        response = "CON Today's price for Irish potatoes 120kg"  + Kawagware_w90 + marikiti_w90 
+        response = "CON Today's price for Irish potatoes 120kg"  + Kawagware_w90 + marikiti_w90 + farmula_w90
         response += "\n 1. Place an order \n"
         # response += "2. Decline "
         # insert session into database
