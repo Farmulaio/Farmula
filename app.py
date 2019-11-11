@@ -333,6 +333,23 @@ def ussd_callback():
         except :
             print ("can't insert to database")
 
+    elif text == '1*1*1' :
+        response = "CON Place order"
+        response += "\n 1. Kawagware 50kg @" + marikiti_w50_p
+        response += "\n 2. Marikiti 50kg @" + marikiti_w50_p
+        response += "\n 3. Farmula 50kg @" + marikiti_w50_p
+        response += "\n 4. Farmula 10kg peeled @" + marikiti_w50_p
+        response += "\n 5. Farmula 20kg peeled @" + marikiti_w50_p
+        response += "\n 6. Farmula 20kg unpeeled @" + marikiti_w50_p
+        # response += "2. Decline "
+        # insert session into database
+        try :
+            insert_price_sess = db.cursor()
+            insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,session_id,service_code,text))
+            db.commit()
+        except :
+            print ("can't insert to database")
+
     # elif text == '1*1*1*1' :
     #     try :
     #         insert_order = db.cursor()
@@ -363,6 +380,10 @@ def ussd_callback():
         response = "CON Place order"
         response += "\n 1. Kawagware 50kg @" + marikiti_w50_p
         response += "\n 2. Marikiti 50kg @" + marikiti_w50_p
+        response += "\n 3. Farmula 50kg @" + marikiti_w50_p
+        response += "\n 4. Farmula 10kg peeled @" + marikiti_w50_p
+        response += "\n 5. Farmula 20kg peeled @" + marikiti_w50_p
+        response += "\n 6. Farmula 20kg unpeeled @" + marikiti_w50_p
         # response += "2. Decline "
         # insert session into database
         try :
@@ -397,6 +418,25 @@ def ussd_callback():
             db.commit()
         except :
             print ("can't insert to database")
+
+
+    elif text == '1*3*1' :
+        response = "CON Place order"
+        response += "\n 1. Kawagware 50kg @" + marikiti_w50_p
+        response += "\n 2. Marikiti 50kg @" + marikiti_w50_p
+        response += "\n 3. Farmula 50kg @" + marikiti_w50_p
+        response += "\n 4. Farmula 10kg peeled @" + marikiti_w50_p
+        response += "\n 5. Farmula 20kg peeled @" + marikiti_w50_p
+        response += "\n 6. Farmula 20kg unpeeled @" + marikiti_w50_p
+        # response += "2. Decline "
+        # insert session into database
+        try :
+            insert_price_sess = db.cursor()
+            insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,session_id,service_code,text))
+            db.commit()
+        except :
+            print ("can't insert to database")
+
 
     # elif text == '1*1*3*1' :
     #     try :
