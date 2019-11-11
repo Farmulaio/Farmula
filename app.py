@@ -821,6 +821,30 @@ def ussd_callback():
         except :
             response = "END Sorry your Order hasn't been Posted , Please try Again"
 
+
+    elif text == '3' :
+        response = "CON Check Irish potato price for \n"
+        response += "1. Farmula 3kg unpeeled \n"
+        response += "2. Farmula 3kg peeled \n"
+
+    elif text == '3*1' :
+        try :
+            insert_order = db.cursor()
+            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_r90_p, "", "50kg _flast", "", ""))
+            db.commit()
+            response = "END You have Successfully Orderd 90kg bag at Sh" + farmula_w90_p + " \n Thanks for using Farmula Services"
+        except :
+            response = "END Sorry your Order hasn't been Posted , Please try Again"
+
+    elif text == '3*2' :
+        try :
+            insert_order = db.cursor()
+            insert_order.execute("INSERT INTO customer_order (product, customer_name, c_phone, addrees, price, delivery_date, qty, grade, statu) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)" , ("White Irish Potato", "USSD", phone_number, "", farmula_r90_p, "", "50kg _flast", "", ""))
+            db.commit()
+            response = "END You have Successfully Orderd 90kg bag at Sh" + farmula_w90_p + " \n Thanks for using Farmula Services"
+        except :
+            response = "END Sorry your Order hasn't been Posted , Please try Again"
+
     # elif text == '1*1*3*1' :
     #     try :
     #         insert_order = db.cursor()
