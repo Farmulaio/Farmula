@@ -178,7 +178,7 @@ def ussd_callback():
     # if 'Nairobi' in price_w50_dict : nairobi_w50 = "\n  Nairobi = Sh" + price_w50_dict['Nairobi'] 
     # else : nairobi_w50 = ""
 
-    if 'Marikiti' in price_w50_dict : marikiti_w50 = "\n  Marikiti = Sh" + price_w50_dict['Marikiti']
+    if 'Marikiti' in price_w50_dict : marikiti_w50 = "Marikiti = Sh" + price_w50_dict['Marikiti']
     else : marikiti_w50 = ""
 
     # if 'Soweto' in price_w50_dict : soweto_w50 = "\n  Soweto = Sh" + price_w50_dict['Soweto']
@@ -362,7 +362,7 @@ def ussd_callback():
     elif text == '1*2*1' :
         response = "CON Place order"  + Kawagware_w50 + marikiti_w50 
         response += "\n 1. Place an order \n" + Kawagware_w50
-        response += "\n 2. Place an order \n" + marikiti_w50
+        response += "\n 2. Place an order " + marikiti_w50
         # response += "2. Decline "
         # insert session into database
         try :
