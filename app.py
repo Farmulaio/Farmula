@@ -358,6 +358,20 @@ def ussd_callback():
         except :
             print ("can't insert to database")
 
+
+    elif text == '1*2*1' :
+        response = "CON Place order"  + Kawagware_w50 + marikiti_w50 
+        response += "\n 1. Place an order \n" + Kawagware_w50
+        response += "\n 2. Place an order \n" + marikiti_w50
+        # response += "2. Decline "
+        # insert session into database
+        try :
+            insert_price_sess = db.cursor()
+            insert_price_sess.execute("INSERT INTO session (phonenumber,session_id,service_code,hops) VALUES (%s, %s, %s, %s)" , (phone_number,session_id,service_code,text))
+            db.commit()
+        except :
+            print ("can't insert to database")
+
     # elif text == '1*1*2*1' :
     #     try :
     #         insert_order = db.cursor()
