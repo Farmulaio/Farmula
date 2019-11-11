@@ -322,7 +322,7 @@ def ussd_callback():
     
     # red irsih 50kg
     elif text == '1*1' :
-        response = "CON Today's price for Irish potatoes 50kg"  + Kawagware_w50_f + marikiti_w50_f 
+        response = "CON Today's price for Irish potatoes 50kg"  + price_w50_dict_f['Marikiti'] + price_w50_dict_f['Kawagware'] 
         response += "\n 1. Place an order \n"
         # response += "2. Decline "
         # insert session into database
