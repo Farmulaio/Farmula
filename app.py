@@ -642,7 +642,7 @@ def ussd_callback():
             response = "END Sorry your Order hasn't been Posted , Please try Again"
 
     elif text == '2' :
-        response = "CON Check Irish potato price for \n"
+        response = "CON Place order for  \n"
         response += "1. 50kg Bag \n"
         response += "2. 90kg Bag \n"
         response += "3. 120kg Bag \n"
@@ -875,7 +875,7 @@ def ussd_callback():
 
 
     elif text == '3' :
-        response = "CON Check Irish potato price for \n"
+        response = "CON Place order for \n"
         response += "1. Farmula 3kg unpeeled \n"
         response += "2. Farmula 3kg peeled \n"
 
