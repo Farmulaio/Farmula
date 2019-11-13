@@ -265,7 +265,6 @@ def ussd_callback():
     # else : molo_w90 = ""
 
     if 'Kawagware' in price_w90_dict : Kawagware_w90 = "\n  Kawagware = Sh" + price_w90_dict['Kawagware']; Kawagware_w90_p = price_w90_dict['Kawagware']
-    else : marikiti_w90 = ""
     else : Kawagware_w90 = ""
 
     price_w10_dict = dict()
