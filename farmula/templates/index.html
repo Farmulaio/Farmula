@@ -1,145 +1,153 @@
-{% extends 'layout.html' %} 
+{% extends 'layout.html' %}
 {% block body %}
-      <div class="site-blocks-cover overlay" style="background-image: url(static/images/hero_bg_2.jpg);" id="section-home">
-        <div class="container">
-          <div class="row align-items-center justify-content-center text-center">
-          <div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
-              <h1 class="text-white font-weight-light text-uppercase font-weight-bold" data-aos="fade-up">Get produce at fair prices.</h1>
-              <p data-aos="fade-up" data-aos-delay="200"><a href="{{ url_for('order') }}" class="btn btn-primary py-3 px-5 text-white">Post Demand!</a></p>
-            </div>
-          </div>
-        </div>
-      </div>  
-      
+<div class="site-blocks-cover overlay" style="background-image: url(static/images/hero_bg_2.jpg);" id="section-home">
+  <div class="container">
+    <div class="row align-items-center justify-content-center text-center">
+      <div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
+        <h1 class="text-white font-weight-light text-uppercase font-weight-bold" data-aos="fade-up">Get produce at fair
+          prices.</h1>
+        <p data-aos="fade-up" data-aos-delay="200"><a href="{{ url_for('order') }}"
+            class="btn btn-primary py-3 px-5 text-white">Post Demand!</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="site-section" id="section-about">
-      <div class="container">
-        <div class="row mb-5">
-          
-          <div class="col-md-6 ml-auto mb-5 order-md-2" data-aos="fade-up" data-aos-delay="100">
-            <img src="{{url_for('static' , filename = 'images/img_3.png' ) }}" alt="Image" class="img-fluid rounded" id="img-2">
-          </div>
-          <div class="col-md-6 order-md-1" data-aos="fade-up">
-            <div class="text-left pb-1 border-primary mb-4">
-              <h2 class="text-primary">About Us</h2>
-            </div>
-            <p>At Farmula, farmers earn most while buyers spend less.</p>
-            <p class="mb-5">We achieve this by making pricing more transparent for farmers and provide buyers with access to farmers who have the produce they want. <br> Get early access / Work with us</p>
- 
-            <!-- <ul class="ul-check list-unstyled success">
+  <div class="container">
+    <div class="row mb-5">
+
+      <div class="col-md-6 ml-auto mb-5 order-md-2" data-aos="fade-up" data-aos-delay="100">
+        <img src="{{url_for('static' , filename = 'images/img_3.png' ) }}" alt="Image" class="img-fluid rounded"
+          id="img-2">
+      </div>
+      <div class="col-md-6 order-md-1" data-aos="fade-up">
+        <div class="text-left pb-1 border-primary mb-4">
+          <h2 class="text-primary">About Us</h2>
+        </div>
+        <p>At Farmula, farmers earn more while buyers spend less.</p>
+        <p class="mb-5">We achieve this by making pricing more transparent for farmers and provide buyers with access to
+          farmers who have the produce they want. </p>
+
+        <!-- <ul class="ul-check list-unstyled success">
               <li>Price transparency</li>
               <li>Access to market</li>
               <li>Agriculture forecasting</li>
             </ul> -->
-            
-          </div>
-          
-        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="site-section bg-image overlay" style="background-image: url('static/images/hero_bg_4.jpg');"
+  id="section-how-it-works">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7 text-center border-primary">
+        <h2 class="font-weight-light text-primary" data-aos="fade">How It Works</h2>
       </div>
     </div>
-  
-    <div class="site-section bg-image overlay" style="background-image: url('static/images/hero_bg_4.jpg');" id="section-how-it-works">
-      <div class="container">
-        <div class="row justify-content-center mb-5">
-          <div class="col-md-7 text-center border-primary">
-            <h2 class="font-weight-light text-primary" data-aos="fade">How It Works</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
-            <div class="how-it-work-item">
-              <span class="number">1</span>
-              <div class="how-it-work-body">
-                <h2>Post your demand</h2>
-                <p class="mb-5">Buyers post demand by simply posting here, calling our order number, sending us a message on text / Whatsapp or dialling our short code.</p>
-                <!-- <ul class="ul-check list-unstyled success">
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
+        <div class="how-it-work-item">
+          <span class="number">1</span>
+          <div class="how-it-work-body">
+            <h2>Post your demand</h2>
+            <p class="mb-5">Buyers post demand by simply posting here, calling our order number, sending us a message on
+              text / Whatsapp or dialling our short code.</p>
+            <!-- <ul class="ul-check list-unstyled success">
                   <li class="text-white">Access realtime and future prices.</li>
                   <li class="text-white">Guarantee quality check.</li>
                   <li class="text-white">Acccess last mile delivery.</li>
                 </ul> -->
-              </div>
-            </div>
           </div>
+        </div>
+      </div>
 
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-            <div class="how-it-work-item">
-              <span class="number">2</span>
-              <div class="how-it-work-body">
-                <h2>Get matched to supply</h2>
-                <p class="mb-5">Buyers are matched to affordable produce of great quality and the order is confirmed.</p>
-                <!-- <ul class="ul-check list-unstyled success">
+      <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
+        <div class="how-it-work-item">
+          <span class="number">2</span>
+          <div class="how-it-work-body">
+            <h2>Get matched to supply</h2>
+            <p class="mb-5">Buyers are matched to affordable produce of great quality and the order is confirmed.</p>
+            <!-- <ul class="ul-check list-unstyled success">
                   <li class="text-white">SMS notification when there is demand.</li>
                   <li class="text-white">Automated quality check.</li>
                   <li class="text-white">Get paid within 24hours.</li>
                 </ul> -->
-              </div>
-            </div>
           </div>
+        </div>
+      </div>
 
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="300">
-            <div class="how-it-work-item">
-              <span class="number">3</span>
-              <div class="how-it-work-body">
-                <h2>Last mile delivery</h2>
-                <p class="mb-5">Watch your produce come to you under 24 hours.</p>
-                <!-- <ul class="ul-check list-unstyled success">
+      <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="300">
+        <div class="how-it-work-item">
+          <span class="number">3</span>
+          <div class="how-it-work-body">
+            <h2>Last mile delivery</h2>
+            <p class="mb-5">Watch your produce come to you under 24 hours.</p>
+            <!-- <ul class="ul-check list-unstyled success">
                   <li class="text-white">Track order.</li>
                   <li class="text-white">Get order delivered to you.</li>
                   <li class="text-white">Pay upon delivery.</li>
                 </ul> -->
-              </div>
-            </div>
           </div>
-
         </div>
       </div>
+
     </div>
+  </div>
+</div>
 
 
-    <div class="site-section bg-light" id="section-services">
-      <div class="container">
-        <div class="row justify-content-center mb-5" data-aos="fade-up">
-          <div class="col-md-7 text-center border-primary">
-            <h2 class="mb-0 text-primary">Our Services</h2>
-            <!-- <p class="color-black-opacity-5">Lorem ipsum dolor sit amet.</p> -->
+<div class="site-section bg-light" id="section-services">
+  <div class="container">
+    <div class="row justify-content-center mb-5" data-aos="fade-up">
+      <div class="col-md-7 text-center border-primary">
+        <h2 class="mb-0 text-primary">Why farmula?</h2>
+        <!-- <p class="color-black-opacity-5">Lorem ipsum dolor sit amet.</p> -->
+      </div>
+    </div>
+    <div class="row align-items-stretch">
+      <div class="col-md-6 col-lg-12 mb-12 mb-lg-12" data-aos="fade-up">
+        <div class="unit-12 d-flex">
+          <!-- <div class="unit-4-icon mr-4"><span class="text-primary flaticon-plane"></span></div> -->
+          <div class="unit-4-icon mr-4"><span class="text-primary"></span></div>
+          <div>
+            <!-- <h3>Why farmula?</h3> -->
+            <p style="text-align: center">Farmula is the answer to increased revenues for farmers and less costs for
+              buyers. We understand the problem in a way that no one else does and we use technology to deliver value
+              every single time.</p>
+            <!-- <p><a href="#">Learn More</a></p> -->
           </div>
         </div>
-        <div class="row align-items-stretch">
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">
+      </div>
+      <!-- <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="unit-4 d-flex">
-              <!-- <div class="unit-4-icon mr-4"><span class="text-primary flaticon-plane"></span></div> -->
-              <div class="unit-4-icon mr-4"><span class="text-primary"></span></div>
-              <div>
-                <h3>Why farmula?</h3>
-                <p>Farmula is the answer to increased revenues for farmers and less costs for buyers. We understand the problem in a way that no one else does and we use technology to deliver value every single time.</p>
-                <!-- <p><a href="#">Learn More</a></p> -->
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="unit-4 d-flex">
-              <!-- <div class="unit-4-icon mr-4"><span class="text-primary flaticon-boat-ship"></span></div> -->
+              <div class="unit-4-icon mr-4"><span class="text-primary flaticon-boat-ship"></span></div>
               <div class="unit-4-icon mr-4"><span class="text-primary"></span></div>
               <div>
                 <h3>Quality Check</h3>
                 <p>You normally have to check quality at the market or deal with losses when bad quality produce comes to you. Farmula saves you the hassle by ensuring your produce achieves high quality always.</p>
-                <!-- <p><a href="#">Learn More</a></p> -->
+                <p><a href="#">Learn More</a></p>
               </div>
             </div>
           </div>
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
             <div class="unit-4 d-flex">
-              <!-- <div class="unit-4-icon mr-4"><span class="text-primary flaticon-truck"></span></div> -->
+              <div class="unit-4-icon mr-4"><span class="text-primary flaticon-truck"></span></div>
               <div class="unit-4-icon mr-4"><span class="text-primary"></span></div>
               <div>
                 <h3>Price forecasting</h3>
                 <p>Why wait for prices of produce to go up and affect your purchases when we can tell you what the price would be tommorow.</p>
-                <!-- <p><a href="#">Learn More</a></p> -->
+                <p><a href="#">Learn More</a></p>
               </div>
             </div>
-          </div>
+          </div> -->
 
 
-          <!-- <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="300">
+      <!-- <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="300">
             <div class="unit-4 d-flex">
               <div class="unit-4-icon mr-4"><span class="text-primary flaticon-warehouse"></span></div>
               <div>
@@ -170,11 +178,173 @@
             </div>
           </div> -->
 
-        </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section bg-image overlay" style="background-image: url('static/images/hero_bg_4.jpg');"
+  id="section-benefits">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7 text-center border-primary">
+        <h2 class="font-weight-light text-primary" data-aos="fade">Benefits</h2>
       </div>
     </div>
 
-    <div class="site-section bg-image overlay" style="background-image: url('static/images/hero_bg_4.jpg');" id="section-benefits">
+
+    <div class="row">
+      <div class="box">
+        <div class="container">
+          <div class="row">
+
+            <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                 
+                            <div class="box-part text-center" data-aos="fade-up" data-aos-delay="100">
+                                          
+                             <i class="flaticon-boat-ship" aria-hidden="true"></i>
+                                          
+                              <div class="how-it-work-item">
+                                <h2>Best bargains</h2>
+                              </div>
+                                          
+                              <div class="mb-5">
+                                <span>We know you want the best price everyday. So, we provide you with price from various markets daily so you can choose the most affordable.</span>
+                              </div>
+                                                                                    
+                             </div>
+                          </div>	  -->
+
+
+            <div class="col-md-6 col-lg-6 mb-6 mb-lg-6 " data-aos="fade-up" data-aos-delay="200">
+              <div class="unit-4 d-flex box-part">
+                <div class="unit-4-icon mr-4"><span class="text-primary"></span></div>
+                <div>
+                  <div class="unit-4-icon mr-4"><span class="text-primary flaticon-payment-1"></span></div>
+                  <h3>Best bargains</h3>
+                  <p>We know you want the best price everyday. So, we provide you with price from various markets daily
+                    so you can choose the most affordable.</p>
+                  <!-- <p><a href="#">Learn More</a></p> -->
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-6 col-lg-6 mb-6 mb-lg-6 " data-aos="fade-up" data-aos-delay="200">
+              <div class="unit-4 d-flex box-part">
+                <div class="unit-4-icon mr-4"><span class="text-primary"></span></div>
+                <div>
+                  <div class="unit-4-icon mr-4"><span class="text-primary flaticon-truck"></span></div>
+                  <h3>Remote Purchase</h3>
+                  <p>With our existing partnerships with transport companies, we make it possible for you to purchase
+                    produce from the farm without having to go to the farm.</p>
+                  <!-- <p><a href="#">Learn More</a></p> -->
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-md-6 col-lg-6 mb-6 mb-lg-6 " data-aos="fade-up" data-aos-delay="200">
+              <div class="unit-4 d-flex box-part">
+                <div class="unit-4-icon mr-4"><span class="text-primary"></span></div>
+                <div>
+                  <div class="unit-4-icon mr-4"><span class="text-primary flaticon-rise"></span></div>
+                  <h3>Price forecasting</h3>
+                  <p>Why wait for prices of produce to go up and affect your purchases when we can tell you what the
+                    price would be tommorow.</p>
+                  <!-- <p><a href="#">Learn More</a></p> -->
+                  <br>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 mb-6 mb-lg-6 " data-aos="fade-up" data-aos-delay="200">
+              <div class="unit-4 d-flex box-part">
+                <div class="unit-4-icon mr-4"><span class="text-primary"></span></div>
+                <div>
+                  <div class="unit-4-icon mr-4"><span class="text-primary flaticon-sale"></span></div>
+                  <h3>Quality Check</h3>
+                  <p>You normally have to check quality at the market or deal with losses when bad quality produce comes
+                    to you. Farmula saves you the hassle by ensuring your produce achieves high quality always.</p>
+                  <!-- <p><a href="#">Learn More</a></p> -->
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                 
+                            <div class="box-part text-center" data-aos="fade-up" data-aos-delay="100">
+                                
+                                <i class="fa fa-twitter fa-3x" aria-hidden="true"></i>
+                                      
+                              <div class="how-it-work-item">
+                                <h2>Remote Purchase</h2>
+                              </div>
+                                          
+                              <div class="mb-5">
+                                <span>With our existing partnerships with transport companies, we make it possible for you to purchase produce from the farm without having to go to the farm.</span>
+                              </div>                                          
+                             </div>
+                          </div>	 
+	 
+                          
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                 
+                            <div class="box-part text-center" data-aos="fade-up" data-aos-delay="100">
+                                          
+                              <i class="fa fa-pinterest-p fa-3x" aria-hidden="true"></i>
+                                          
+                              <div class="how-it-work-item">
+                                <h2>Quality Check</h2>
+                              </div>
+                                          
+                              <div class="mb-5">
+                                <span>You normally have to check quality at the market or deal with losses when bad quality produce comes to you. Farmula saves you the hassle by ensuring your produce achieves high quality always.</span>
+                              </div>                                          
+                             </div>
+                          </div>	 
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                 
+                              <div class="box-part text-center" data-aos="fade-up" data-aos-delay="100">
+                                            
+                                <i class="fa fa-pinterest-p fa-3x" aria-hidden="true"></i>
+                                            
+                                <div class="how-it-work-item">
+                                  <h2>Price forecasting</h2>
+                                </div>
+                                            
+                                <div class="mb-5">
+                                    <span>Why wait for prices of produce to go up and affect your purchases when we can tell you what the price would be tommorow.</span>
+                                    <br>
+                                    <br>
+                                  </div>                                          
+                               </div>
+                            </div>                       -->
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="300">
+            <div class="how-it-work-item">
+              <span class="number">3</span>
+              <div class="how-it-work-body">
+                <h2>Last mile delivery</h2>
+                <p class="mb-5">Through our trusted logistics partners, we deliver the produce to the buyers' doorstep. We track all deliveries remotely.</p> -->
+      <!-- <ul class="ul-check list-unstyled success">
+                  <li class="text-white">Track order.</li>
+                  <li class="text-white">Get order delivered to you.</li>
+                  <li class="text-white">Pay upon delivery.</li>
+                </ul> -->
+      <!-- </div>
+            </div>
+          </div> -->
+
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="site-section bg-image overlay" style="background-image: url('static/images/hero_bg_4.jpg');" id="section-benefits">
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center border-primary">
@@ -184,55 +354,83 @@
         <div class="row">
           <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
             <div class="how-it-work-item">
-              <!-- <span class="number">1</span> -->
+              <span class="number">1</span>
               <div class="how-it-work-body">
                 <h2>Best bargains</h2>
-                <!-- <p class="mb-5">Buyers post their demand by simply calling, sending us a WhatsApp message or posting on our social media groups and specifying produce variety, quantity and expected delivery date.</p> -->
+                <p class="mb-5">Buyers post their demand by simply calling, sending us a WhatsApp message or posting on our social media groups and specifying produce variety, quantity and expected delivery date.</p>
                 <ul class="ul-check list-unstyled success">
                   <li class="text-white">We know you want the best price everyday. So, we provide you with price from various markets daily so you can choose the most affordable</li>
-                  <!-- <li class="text-white">Farmers get paid within a maximum of 48 hours</li>
-                  <li class="text-white">Farmers get to earn an average of 25% more</li> -->
+                  <li class="text-white">Farmers get paid within a maximum of 48 hours</li>
+                  <li class="text-white">Farmers get to earn an average of 25% more</li>
                 </ul>
               </div>
             </div>
           </div>
-
           <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
             <div class="how-it-work-item">
-              <!-- <span class="number">2</span> -->
+              <span class="number">2</span>
               <div class="how-it-work-body">
                 <h2>Remote Purchase</h2>
-                <!-- <p class="mb-5">We notify our vetted Farmers via SMS. They upload an image of their supply, provide few details and we automatically match them to demand.</p> -->
+                <p class="mb-5">We notify our vetted Farmers via SMS. They upload an image of their supply, provide few details and we automatically match them to demand.</p>
                 <ul class="ul-check list-unstyled success">
                   <li class="text-white">With our existing partnerships with transport companies, we make it possible for you to purchase produce from the farm without having to go to the farm</li>
-                  <!-- <li class="text-white">Buyers are able to spend an average of 45% less and pay on delivery</li>
-                  <li class="text-white">Buyers have assured convenience; focus on your customers, let's focus on getting your demands to you.</li> -->
+                  <li class="text-white">Buyers are able to spend an average of 45% less and pay on delivery</li>
+                  <li class="text-white">Buyers have assured convenience; focus on your customers, let's focus on getting your demands to you.</li>
                 </ul>
               </div>
             </div>
           </div>
+          <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
+            <div class="how-it-work-item">
+              <span class="number">2</span>
+              <div class="how-it-work-body">
+                <h2>Quality Check</h2>
+                <p class="mb-5">We notify our vetted Farmers via SMS. They upload an image of their supply, provide few details and we automatically match them to demand.</p>
+                <ul class="ul-check list-unstyled success">
+                  <li class="text-white">You normally have to check quality at the market or deal with losses when bad quality produce comes to you. Farmula saves you the hassle by ensuring your produce achieves high quality always.</li>
+                  <li class="text-white">Buyers are able to spend an average of 45% less and pay on delivery</li>
+                  <li class="text-white">Buyers have assured convenience; focus on your customers, let's focus on getting your demands to you.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
+            <div class="how-it-work-item">
+              <span class="number">2</span>
+              <div class="how-it-work-body">
+                <h2>Price forecasting</h2>
+                <p class="mb-5">We notify our vetted Farmers via SMS. They upload an image of their supply, provide few details and we automatically match them to demand.</p>
+                <ul class="ul-check list-unstyled success">
+                  <li class="text-white">Why wait for prices of produce to go up and affect your purchases when we can tell you what the price would be tommorow.</li>
+                  <li class="text-white">Buyers are able to spend an average of 45% less and pay on delivery</li>
+                  <li class="text-white">Buyers have assured convenience; focus on your customers, let's focus on getting your demands to you.</li>
+                </ul>
+              </div>
+            </div>
+          </div> -->
 
-          <!-- <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="300">
+<!-- <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="300">
             <div class="how-it-work-item">
               <span class="number">3</span>
               <div class="how-it-work-body">
                 <h2>Last mile delivery</h2>
                 <p class="mb-5">Through our trusted logistics partners, we deliver the produce to the buyers' doorstep. We track all deliveries remotely.</p> -->
-                <!-- <ul class="ul-check list-unstyled success">
+<!-- <ul class="ul-check list-unstyled success">
                   <li class="text-white">Track order.</li>
                   <li class="text-white">Get order delivered to you.</li>
                   <li class="text-white">Pay upon delivery.</li>
                 </ul> -->
-              <!-- </div>
+<!-- </div>
             </div>
           </div> -->
 
-        </div>
-      </div>
-    </div>
+</div>
+</div>
+</div>
 
 
-    <!-- <div class="site-section border-bottom" id="section-our-team">
+
+<!-- <div class="site-section border-bottom" id="section-our-team">
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center border-primary">
@@ -245,8 +443,8 @@
               <img src="images/person_1.jpg" alt="Image" class="img-fluid rounded mb-5 w-75 rounded-circle">
               <h3>Ahmed Madani</h3>
               <p class="position text-muted">Co-Founder, CTO</p> -->
-              <!-- <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio cupiditate tempore suscipit inventore deserunt tenetur.</p> -->
-              <!-- <ul class="ul-social-circle">
+<!-- <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio cupiditate tempore suscipit inventore deserunt tenetur.</p> -->
+<!-- <ul class="ul-social-circle">
                 <li><a href="#"><span class="icon-facebook"></span></a></li>
                 <li><a href="#"><span class="icon-twitter"></span></a></li>
                 <li><a href="#"><span class="icon-linkedin"></span></a></li>
@@ -259,8 +457,8 @@
               <img src="images/person_2.jpg" alt="Image" class="img-fluid rounded mb-5 w-75 rounded-circle">
               <h3>Jacky Kimani</h3>
               <p class="position text-muted">Co-Founder, CPO</p> -->
-              <!-- <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio cupiditate tempore suscipit inventore deserunt tenetur.</p> -->
-              <!-- <ul class="ul-social-circle">
+<!-- <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio cupiditate tempore suscipit inventore deserunt tenetur.</p> -->
+<!-- <ul class="ul-social-circle">
                 <li><a href="#"><span class="icon-facebook"></span></a></li>
                 <li><a href="#"><span class="icon-twitter"></span></a></li>
                 <li><a href="#"><span class="icon-linkedin"></span></a></li>
@@ -273,8 +471,8 @@
               <img src="images/person_4.jpg" alt="Image" class="img-fluid rounded mb-5 w-75 rounded-circle">
               <h3>Ibrahim Abdulmalik</h3>
               <p class="position text-muted">Co-Founder, COO</p> -->
-              <!-- <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio cupiditate tempore suscipit inventore deserunt tenetur.</p> -->
-              <!-- <ul class="ul-social-circle">
+<!-- <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio cupiditate tempore suscipit inventore deserunt tenetur.</p> -->
+<!-- <ul class="ul-social-circle">
                 <li><a href="#"><span class="icon-facebook"></span></a></li>
                 <li><a href="#"><span class="icon-twitter"></span></a></li>
                 <li><a href="#"><span class="icon-linkedin"></span></a></li>
@@ -290,8 +488,7 @@
 
 
 
-    <!-- <div class="site-section block-13" id="section-industries">
-
+<!-- <div class="site-section block-13" id="section-industries">
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center border-primary">
@@ -300,7 +497,6 @@
           </div>
         </div>
       </div>
-
       <div class="owl-carousel nonloop-block-13">
         <div>
           <a href="#" class="unit-1 text-center">
@@ -310,7 +506,6 @@
             </div>
           </a>
         </div>
-
         <div>
           <a href="#" class="unit-1 text-center">
             <img src="images/img_2.jpg" alt="Image" class="img-fluid">
@@ -319,7 +514,6 @@
             </div>
           </a>
         </div>
-
         <div>
           <a href="#" class="unit-1 text-center">
             <img src="images/img_3.jpg" alt="Image" class="img-fluid">
@@ -328,7 +522,6 @@
             </div>
           </a>
         </div>
-
         <div>
           <a href="#" class="unit-1 text-center">
             <img src="images/img_4.jpg" alt="Image" class="img-fluid">
@@ -337,7 +530,6 @@
             </div>
           </a>
         </div>
-
         <div>
           <a href="#" class="unit-1 text-center">
             <img src="images/img_5.jpg" alt="Image" class="img-fluid">
@@ -346,16 +538,13 @@
             </div>
           </a>
         </div>
-
-
       </div>
     </div> -->
 
 
-    <!-- <div class="site-blocks-cover overlay inner-page-cover" style="background-image: url(images/hero_bg_2.jpg); background-attachment: fixed;">
+<!-- <div class="site-blocks-cover overlay inner-page-cover" style="background-image: url(images/hero_bg_2.jpg); background-attachment: fixed;">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
-
           <div class="col-md-7" data-aos="fade-up">
             <a href="https://vimeo.com/channels/staffpicks/93951774" class="play-single-big mb-4 d-inline-block popup-vimeo"><span class="icon-play"></span></a>
             <h2 class="text-white font-weight-light mb-5 h1">Watch The Video</h2>
@@ -364,16 +553,14 @@
         </div>
       </div>
     </div>   -->
-    
-    <!-- <div class="site-section border-bottom">
-      <div class="container">
 
+<!-- <div class="site-section border-bottom">
+      <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center border-primary">
             <h2 class="font-weight-light text-primary">Testimonials</h2>
           </div>
         </div>
-
         <div class="slide-one-item home-slider owl-carousel">
           <div>
             <div class="testimonial">
@@ -399,7 +586,6 @@
               </blockquote>
             </div>
           </div>
-
           <div>
             <div class="testimonial">
               <figure class="mb-4">
@@ -411,7 +597,6 @@
               </blockquote>
             </div>
           </div>
-
           <div>
             <div class="testimonial">
               <figure class="mb-4">
@@ -423,12 +608,11 @@
               </blockquote>
             </div>
           </div>
-
         </div>
       </div>
     </div> -->
 
-    <!-- <div class="site-section" id="section-blog">
+<!-- <div class="site-section" id="section-blog">
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center border-primary">
@@ -470,26 +654,25 @@
       </div>
     </div> -->
 
-    <div class="site-section bg-light" id="section-contact">
+<!-- <div class="site-section bg-light" id="section-contact">
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center border-primary">
             <h2 class="font-weight-light text-primary">Contact Us</h2>
-            <!-- <p class="color-black-opacity-5">See Our Daily News &amp; Updates</p> -->
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-7 mb-5">
-            <!-- <div class="p-4 mb-3 bg-white">
+             <p class="color-black-opacity-5">See Our Daily News &amp; Updates</p> -->
+</div>
+</div>
+<!-- <div class="row">
+          <div class="col-md-7 mb-5"> -->
+<!-- <div class="p-4 mb-3 bg-white">
               <h3 class="h5 text-black mb-3">More Info</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ad iure porro mollitia architecto hic consequuntur. Distinctio nisi perferendis dolore, ipsa consectetur? Fugiat quaerat eos qui, libero neque sed nulla.</p>
               <p><a href="#" class="btn btn-primary px-4 py-2 text-white">Learn More</a></p>
             </div> -->
-            
 
-            <!-- <form action="#" class="p-5 bg-white">
+
+<!-- <form action="#" class="p-5 bg-white">
              
-
               <div class="row form-group">
                 <div class="col-md-6 mb-3 mb-md-0">
                   <label class="text-black" for="fname">First Name</label>
@@ -500,7 +683,6 @@
                   <input type="text" id="lname" class="form-control">
                 </div>
               </div>
-
               <div class="row form-group">
                 
                 <div class="col-md-12">
@@ -508,7 +690,6 @@
                   <input type="email" id="email" class="form-control">
                 </div>
               </div>
-
               <div class="row form-group">
                 
                 <div class="col-md-12">
@@ -516,46 +697,39 @@
                   <input type="subject" id="subject" class="form-control">
                 </div>
               </div>
-
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="message">Message</label> 
                   <textarea name="message" id="message" cols="30" rows="7" class="form-control"></textarea>
                 </div>
               </div>
-
               <div class="row form-group">
                 <div class="col-md-12">
                   <input type="submit" value="Send Message" class="btn btn-primary py-2 px-4 text-white">
                 </div>
               </div>
-
   
             </form> -->
-          </div>
+<!-- </div>
           <div class="col-md-5">
             
             <div class="p-4 mb-3 bg-white">
               <p class="mb-0 font-weight-bold">Address</p>
               <p class="mb-4">Aluguntugui St, Accra, Ghana</p>
-
               <p class="mb-0 font-weight-bold">Phone</p>
               <p class="mb-4"><a href="#">+254 758 271 669</a></p>
-
               <p class="mb-0 font-weight-bold">Email Address</p>
               <p class="mb-0"><a href="#">info@farmula.io</a></p>
-
             </div>
-            
-            <!-- <div class="p-4 mb-3 bg-white">
+             -->
+<!-- <div class="p-4 mb-3 bg-white">
               <h3 class="h5 text-black mb-3">More Info</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ad iure porro mollitia architecto hic consequuntur. Distinctio nisi perferendis dolore, ipsa consectetur? Fugiat quaerat eos qui, libero neque sed nulla.</p>
               <p><a href="#" class="btn btn-primary px-4 py-2 text-white">Learn More</a></p>
             </div> -->
 
-          </div>
-        </div>
-      </div>
-    </div>
-    {% endblock%} 
-    
+</div>
+</div>
+</div>
+</div>
+{% endblock%}

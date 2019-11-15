@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Farmula</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700"> 
-    <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}"> 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}ssss">
-    <link rel="stylesheet" href="{{ url_for('static', filename='fonts/flaticon/font/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/carousel.css') }}"> 
+
+<head>
+  <title>Farmula</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700">
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}ssss">
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts/flaticon/font/flaticon.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/carousel.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 </head>
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="200">
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="200">
   <div class="site-wrap">
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
@@ -28,55 +33,77 @@
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
-    
+
     <header class="site-navbar py-3 js-site-navbar site-navbar-target" role="banner" id="site-navbar">
       <div class="container">
-        <div class="row align-items-center">  
+        <div class="row align-items-center">
           <div class="col-11 col-xl-2 site-logo">
             <h1 class="mb-0"><a href="/" class="text-white h2 mb-0">Farmula</a></h1>
           </div>
           <div class="col-12 col-md-10 d-none d-xl-block">
             {% include 'includes/_navbar.html' %}
           </div>
-          <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu h3"></span></a></div>
+          <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#"
+              class="site-menu-toggle js-menu-toggle"><span class="icon-menu h3"></span></a></div>
+        </div>
+      </div>
+  </div>
+  </header>
+
+
+  {% block body%} {% endblock %}
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-3 mr-auto">
+              <h2 class="footer-heading mb-4">About Us</h2>
+              <p>At Farmula, farmers earn more while buyers spend less.
+                We achieve this by making pricing more transparent for farmers and provide buyers with access to farmers
+                who have the produce they want.</p>
+            </div>
+
+            <div class="col-md-2">
+              <h2 class="footer-heading mb-4">Quick Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="#section-about">About Us</a></li>
+                <li><a href="#section-services">Services</a></li>
+                <li><a href="#section-blog">Our Blog</a></li>
+                <!-- <li><a href="#section-contact">Contact Us</a></li> -->
+              </ul>
+            </div>
+
+            <div class="col-md-3">
+              <h2 class="footer-heading mb-4">Follow Us</h2>
+              <a href="http://facebook.com/farmula.io" target="_blank" class="pl-0 pr-3"><span
+                  class="icon-facebook"></span></a>
+              <a href="http://twitter.com/farmula_" class="pl-3 pr-3" target="_blank"><span
+                  class="icon-twitter"></span></a>
+              <!-- <a href="#" class="pl-3 pr-3" target="_blank"><span class="icon-instagram"></span></a> -->
+              <a href="http://medium.com/farmula" class="pl-3 pr-3" target="_blank"><span
+                  class="icon-medium"></span></a>
+              <a href="http://linkedin.com/company/farmula" class="pl-3 pr-3" target="_blank"><span
+                  class="icon-linkedin"></span></a>
+            </div>
+
+            <div class="col-md-3">
+              <h2 class="footer-heading mb-4">Contact Us</h2>
+              <p class="mb-0 ">Address</p>
+              <p class="mb-4">Pinetree Plaza, Kaburu Dr, Nairobi, 7flr</p>
+
+              <p class="mb-0">Phone</p>
+              <p class="mb-4"><a href="#">+254 758 271 669</a></p>
+
+              <p class="mb-0 ">Email Address</p>
+              <p class="mb-0"><a href="#">info@farmula.io</a></p>
+            </div>
+
+
           </div>
         </div>
-      </div>      
-    </header>
-
-
-    {% block body%} {% endblock %}
-
-<footer class="site-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-9">
-            <div class="row">
-              <div class="col-md-5 mr-auto">
-                <h2 class="footer-heading mb-4">About Us</h2>
-                <p>At Farmula we are eliminating information asymmetry across agricultural supply chains by making price, market,  and quality information transparent.</p>
-              </div>
-              
-              <div class="col-md-3">
-                <h2 class="footer-heading mb-4">Quick Links</h2>
-                <ul class="list-unstyled">
-                  <li><a href="#section-about">About Us</a></li>
-                  <li><a href="#section-services">Services</a></li>
-                  <li><a href="#section-blog">Our Blog</a></li>
-                  <li><a href="#section-contact">Contact Us</a></li>
-                </ul>
-              </div>
-              <div class="col-md-3">
-                <h2 class="footer-heading mb-4">Follow Us</h2>
-                <a href="http://facebook.com/farmula.io" target="_blank" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                <a href="http://twitter.com/farmula_" class="pl-3 pr-3" target="_blank"><span class="icon-twitter"></span></a>
-                <!-- <a href="#" class="pl-3 pr-3" target="_blank"><span class="icon-instagram"></span></a> -->
-                <a href="http://medium.com/farmula" class="pl-3 pr-3" target="_blank"><span class="icon-medium"></span></a>
-                <a href="http://linkedin.com/company/farmula" class="pl-3 pr-3" target="_blank"><span class="icon-linkedin"></span></a>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="col-md-3">
+        <!-- <div class="col-md-3">
             <h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
             <form action="#" method="post">
               <div class="input-group mb-3">
@@ -87,8 +114,8 @@
               </div>
             </form>
           </div> -->
-        </div>
-        <!-- <div class="row pt-5 mt-5 text-center">
+      </div>
+      <!-- <div class="row pt-5 mt-5 text-center">
           <div class="col-md-12">
             <div class="border-top pt-5">
               <p>
@@ -98,8 +125,8 @@
           </div>
           
         </div> -->
-      </div>
-</footer>
+    </div>
+  </footer>
   <!-- </div> -->
 
   <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
@@ -116,16 +143,19 @@
   <script src="{{ url_for('static', filename='js/aos.js') }}"></script>
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   <script src="{{ url_for('static', filename='js/slick.js') }}"></script>
-<!-- Google Analytics -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  
-  ga('create', 'UA-106456020-4', 'auto');
-  ga('send', 'pageview');
+  <!-- Google Analytics -->
+  <script>
+    (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-106456020-4', 'auto');
+    ga('send', 'pageview');
   </script>
   <!-- End Google Analytics -->
-  </body>
+</body>
+
 </html>
