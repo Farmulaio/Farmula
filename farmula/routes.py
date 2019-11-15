@@ -2,6 +2,7 @@ from farmula import app, db
 from farmula.forms import PredicitForm , OrderForm
 from flask import redirect, url_for, render_template, request
 import urllib3, json, requests, calendar, random, string
+from datetime import datetime
 from farmula.models import Crop, Quantity, Market, Price, Orders, Prediction
 from farmula import config
 
@@ -19,9 +20,8 @@ def index():
 def price():
     try:
         PredictionItems = db.session.query(Prediction).all()
-        MarketItems = db.session.query(Market).filter_by(Enabled = 1).all()
-        PriceItems = db.session.query(Price).all()
-        print(PriceItems)
+        # MarketItems = db.session.query(Market).filter_by(Enabled = 1).all()
+        PriceItems = db.session.query(Price).filter_by(CreatedAt = datetime.date(datetime.now())).all()
         # for i in MarketItems :
         #     print(db.session.query(Price).filter_by(IdMarket = i.IdMarket).first())
         # print(MarketItems)
@@ -77,3 +77,5 @@ def add_order():
             db.session.commit()
 
         return redirect(url_for('index'))
+
+
