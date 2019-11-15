@@ -1,0 +1,95 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="banner-blocks-cover overlay" style="background-image: url('static/images/order.png');">
+  <div class="banner-text">
+  </div>
+</div>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-12 order-md-1" data-aos="fade-up">
+        <div class="text-left pb-1 border-primary mb-4">
+          <h2 class="text-primary">PLACE ORDER</h2>
+        </div>
+        <p>By simply filling this form, you can order for produce from farmers signed to our platform. <br>
+          You can currently place orders for potatoes with your preferences.
+        </p>
+        <p class="mb-5"></p>
+
+        {% from "includes/_formhelpers.html" import render_field %}
+        <form action="{{url_for('add_order')}}" method="POST">
+          <div class="row">
+            <div class="col-7">
+              <div class="line"></div>
+              <!-- <h5 class="text-primary">Lorem ipsum</h5> -->
+              <div class="card">
+                <div class="card-body">
+                  <!-- <h6>Lorem ipsum</h6> -->
+                  <div class="container ">
+                    <div class="form-row">
+                      <div class="form-group col-12">
+                        <label for="exampleFormControlSelect1">Choose crop :</label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="Crop">
+                          {% for crop in CropItems %}
+                          <option value="{{ crop.IdCrop }}">{{ crop.Name }}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-12">
+                        <label for="exampleFormControlSelect1">Choose Quantity :</label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="Qty">
+                          {% for item in QuantityItems %}
+                          <option value="{{ item.IdQty }}">{{ item.Qty }}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-12">
+                        <label for="exampleFormControlSelect1">Choose Market :</label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="Market">
+                          {% for item in MarketItems %}
+                          <option value="{{ item.IdMarket }}">{{ item.Name }}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-12">
+                        <label for="inputEmail4">Business name :</label>
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="Business Name"
+                          name="BusinesName">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-12">
+                        <label for="inputPassword4">Phone Number :</label>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Phone Number"
+                          name="PhoneNumber">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-12">
+                        <label for="inputAddress">Address :</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Address" name="Address">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container center">
+                    <div class="row row-btn"></div>
+                    <button type="submit" class="btn save">Post Demand</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock%}

@@ -8,8 +8,8 @@
   <div class="row_slider">
     <div class="container">
         <section class="customer-logos slider">
-                {% for row in price_data %}
-            <div class="slide"><p> {{ row.1 }} {{ row.4 }} at {{ row.2 }} = Sh{{ row.3 }} </p></div>
+                {% for item in PriceItems %}
+            <div class="slide"><p> {{ item.qty.Qty  }} {{ item.crop.Name }} at {{ item.market.Name }} = Sh{{ item.Price }} </p></div>
             {% endfor %}
        </section>
     </div>
@@ -45,13 +45,13 @@
                                             <th scope="col">Relative Error %</th>
                                     </thead>
                                     <tbody>
-                                            {% for row in pred_data %}
+                                            {% for item in PredictionItems %}
                                         <tr>
-                                            <td>{{ row.3 }} - {{ row.2 }}</td>
-                                            <td>{{ row.1 }}</td>
-                                            <td>{{ row.4 }}</td>
-                                            <td>{{ row.5 }}</td>
-                                            <td>{{ (( ( (row.5)|int  - (row.4)|int ) / (row.5)|int ) * 100 )|round(2)|abs  }}</td>
+                                            <td>{{ item.PredictionDate }}</td>
+                                            <td>{{ item.crop.Name }}</td>
+                                            <td>{{ item.PrePrice }}</td>
+                                            <td>{{ item.AvgPrice }}</td>
+                                            <td>{{ (( ( (item.AvgPrice)|int  - (item.PrePrice)|int ) / (item.AvgPrice)|int ) * 100 )|round(2)|abs  }}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
