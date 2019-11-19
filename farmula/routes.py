@@ -101,27 +101,35 @@ def ussd_callback():
     if text == "":
         respsone = "CON Welcome to Farmula , place your order \n"
         for PriceItem in AllMarketPrice:
-            if PriceItem.market.Name == 'Farmula' and '10' in PriceItem.qty.Qty :
+            if PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '10kg' :
                 PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
                 respsone += "1. Order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + PriceItem.market.Name + "=" + str(PriceItem.Price) + "Ksh" + "\n"
 
-            elif PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '20kg peeled':
+            elif PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '10kg unpeeled':
                 PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
                 respsone += "2. Order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + PriceItem.market.Name + "=" + str(PriceItem.Price) + "Ksh" + "\n"
+
+            elif PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '20kg':
+                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+                respsone += "3. Order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + PriceItem.market.Name + "=" + str(PriceItem.Price) + "Ksh" + "\n"
             
             elif PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '20kg unpeeled':
                 PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-                respsone += "3. Order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + PriceItem.market.Name + "=" + str(PriceItem.Price) + "Ksh" + "\n"  
+                respsone += "4. Order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + PriceItem.market.Name + "=" + str(PriceItem.Price) + "Ksh" + "\n"  
 
             elif PriceItem.market.Name == 'Farmula' and '50'  in PriceItem.qty.Qty :
                 PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-                respsone += "4. Order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + PriceItem.market.Name + "=" + str(PriceItem.Price) + "Ksh" + "\n"
+                respsone += "5. Order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + PriceItem.market.Name + "=" + str(PriceItem.Price) + "Ksh" + "\n"
 
-        respsone += "5. Check Price \n"
+            elif PriceItem.market.Name == 'Farmula' and '90'  in PriceItem.qty.Qty :
+                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+                respsone += "6. Order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + PriceItem.market.Name + "=" + str(PriceItem.Price) + "Ksh" + "\n"
+
+        respsone += "7. Check other prices \n"
     
     elif text == '1':
         for PriceItem in AllMarketPrice:
-            if PriceItem.market.Name == 'Farmula' and '10' in PriceItem.qty.Qty :
+            if  PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '10kg' :
                 PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
                 NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
                 db.session.add(NewOrder)
@@ -130,7 +138,7 @@ def ussd_callback():
   
     elif text == '2':
         for PriceItem in AllMarketPrice:
-            if PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '20kg peeled' :
+            if  PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '10kg unpeeled' :
                 PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
                 NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
                 db.session.add(NewOrder)
@@ -139,7 +147,7 @@ def ussd_callback():
 
     elif text == '3':
         for PriceItem in AllMarketPrice:
-            if PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '20kg unpeeled' :
+            if  PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '20kg' :
                 PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
                 NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
                 db.session.add(NewOrder)
@@ -148,7 +156,25 @@ def ussd_callback():
   
     elif text == '4':
         for PriceItem in AllMarketPrice:
-            if PriceItem.market.Name == 'Farmula' and '50'  in PriceItem.qty.Qty :
+            if  PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '20kg unpeeled' :
+                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+                NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
+                db.session.add(NewOrder)
+                db.session.commit()
+                respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
+  
+    elif text == '5':
+        for PriceItem in AllMarketPrice:
+            if  PriceItem.market.Name == 'Farmula' and '50'  in PriceItem.qty.Qty :
+                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+                NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
+                db.session.add(NewOrder)
+                db.session.commit()
+                respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
+  
+    elif text == '6':
+        for PriceItem in AllMarketPrice:
+            if  PriceItem.market.Name == 'Farmula' and '90'  in PriceItem.qty.Qty :
                 PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
                 NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
                 db.session.add(NewOrder)
@@ -156,13 +182,13 @@ def ussd_callback():
                 respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
   
 
-    elif text == "5":
+    elif text == "7":
         respsone = "CON "
         respsone += "1. 50Kg \n"
         respsone += "2. 90Kg \n"
         respsone += "3. 120Kg \n"
 
-    elif text == "5*1":
+    elif text == "7*1":
         respsone = "END Price in different markets \n"
         for MarketPrice in AllMarketPrice:
             if '50' in MarketPrice.qty.Qty and MarketPrice.market.Name != 'Farmula':
@@ -172,7 +198,7 @@ def ussd_callback():
             db.session.add(CheckSession)
             db.session.commit()
 
-    elif text == "5*2":
+    elif text == "7*2":
         respsone = "END Price in different markets \n"
         for MarketPrice in AllMarketPrice:
             if '90' in MarketPrice.qty.Qty and MarketPrice.market.Name != 'Farmula':
@@ -182,7 +208,7 @@ def ussd_callback():
             db.session.add(CheckSession)
             db.session.commit()  
 
-    elif text == "5*3":
+    elif text == "7*3":
         respsone = "END Price in different markets \n"
         for MarketPrice in AllMarketPrice:
             if '120' in MarketPrice.qty.Qty and MarketPrice.market.Name != 'Farmula':
