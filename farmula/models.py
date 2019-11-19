@@ -102,3 +102,23 @@ class Prediction(db.Model):
 
     def __repr__(self) :
         return f"Prediction('{self.IdPred}','{self.IdCrop},'{self.PredictionDate},'{self.AvgPrice}','{self.PrePrice}','{self.CreatedAt}')"
+
+class Pricechecksession(db.Model):
+    IdSession = db.Column(db.Integer, primary_key=True)
+    PhoneNumber = db.Column(db.String(250), db.ForeignKey('business.PhoneNumber'))
+    Hooks = db.Column(db.String(250), nullable=False)
+    CreatedAt = db.Column(db.DateTime, nullable=False) 
+    business = db.relationship("Business", backref="Pricechecksession") 
+
+    def __repr__(self) :
+        return f"Pricechecksession('{self.IdSession}','{self.PhoneNumber}','{self.Hooks}','{self.CreatedAt}')"
+
+class Pricemechsession(db.Model):
+    IdSession = db.Column(db.Integer, primary_key=True)
+    PhoneNumber = db.Column(db.String(250), nullable=False)
+    Name = db.Column(db.String(250))
+    Hooks = db.Column(db.Integer, nullable=False)
+    CreatedAt = db.Column(db.DateTime, nullable=False) 
+
+    def __repr__(self) :
+        return f"Pricemechsession('{self.IdSession}','{self.PhoneNumber},'{self.Name}','{self.Hooks}','{self.CreatedAt}')"

@@ -3,8 +3,10 @@ from farmula.forms import PredicitForm , OrderForm
 from flask import redirect, url_for, render_template, request
 import urllib3, json, requests, calendar, random, string
 from datetime import datetime
-from farmula.models import Crop, Quantity, Market, Price, Orders, Prediction
+from farmula.models import Crop, Quantity, Market, Price, Orders, Prediction, Pricechecksession
 from farmula import config
+
+response = ""
 
 def random_string_generator(size=5,  chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
@@ -79,3 +81,115 @@ def add_order():
         return redirect(url_for('index'))
 
 
+# ussd route
+@app.route('/ussd', methods=['POST', 'GET'])
+def ussd_callback():
+    global respsone 
+    session_id = request.values.get("sessionId", None)
+    service_code = request.values.get("serviceCode", None)
+    phone_number = request.values.get("phoneNumber", None)
+    text =  request.values.get("text", "default")
+
+    PriceAll = []
+    PriceFarmula = []
+    PriceFarmula10 = []
+
+    # FarmulaPrice = db.session.query(Price).filter_by(CreatedAt = datetime.date(datetime.now())).all()
+    AllMarketPrice = db.session.query(Price).filter_by(CreatedAt = datetime.date(datetime.now())).all()
+
+    
+    if text == "":
+        respsone = "CON Welcome to Farmula , place your order \n"
+        for PriceItem in AllMarketPrice:
+            if PriceItem.market.Name == 'Farmula' and '10' in PriceItem.qty.Qty :
+                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+                respsone += "1. Order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + PriceItem.market.Name + "=" + str(PriceItem.Price) + "Ksh" + "\n"
+
+            elif PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '20kg peeled':
+                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+                respsone += "2. Order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + PriceItem.market.Name + "=" + str(PriceItem.Price) + "Ksh" + "\n"
+            
+            elif PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '20kg unpeeled':
+                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+                respsone += "3. Order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + PriceItem.market.Name + "=" + str(PriceItem.Price) + "Ksh" + "\n"  
+
+            elif PriceItem.market.Name == 'Farmula' and '50'  in PriceItem.qty.Qty :
+                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+                respsone += "4. Order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + PriceItem.market.Name + "=" + str(PriceItem.Price) + "Ksh" + "\n"
+
+        respsone += "5. Check Price \n"
+    
+    elif text == '1':
+        for PriceItem in AllMarketPrice:
+            if PriceItem.market.Name == 'Farmula' and '10' in PriceItem.qty.Qty :
+                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+                NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
+                db.session.add(NewOrder)
+                db.session.commit()
+                respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
+  
+    elif text == '2':
+        for PriceItem in AllMarketPrice:
+            if PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '20kg peeled' :
+                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+                NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
+                db.session.add(NewOrder)
+                db.session.commit()
+                respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
+
+    elif text == '3':
+        for PriceItem in AllMarketPrice:
+            if PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '20kg unpeeled' :
+                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+                NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
+                db.session.add(NewOrder)
+                db.session.commit()
+                respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
+  
+    elif text == '4':
+        for PriceItem in AllMarketPrice:
+            if PriceItem.market.Name == 'Farmula' and '50'  in PriceItem.qty.Qty :
+                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+                NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
+                db.session.add(NewOrder)
+                db.session.commit()
+                respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
+  
+
+    elif text == "5":
+        respsone = "CON "
+        respsone += "1. 50Kg \n"
+        respsone += "2. 90Kg \n"
+        respsone += "3. 120Kg \n"
+
+    elif text == "5*1":
+        respsone = "END Price in different markets \n"
+        for MarketPrice in AllMarketPrice:
+            if '50' in MarketPrice.qty.Qty and MarketPrice.market.Name != 'Farmula':
+                PriceAll.append([MarketPrice.market.Name, MarketPrice.crop.Name ,MarketPrice.qty.Qty, MarketPrice.Price])
+                respsone += " " + MarketPrice.crop.Name + " "+ MarketPrice.qty.Qty + "@" + MarketPrice.market.Name + "=" + str(MarketPrice.Price) + "Ksh" + "\n"
+            CheckSession = Pricechecksession(PhoneNumber = phone_number, Hooks = text)
+            db.session.add(CheckSession)
+            db.session.commit()
+
+    elif text == "5*2":
+        respsone = "END Price in different markets \n"
+        for MarketPrice in AllMarketPrice:
+            if '90' in MarketPrice.qty.Qty and MarketPrice.market.Name != 'Farmula':
+                PriceAll.append([MarketPrice.market.Name, MarketPrice.crop.Name ,MarketPrice.qty.Qty, MarketPrice.Price])
+                respsone += " " + MarketPrice.crop.Name + " "+ MarketPrice.qty.Qty + "@" + MarketPrice.market.Name + "=" + str(MarketPrice.Price) + "Ksh" + "\n"
+            CheckSession = Pricechecksession(PhoneNumber = phone_number, Hooks = text)
+            db.session.add(CheckSession)
+            db.session.commit()  
+
+    elif text == "5*3":
+        respsone = "END Price in different markets \n"
+        for MarketPrice in AllMarketPrice:
+            if '120' in MarketPrice.qty.Qty and MarketPrice.market.Name != 'Farmula':
+                PriceAll.append([MarketPrice.market.Name, MarketPrice.crop.Name ,MarketPrice.qty.Qty, MarketPrice.Price])
+                respsone += " " + MarketPrice.crop.Name + " "+ MarketPrice.qty.Qty + "@" + MarketPrice.market.Name + "=" + str(MarketPrice.Price) + "Ksh" + "\n"
+            CheckSession = Pricechecksession(PhoneNumber = phone_number, Hooks = text)
+            db.session.add(CheckSession)
+            db.session.commit()  
+
+    return respsone
