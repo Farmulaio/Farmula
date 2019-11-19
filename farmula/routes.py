@@ -119,10 +119,8 @@ def ussd_callback():
 
             elif PriceItem.market.Name == 'Farmula' and '50'  in PriceItem.qty.Qty :
                 PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-                if len(PriceFarmula10) != 0 :
-                    respsone += "5. "+PriceFarmula10 + " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
-                else :
-                    response += "5. sorry " +PriceFarmula10
+                respsone += "5. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
+
             elif PriceItem.market.Name == 'Farmula' and '90'  in PriceItem.qty.Qty :
                 PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
                 respsone += "6. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
