@@ -194,9 +194,9 @@ def ussd_callback():
             if '50' in MarketPrice.qty.Qty and MarketPrice.market.Name != 'Farmula':
                 PriceAll.append([MarketPrice.market.Name, MarketPrice.crop.Name ,MarketPrice.qty.Qty, MarketPrice.Price])
                 respsone += " " + MarketPrice.crop.Name + " "+ MarketPrice.qty.Qty + "@" + MarketPrice.market.Name + "=" + str(MarketPrice.Price) + "Ksh" + "\n"
-            CheckSession = Pricechecksession(PhoneNumber = phone_number, Hooks = text)
-            db.session.add(CheckSession)
-            db.session.commit()
+        CheckSession = Pricechecksession(PhoneNumber = phone_number, Hooks = text)
+        db.session.add(CheckSession)
+        db.session.commit()
 
     elif text == "7*2":
         respsone = "END Price in different markets \n"
@@ -204,9 +204,9 @@ def ussd_callback():
             if '90' in MarketPrice.qty.Qty and MarketPrice.market.Name != 'Farmula':
                 PriceAll.append([MarketPrice.market.Name, MarketPrice.crop.Name ,MarketPrice.qty.Qty, MarketPrice.Price])
                 respsone += " " + MarketPrice.crop.Name + " "+ MarketPrice.qty.Qty + "@" + MarketPrice.market.Name + "=" + str(MarketPrice.Price) + "Ksh" + "\n"
-            CheckSession = Pricechecksession(PhoneNumber = phone_number, Hooks = text)
-            db.session.add(CheckSession)
-            db.session.commit()  
+        CheckSession = Pricechecksession(PhoneNumber = phone_number, Hooks = text)
+        db.session.add(CheckSession)
+        db.session.commit()  
 
     elif text == "7*3":
         respsone = "END Price in different markets \n"
@@ -214,8 +214,8 @@ def ussd_callback():
             if '120' in MarketPrice.qty.Qty and MarketPrice.market.Name != 'Farmula':
                 PriceAll.append([MarketPrice.market.Name, MarketPrice.crop.Name ,MarketPrice.qty.Qty, MarketPrice.Price])
                 respsone += " " + MarketPrice.crop.Name + " "+ MarketPrice.qty.Qty + "@" + MarketPrice.market.Name + "=" + str(MarketPrice.Price) + "Ksh" + "\n"
-            CheckSession = Pricechecksession(PhoneNumber = phone_number, Hooks = text)
-            db.session.add(CheckSession)
-            db.session.commit()  
+        CheckSession = Pricechecksession(PhoneNumber = phone_number, Hooks = text)
+        db.session.add(CheckSession)
+        db.session.commit()  
 
     return respsone
