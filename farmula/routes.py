@@ -34,27 +34,29 @@ def price():
     form = PredicitForm(request.form)
     if request.method == 'POST' and form.validate():
      
-        payload_scoring = {"fields":["Year", "Month", "Day", "Type"],"values":[[form.year.data,int(form.month.data),form.year.data,int(form.crop.data)]]}
+        payload_scoring = {"fields":["Year", "Month", "Day", "Type"],"values":[[form.year.data,int(form.month.data),form.day.data,int(form.crop.data)]]}
         response_scoring = requests.post('https://eu-gb.ml.cloud.ibm.com/v3/wml_instances/6a216236-adcc-48b5-901f-41e4cafbf033/deployments/2736cd44-a971-40d8-ba07-f8014ab77d44/online', json=payload_scoring, headers= config.header)
         print(json.loads(response_scoring.text)) 
         response = json.loads(response_scoring.text)
-
-        #get result from the response 
-        month_num = int(response['values'][0][1])
-        month_i = "Month : " + calendar.month_name[month_num]
-        year =  "Year : " + str(response['values'][0][0])
-        day =  "Day : " + str(response['values'][0][2])
-        crop = int(response['values'][0][3])
-        if crop == 1 :
-            crop_txt = 'Red Irish Potato'
-        else :
-            crop_txt = 'White Irish Potato'
-        crop_txt_temp = "Crop : " + crop_txt
-        pre_prams = str(response['values'][0][4])
-        price_round = ("%.2f" % round(response['values'][0][5],2))
-        price = str("Predict Price :  "+ price_round + " KSH (50KG)")
-        return render_template('price.html', form=form, month_i=month_i, day=day, year=year, price=price, crop_txt_temp=crop_txt_temp, PredictionItems = PredictionItems, PriceItems = PriceItems)
-
+    
+        try :
+            #get result from the response 
+            month_num = int(response['values'][0][1])
+            month_i = "Month : " + calendar.month_name[month_num]
+            year =  "Year : " + str(response['values'][0][0])
+            day =  "Day : " + str(response['values'][0][2])
+            crop = int(response['values'][0][3])
+            if crop == 1 :
+                crop_txt = 'Red Irish Potato'
+            else :
+                crop_txt = 'White Irish Potato'
+            crop_txt_temp = "Crop : " + crop_txt
+            pre_prams = str(response['values'][0][4])
+            price_round = ("%.2f" % round(response['values'][0][5],2))
+            price = str("Predict Price :  "+ price_round + " KSH (50KG)")
+            return render_template('price.html', form=form, month_i=month_i, day=day, year=year, price=price, crop_txt_temp=crop_txt_temp, PredictionItems = PredictionItems, PriceItems = PriceItems)
+        except KeyError :
+            print('Cant get response ')
     return render_template('price.html', form=form, PredictionItems = PredictionItems, PriceItems = PriceItems)
 
 
