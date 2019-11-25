@@ -70,9 +70,6 @@ def order():
 @app.route('/order/new', methods=['POST', 'GET'])
 def add_order():
         if request.method == 'POST':
-            # PriceQuery = db.session.query(Price).filter_by(IdCrop = request.form['Crop'], IdMarket = request.form['Market']).first()
-            # print(PriceQuery)
-            # OrderPrice = PriceQuery.Price
             NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = request.form['BusinesName'], PhoneNumber = request.form['PhoneNumber'], Address = request.form['Address'], IdCrop = request.form['Crop'], IdMarket = request.form['Market'],  IdQty = request.form['Qty'], IdOrderStatus = 1, Price = 20192.0)
             db.session.add(NewOrder)
             db.session.commit()
