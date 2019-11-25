@@ -22,12 +22,8 @@ def index():
 def price():
     try:
         PredictionItems = db.session.query(Prediction).all()
-        # MarketItems = db.session.query(Market).filter_by(Enabled = 1).all()
         PriceItems = db.session.query(Price).filter_by(CreatedAt = datetime.date(datetime.now())).all()
-        # for i in MarketItems :
-        #     print(db.session.query(Price).filter_by(IdMarket = i.IdMarket).first())
-        # print(MarketItems)
-        # print(PriceItems)
+
     except:
         print(" Cant connect to database ")
 
@@ -57,7 +53,8 @@ def price():
             return render_template('price.html', form=form, month_i=month_i, day=day, year=year, price=price, crop_txt_temp=crop_txt_temp, PredictionItems = PredictionItems, PriceItems = PriceItems)
         except KeyError :
             print('Cant get response ')
-    return render_template('price.html', form=form, PredictionItems = PredictionItems, PriceItems = PriceItems)
+        return render_template('price.html', form = form, PredictionItems = PredictionItems, PriceItems = PriceItems)
+    return render_template('price.html', form = form, PredictionItems = PredictionItems, PriceItems = PriceItems)
 
 
 
