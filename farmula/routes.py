@@ -79,6 +79,11 @@ def add_order():
 
         return redirect(url_for('index'))
 
+# farmer route 
+@app.route('/farmer', methods=['GET','POST'])
+def farmer():
+    return render_template('farmer.html')
+
 
 # ussd route
 @app.route('/ussd', methods=['POST', 'GET'])
