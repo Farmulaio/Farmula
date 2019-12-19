@@ -43,6 +43,18 @@
           <div class="col-12 col-md-10 d-none d-xl-block">
             {% include 'includes/_navbar.html' %}
           </div>
+          <div class="container-fluid">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
           <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#"
               class="site-menu-toggle js-menu-toggle"><span class="icon-menu h3"></span></a></div>
         </div>
