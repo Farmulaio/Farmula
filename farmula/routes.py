@@ -3,7 +3,7 @@ from farmula.forms import PredicitForm , OrderForm
 from flask import redirect, url_for, render_template, request
 import urllib3, json, requests, calendar, random, string
 from datetime import datetime
-from farmula.models import Crop, Quantity, Market, Price, Orders, Prediction, Pricechecksession
+from farmula.models import Crop, Quantity, Market, Price, Orders, Prediction, Pricechecksession, Farmer
 from farmula import config
 
 response = ""
@@ -82,7 +82,18 @@ def add_order():
 # farmer route 
 @app.route('/farmer', methods=['GET','POST'])
 def farmer():
-    return render_template('farmer.html')
+    FarmerItems = db.session.query(Farmer).all()
+    CropItems = db.session.query(Crop).filter_by(Enabled = 1).all()
+    if request.method == 'POST':
+        NewFarmer = Farmer(FirstName = request.form['FirstName'], LastName = request.form['LastName'], PhoneNumber = request.form['PhoneNumber'], Address = request.form['Address'], IdCrop = request.form['Crop'], Harvestime = request.form['Harvestime'])
+        try :
+            db.session.add(NewFarmer)
+            db.session.commit()
+            return redirect(url_for('index'))
+        except :          
+            return redirect(url_for('index'))
+
+    return render_template('farmer.html', FarmerItems = FarmerItems, CropItems = CropItems)
 
 
 # ussd route

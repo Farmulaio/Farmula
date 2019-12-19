@@ -1442,6 +1442,11 @@ h1, h2, h3, h4, h5,
   color: white;
 }
 
+.save:hover {
+  background: #2a7c4f !important;
+  color: white;
+}
+
 /* Slider */
 .slick-slide {
   margin: 0px 20px;
@@ -1649,3 +1654,13 @@ h1, h2, h3, h4, h5,
     margin:20px 0px;
 }
 
+.topleft {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font-size: 18px;
+  margin-top: 100px;
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+}
