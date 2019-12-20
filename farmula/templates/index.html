@@ -17,11 +17,11 @@
   <div class="container">
     <div class="row mb-5">
 
-      <div class="col-md-6 ml-auto mb-5 order-md-2" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-md-5 ml-auto mb-5 order-md-2" data-aos="fade-up" data-aos-delay="100">
         <img src="{{url_for('static' , filename = 'images/img_3.png' ) }}" alt="Image" class="img-fluid rounded"
           id="img-2">
       </div>
-      <div class="col-md-6 order-md-1" data-aos="fade-up">
+      <div class="col-md-7 order-md-1" data-aos="fade-up">
         <div class="text-left pb-1 border-primary mb-4">
           <h2 class="text-primary">About Us</h2>
         </div>
@@ -29,16 +29,27 @@
         <p class="mb-5">We achieve this by making pricing more transparent for farmers and provide buyers with access to
           farmers who have the produce they want. </p>
 
-        <!-- <ul class="ul-check list-unstyled success">
+        <div class="row">
+          <div class="col-6">
+           <a href="{{ url_for('order') }}"
+                class="btn btn-primary py-3 px-5 text-white" style="font-size: 12px; ">Buyer? Get Early access</a>
+          </div>
+          <div class="col-2">
+            <a href="{{ url_for('farmer') }}"
+                class="btn btn-primary py-3 px-5 text-white" style="font-size: 12px;">Farmer? work with us</a>
+          </div>
+        </div>
+      </div>
+      <!-- <ul class="ul-check list-unstyled success">
               <li>Price transparency</li>
               <li>Access to market</li>
               <li>Agriculture forecasting</li>
             </ul> -->
 
-      </div>
-
     </div>
+
   </div>
+</div>
 </div>
 
 <div class="site-section bg-image overlay" style="background-image: url('static/images/hero_bg_4.jpg');"
