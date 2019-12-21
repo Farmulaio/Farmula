@@ -2,9 +2,9 @@
 {% block body %}
 <div class="site-blocks-cover overlay" style="background-image: url(static/images/farm-to-mobile.jpg);" id="section-home">
   <div class="container">
-    <div class="col-6" data-aos="fade-up" data-aos-delay="400">
+    <div class="col-lg-4 col-md-4 topleft" data-aos="fade-up" data-aos-delay="400">
       {% from "includes/_formhelpers.html" import render_field %}
-      <form action="{{url_for('farmer')}}" method="POST" class="topleft">
+      <form action="{{url_for('farmer')}}" method="POST">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputEmail4">First name :</label>
