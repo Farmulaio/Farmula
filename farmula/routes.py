@@ -157,7 +157,7 @@ def ussd_callback():
             respsone += "1. "+ res_10
             respsone += "2. "+ res_10P
             respsone += "3. "+ res_20
-            respsone += "4. "+ res_20p
+            respsone += "4. "+ res_20P
             respsone += "5. "+ res_50
             respsone += "6. "+ res_90
             respsone += "7. Check other prices \n"
