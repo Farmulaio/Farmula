@@ -112,110 +112,114 @@ def ussd_callback():
     # FarmulaPrice = db.session.query(Price).filter_by(CreatedAt = datetime.date(datetime.now())).all()
     AllMarketPrice = db.session.query(Price).filter_by(CreatedAt = datetime.date(datetime.now())).all()
 
+        # for PriceItem in AllMarketPrice:
+        #     if PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '10kg' :
+        #         PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+        #         respsone += "1. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
+
+        #     elif PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '10kg peeled':
+        #         PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+        #         respsone += "2. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
+
+        #     elif PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '20kg':
+        #         PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+        #         respsone += "3. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
+            
+        #     elif PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '20kg peeled':
+        #         PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+        #         respsone += "4. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"  
+
+        #     elif PriceItem.market.Name == 'Farmula' and '50'  in PriceItem.qty.Qty :
+        #         if not PriceItem.Price :
+        #             respsone += "5. 50kg price for today is unavilable"
+        #         else:
+        #             PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+        #             respsone += "5. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
+
+        #     elif PriceItem.market.Name == 'Farmula' and '90'  in PriceItem.qty.Qty :
+        #         PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+        #         respsone += "6. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
+
     
     if text == "":
         respsone = "CON Welcome to Farmula , order for  \n"
-        for PriceItem in AllMarketPrice:
-            if PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '10kg' :
-                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-                respsone += "1. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
-
-            elif PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '10kg peeled':
-                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-                respsone += "2. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
-
-            elif PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '20kg':
-                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-                respsone += "3. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
-            
-            elif PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '20kg peeled':
-                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-                respsone += "4. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"  
-
-            elif PriceItem.market.Name == 'Farmula' and '50'  in PriceItem.qty.Qty :
-                if not PriceItem.Price :
-                    respsone += "5. 50kg price for today is unavilable"
-                else:
-                    PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-                    respsone += "5. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
-
-            elif PriceItem.market.Name == 'Farmula' and '90'  in PriceItem.qty.Qty :
-                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-                respsone += "6. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
-
-        respsone += "7. Check other prices \n"
+        if not AllMarketPrice :
+            respsone = "END Sorry today prices are not availabe yet"
+        else :
+            respsone = " Price are here "
+            respsone += "7. Check other prices \n"
     
-    elif text == '1':
-        for PriceItem in AllMarketPrice:
-            if  PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '10kg' :
-                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-                try :
-                    NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
-                    db.session.add(NewOrder)
-                    db.session.commit()
-                    respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
-                except :
-                    respsone = "END Sorry an error occurred, please try again later "
+    # elif text == '1':
+    #     for PriceItem in AllMarketPrice:
+    #         if  PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '10kg' :
+    #             PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+    #             try :
+    #                 NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
+    #                 db.session.add(NewOrder)
+    #                 db.session.commit()
+    #                 respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
+    #             except :
+    #                 respsone = "END Sorry an error occurred, please try again later "
 
-    elif text == '2':
-        for PriceItem in AllMarketPrice:
-            if  PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '10kg peeled' :
-                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-                try :
-                    NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
-                    db.session.add(NewOrder)
-                    db.session.commit()
-                    respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
-                except :
-                    respsone = "END Sorry an error occurred, please try again later "
+    # elif text == '2':
+    #     for PriceItem in AllMarketPrice:
+    #         if  PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '10kg peeled' :
+    #             PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+    #             try :
+    #                 NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
+    #                 db.session.add(NewOrder)
+    #                 db.session.commit()
+    #                 respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
+    #             except :
+    #                 respsone = "END Sorry an error occurred, please try again later "
 
-    elif text == '3':
-        for PriceItem in AllMarketPrice:
-            if  PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '20kg' :
-                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-                try :
-                    NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
-                    db.session.add(NewOrder)
-                    db.session.commit()
-                    respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
-                except :
-                    respsone = "END Sorry an error occurred, please try again later "
+    # elif text == '3':
+    #     for PriceItem in AllMarketPrice:
+    #         if  PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '20kg' :
+    #             PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+    #             try :
+    #                 NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
+    #                 db.session.add(NewOrder)
+    #                 db.session.commit()
+    #                 respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
+    #             except :
+    #                 respsone = "END Sorry an error occurred, please try again later "
 
-    elif text == '4':
-        for PriceItem in AllMarketPrice:
-            if  PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '20kg peeled' :
-                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-                try :
-                    NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
-                    db.session.add(NewOrder)
-                    db.session.commit()
-                    respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
-                except :
-                    respsone = "END Sorry an error occurred, please try again later "
+    # elif text == '4':
+    #     for PriceItem in AllMarketPrice:
+    #         if  PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '20kg peeled' :
+    #             PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+    #             try :
+    #                 NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
+    #                 db.session.add(NewOrder)
+    #                 db.session.commit()
+    #                 respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
+    #             except :
+    #                 respsone = "END Sorry an error occurred, please try again later "
 
-    elif text == '5':
-        for PriceItem in AllMarketPrice:
-            if  PriceItem.market.Name == 'Farmula' and '50'  in PriceItem.qty.Qty :
-                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-                try :
-                    NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
-                    db.session.add(NewOrder)
-                    db.session.commit()
-                    respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
-                except :
-                    respsone = "END Sorry an error occurred, please try again later "
+    # elif text == '5':
+    #     for PriceItem in AllMarketPrice:
+    #         if  PriceItem.market.Name == 'Farmula' and '50'  in PriceItem.qty.Qty :
+    #             PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+    #             try :
+    #                 NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
+    #                 db.session.add(NewOrder)
+    #                 db.session.commit()
+    #                 respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
+    #             except :
+    #                 respsone = "END Sorry an error occurred, please try again later "
 
-    elif text == '6':
-        for PriceItem in AllMarketPrice:
-            if  PriceItem.market.Name == 'Farmula' and '90'  in PriceItem.qty.Qty :
-                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-                try :
-                    NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
-                    db.session.add(NewOrder)
-                    db.session.commit()
-                    respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
-                except :
-                    respsone = "END Sorry an error occurred, please try again later "
+    # elif text == '6':
+    #     for PriceItem in AllMarketPrice:
+    #         if  PriceItem.market.Name == 'Farmula' and '90'  in PriceItem.qty.Qty :
+    #             PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+    #             try :
+    #                 NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = PriceItem.crop.IdCrop, IdMarket = PriceItem.market.IdMarket, IdQty = PriceItem.qty.IdQty, IdOrderStatus = '1', Price = PriceItem.Price)
+    #                 db.session.add(NewOrder)
+    #                 db.session.commit()
+    #                 respsone = "END Thanks for using Farmula services to order " + PriceItem.crop.Name + " "+ PriceItem.qty.Qty + "@" + str(PriceItem.Price) + "Ksh" + "\n"
+    #             except :
+    #                 respsone = "END Sorry an error occurred, please try again later "
 
 
     elif text == "7":
@@ -224,44 +228,44 @@ def ussd_callback():
         respsone += "2. 90Kg \n"
         respsone += "3. 120Kg \n"
 
-    elif text == "7*1":
-        respsone = "END Price in different markets \n"
-        for MarketPrice in AllMarketPrice:
-            if '50' in MarketPrice.qty.Qty and MarketPrice.market.Name != 'Farmula':
-                PriceAll.append([MarketPrice.market.Name, MarketPrice.crop.Name ,MarketPrice.qty.Qty, MarketPrice.Price])
-                respsone += " " + MarketPrice.crop.Name + " "+ MarketPrice.qty.Qty + "@" + MarketPrice.market.Name + "=" + str(MarketPrice.Price) + "Ksh" + "\n"
-        try :
-            CheckSession = Pricechecksession(PhoneNumber = phone_number, Hooks = text)
-            db.session.add(CheckSession)
-            db.session.commit()
-        except :
-            respsone = "END Sorry an error occurred, please try again later "
+    # elif text == "7*1":
+    #     respsone = "END Price in different markets \n"
+    #     for MarketPrice in AllMarketPrice:
+    #         if '50' in MarketPrice.qty.Qty and MarketPrice.market.Name != 'Farmula':
+    #             PriceAll.append([MarketPrice.market.Name, MarketPrice.crop.Name ,MarketPrice.qty.Qty, MarketPrice.Price])
+    #             respsone += " " + MarketPrice.crop.Name + " "+ MarketPrice.qty.Qty + "@" + MarketPrice.market.Name + "=" + str(MarketPrice.Price) + "Ksh" + "\n"
+    #     try :
+    #         CheckSession = Pricechecksession(PhoneNumber = phone_number, Hooks = text)
+    #         db.session.add(CheckSession)
+    #         db.session.commit()
+    #     except :
+    #         respsone = "END Sorry an error occurred, please try again later "
 
-    elif text == "7*2":
-        respsone = "END Price in different markets \n"
-        for MarketPrice in AllMarketPrice:
-            if '90' in MarketPrice.qty.Qty and MarketPrice.market.Name != 'Farmula':
-                PriceAll.append([MarketPrice.market.Name, MarketPrice.crop.Name ,MarketPrice.qty.Qty, MarketPrice.Price])
-                respsone += " " + MarketPrice.crop.Name + " "+ MarketPrice.qty.Qty + "@" + MarketPrice.market.Name + "=" + str(MarketPrice.Price) + "Ksh" + "\n"
-        try :
-            CheckSession = Pricechecksession(PhoneNumber = phone_number, Hooks = text)
-            db.session.add(CheckSession)
-            db.session.commit() 
-        except :
-            respsone = "END Sorry an error occurred, please try again later "
+    # elif text == "7*2":
+    #     respsone = "END Price in different markets \n"
+    #     for MarketPrice in AllMarketPrice:
+    #         if '90' in MarketPrice.qty.Qty and MarketPrice.market.Name != 'Farmula':
+    #             PriceAll.append([MarketPrice.market.Name, MarketPrice.crop.Name ,MarketPrice.qty.Qty, MarketPrice.Price])
+    #             respsone += " " + MarketPrice.crop.Name + " "+ MarketPrice.qty.Qty + "@" + MarketPrice.market.Name + "=" + str(MarketPrice.Price) + "Ksh" + "\n"
+    #     try :
+    #         CheckSession = Pricechecksession(PhoneNumber = phone_number, Hooks = text)
+    #         db.session.add(CheckSession)
+    #         db.session.commit() 
+    #     except :
+    #         respsone = "END Sorry an error occurred, please try again later "
 
 
-    elif text == "7*3":
-        respsone = "END Price in different markets \n"
-        for MarketPrice in AllMarketPrice:
-            if '120' in MarketPrice.qty.Qty and MarketPrice.market.Name != 'Farmula':
-                PriceAll.append([MarketPrice.market.Name, MarketPrice.crop.Name ,MarketPrice.qty.Qty, MarketPrice.Price])
-                respsone += " " + MarketPrice.crop.Name + " "+ MarketPrice.qty.Qty + "@" + MarketPrice.market.Name + "=" + str(MarketPrice.Price) + "Ksh" + "\n"
-        try :
-            CheckSession = Pricechecksession(PhoneNumber = phone_number, Hooks = text)
-            db.session.add(CheckSession)
-            db.session.commit()  
-        except :
-            respsone = "END Sorry an error occurred, please try again later "
+    # elif text == "7*3":
+    #     respsone = "END Price in different markets \n"
+    #     for MarketPrice in AllMarketPrice:
+    #         if '120' in MarketPrice.qty.Qty and MarketPrice.market.Name != 'Farmula':
+    #             PriceAll.append([MarketPrice.market.Name, MarketPrice.crop.Name ,MarketPrice.qty.Qty, MarketPrice.Price])
+    #             respsone += " " + MarketPrice.crop.Name + " "+ MarketPrice.qty.Qty + "@" + MarketPrice.market.Name + "=" + str(MarketPrice.Price) + "Ksh" + "\n"
+    #     try :
+    #         CheckSession = Pricechecksession(PhoneNumber = phone_number, Hooks = text)
+    #         db.session.add(CheckSession)
+    #         db.session.commit()  
+    #     except :
+    #         respsone = "END Sorry an error occurred, please try again later "
 
     return respsone
