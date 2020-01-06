@@ -109,36 +109,41 @@ def ussd_callback():
     PriceFarmula = []
     PriceFarmula10 = []
 
-    # FarmulaPrice = db.session.query(Price).filter_by(CreatedAt = datetime.date(datetime.now())).all()
     AllMarketPrice = db.session.query(Price).filter_by(CreatedAt = datetime.date(datetime.now())).all()
 
-        # for PriceItem in AllMarketPrice:
-        #     if PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '10kg' :
-        #         PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-        #         respsone += "1. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
+    for PriceItem in AllMarketPrice:
+        if PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '10kg' :
+            PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+            res_10 = " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
+        else :
+            res_10 = "Sorry 10k price is not available"
 
-        #     elif PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '10kg peeled':
-        #         PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-        #         respsone += "2. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
+        if PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '10kg peeled':
+            PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+            res_10p = " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
+        else :
+           res_10p = "Sorry 10k Peeled price is not available"
 
-        #     elif PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '20kg':
-        #         PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-        #         respsone += "3. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
-            
-        #     elif PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '20kg peeled':
-        #         PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-        #         respsone += "4. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"  
+        # elif PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '20kg':
+        #     PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+        #     respsone += "3. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
+        
+        if PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '20kg peeled':
+            PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+            res_20p = " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"  
+        else :
+            res_20p = "Sorry 20k Peeled price is not available"
 
-        #     elif PriceItem.market.Name == 'Farmula' and '50'  in PriceItem.qty.Qty :
-        #         if not PriceItem.Price :
-        #             respsone += "5. 50kg price for today is unavilable"
-        #         else:
-        #             PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-        #             respsone += "5. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
-
-        #     elif PriceItem.market.Name == 'Farmula' and '90'  in PriceItem.qty.Qty :
+        # elif PriceItem.market.Name == 'Farmula' and '50'  in PriceItem.qty.Qty :
+        #     if not PriceItem.Price :
+        #         respsone += "5. 50kg price for today is unavilable"
+        #     else:
         #         PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-        #         respsone += "6. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
+        #         respsone += "5. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
+
+        # elif PriceItem.market.Name == 'Farmula' and '90'  in PriceItem.qty.Qty :
+        #     PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+        #     respsone += "6. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
 
     
     if text == "":
@@ -146,6 +151,12 @@ def ussd_callback():
             respsone = "END Welcome to Farmula \n Sorry today prices are not availabe yet"
         else :
             respsone = "CON Welcome to Farmula , order for  \n"
+            respsone += "1. "+ res_10
+            respsone += "2. "+ res_10
+            respsone += "3. "+ res_10
+            respsone += "4. "+ res_20p
+            respsone += "5. "+ res_10
+            respsone += "6. "+ res_10
             respsone += "7. Check other prices \n"
     
     # elif text == '1':
