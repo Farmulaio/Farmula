@@ -146,7 +146,6 @@ def ussd_callback():
             respsone = "END Welcome to Farmula \n Sorry today prices are not availabe yet"
         else :
             respsone = "CON Welcome to Farmula , order for  \n"
-            respsone = " Price are here "
             respsone += "7. Check other prices \n"
     
     # elif text == '1':
