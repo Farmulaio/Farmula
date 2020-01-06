@@ -133,8 +133,12 @@ def ussd_callback():
                 respsone += "4. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"  
 
             elif PriceItem.market.Name == 'Farmula' and '50'  in PriceItem.qty.Qty :
-                PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
-                respsone += "5. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
+                if PriceItem.Price :
+                    PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
+                    respsone += "5. "+ " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
+                else:
+                    respsone += "5. 50kg price for today is unavilable"
+
 
             elif PriceItem.market.Name == 'Farmula' and '90'  in PriceItem.qty.Qty :
                 PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
