@@ -115,8 +115,8 @@ def ussd_callback():
         if PriceItem.market.Name == 'Farmula' and  PriceItem.qty.Qty == '10kg':
             PriceFarmula10.append([PriceItem.market.Name, PriceItem.crop.Name ,PriceItem.qty.Qty, PriceItem.Price])
             res_10 = " "+ PriceItem.qty.Qty + "(" + str(PriceItem.Price) + "Ksh)" + "\n"
-        else :
-            res_10 = "Sorry 10k price is not available \n"
+        # else :
+        #     res_10 = "Sorry 10k price is not available \n"
 
     for PriceItem in AllMarketPrice:
         if PriceItem.market.Name == 'Farmula' and PriceItem.qty.Qty == '10kg peeled':
