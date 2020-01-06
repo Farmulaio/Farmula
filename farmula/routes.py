@@ -164,55 +164,55 @@ def ussd_callback():
     
     elif text == '1':
         try :
-            NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = res_10.crop.IdCrop, IdMarket = res_10.market.IdMarket, IdQty = res_10.qty.IdQty, IdOrderStatus = '1', Price = res_10.Price)
+            NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = FarmulaPrice10.crop.IdCrop, IdMarket = FarmulaPrice10.market.IdMarket, IdQty = FarmulaPrice10.qty.IdQty, IdOrderStatus = '1', Price = FarmulaPrice10.Price)
             db.session.add(NewOrder)
             db.session.commit()
-            respsone = "END Thanks for using Farmula services to order " + res_10.crop.Name + " "+ res_10.qty.Qty + "@" + str(res_10.Price) + "Ksh" + "\n"
+            respsone = "END Thanks for using Farmula services to order " + FarmulaPrice10.crop.Name + " "+ FarmulaPrice10.qty.Qty + "@" + str(FarmulaPrice10.Price) + "Ksh" + "\n"
         except :
             respsone = "END Sorry an error occurred, please try again later "
 
     elif text == '2':
         try :
-            NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = res_10P.crop.IdCrop, IdMarket = res_10P.market.IdMarket, IdQty = res_10P.qty.IdQty, IdOrderStatus = '1', Price = res_10P.Price)
+            NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = FarmulaPrice10P.crop.IdCrop, IdMarket = FarmulaPrice10P.market.IdMarket, IdQty = FarmulaPrice10P.qty.IdQty, IdOrderStatus = '1', Price = FarmulaPrice10P.Price)
             db.session.add(NewOrder)
             db.session.commit()
-            respsone = "END Thanks for using Farmula services to order " + res_10P.crop.Name + " "+ res_10P.qty.Qty + "@" + str(res_10P.Price) + "Ksh" + "\n"
+            respsone = "END Thanks for using Farmula services to order " + FarmulaPrice10P.crop.Name + " "+ FarmulaPrice10P.qty.Qty + "@" + str(FarmulaPrice10P.Price) + "Ksh" + "\n"
         except :
             respsone = "END Sorry an error occurred, please try again later "
 
     elif text == '3':
         try :
-            NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = res_20.crop.IdCrop, IdMarket = res_20.market.IdMarket, IdQty = res_20.qty.IdQty, IdOrderStatus = '1', Price = res_20.Price)
+            NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = FarmulaPrice20.crop.IdCrop, IdMarket = FarmulaPrice20.market.IdMarket, IdQty = FarmulaPrice20.qty.IdQty, IdOrderStatus = '1', Price = FarmulaPrice20.Price)
             db.session.add(NewOrder)
             db.session.commit()
-            respsone = "END Thanks for using Farmula services to order " + res_20.crop.Name + " "+ res_20.qty.Qty + "@" + str(res_20.Price) + "Ksh" + "\n"
+            respsone = "END Thanks for using Farmula services to order " + FarmulaPrice20.crop.Name + " "+ FarmulaPrice20.qty.Qty + "@" + str(FarmulaPrice20.Price) + "Ksh" + "\n"
         except :
             respsone = "END Sorry an error occurred, please try again later "
 
     elif text == '4':
         try :
-            NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = res_20P.crop.IdCrop, IdMarket = res_20P.market.IdMarket, IdQty = res_20P.qty.IdQty, IdOrderStatus = '1', Price = res_20P.Price)
+            NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = FarmulaPrice20P.crop.IdCrop, IdMarket = FarmulaPrice20P.market.IdMarket, IdQty = FarmulaPrice20P.qty.IdQty, IdOrderStatus = '1', Price = FarmulaPrice20P.Price)
             db.session.add(NewOrder)
             db.session.commit()
-            respsone = "END Thanks for using Farmula services to order " + res_20P.crop.Name + " "+ res_20P.qty.Qty + "@" + str(res_20P.Price) + "Ksh" + "\n"
+            respsone = "END Thanks for using Farmula services to order " + FarmulaPrice20P.crop.Name + " "+ FarmulaPrice20P.qty.Qty + "@" + str(FarmulaPrice20P.Price) + "Ksh" + "\n"
         except :
             respsone = "END Sorry an error occurred, please try again later "
 
     elif text == '5':
         try :
-            NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = res_50.crop.IdCrop, IdMarket = res_50.market.IdMarket, IdQty = res_50.qty.IdQty, IdOrderStatus = '1', Price = res_50.Price)
+            NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = FarmulaPrice50.crop.IdCrop, IdMarket = FarmulaPrice50.market.IdMarket, IdQty = FarmulaPrice50.qty.IdQty, IdOrderStatus = '1', Price = FarmulaPrice50.Price)
             db.session.add(NewOrder)
             db.session.commit()
-            respsone = "END Thanks for using Farmula services to order " + res_50.crop.Name + " "+ res_50.qty.Qty + "@" + str(res_50.Price) + "Ksh" + "\n"
+            respsone = "END Thanks for using Farmula services to order " + FarmulaPrice50.crop.Name + " "+ FarmulaPrice50.qty.Qty + "@" + str(FarmulaPrice50.Price) + "Ksh" + "\n"
         except :
             respsone = "END Sorry an error occurred, please try again later "
 
     elif text == '6':
         try :
-            NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = res_90.crop.IdCrop, IdMarket = res_90.market.IdMarket, IdQty = res_90.qty.IdQty, IdOrderStatus = '1', Price = res_90.Price)
+            NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = '', PhoneNumber = phone_number, Address = '', IdCrop = FarmulaPrice90.crop.IdCrop, IdMarket = FarmulaPrice90.market.IdMarket, IdQty = FarmulaPrice90.qty.IdQty, IdOrderStatus = '1', Price = FarmulaPrice90.Price)
             db.session.add(NewOrder)
             db.session.commit()
-            respsone = "END Thanks for using Farmula services to order " + res_90.crop.Name + " "+ res_90.qty.Qty + "@" + str(res_90.Price) + "Ksh" + "\n"
+            respsone = "END Thanks for using Farmula services to order " + FarmulaPrice90.crop.Name + " "+ FarmulaPrice90.qty.Qty + "@" + str(FarmulaPrice90.Price) + "Ksh" + "\n"
         except :
             respsone = "END Sorry an error occurred, please try again later "
 
