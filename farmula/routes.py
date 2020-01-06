@@ -142,8 +142,8 @@ def ussd_callback():
 
     
     if text == "":
-        if AllMarketPrice :
-            respsone = "END Welcome to Farmula , order for  \n Sorry today prices are not availabe yet"
+        if not AllMarketPrice :
+            respsone = "END Welcome to Farmula \n Sorry today prices are not availabe yet"
         else :
             respsone = "CON Welcome to Farmula , order for  \n"
             respsone = " Price are here "
