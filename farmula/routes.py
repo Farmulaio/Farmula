@@ -143,7 +143,7 @@ def ussd_callback():
     
     if text == "":
         respsone = "CON Welcome to Farmula , order for  \n"
-        if not AllMarketPrice :
+        if AllMarketPrice :
             respsone = "END Sorry today prices are not availabe yet"
         else :
             respsone = " Price are here "
@@ -222,7 +222,7 @@ def ussd_callback():
     #                 respsone = "END Sorry an error occurred, please try again later "
 
 
-    elif text == "7":
+    # elif text == "7":
         respsone = "CON "
         respsone += "1. 50Kg \n"
         respsone += "2. 90Kg \n"
