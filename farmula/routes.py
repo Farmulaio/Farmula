@@ -122,32 +122,32 @@ def ussd_callback():
     if FarmulaPrice10 :
         res_10 = " "+ FarmulaPrice10.qty.Qty + "(" + str(FarmulaPrice10.Price) + "Ksh)" + "\n"
     else :
-       res_10 = "Sorry 10kg price is unavilable \n" 
+       res_10 = "Sorry price is unavilable \n" 
 
     if FarmulaPrice10P :
         res_10P = " "+ FarmulaPrice10P.qty.Qty + "(" + str(FarmulaPrice10P.Price) + "Ksh)" + "\n"
     else :
-       res_10P = "Sorry 10kg peeled price is unavilable \n" 
+       res_10P = "Sorry price is unavilable \n" 
 
     if FarmulaPrice20 :
         res_20 = " "+ FarmulaPrice20.qty.Qty + "(" + str(FarmulaPrice20.Price) + "Ksh)" + "\n"
     else :
-       res_20 = "Sorry 20kg price is unavilable \n" 
+       res_20 = "Sorry price is unavilablev \n" 
 
     if FarmulaPrice20P :
          res_20P = " "+ FarmulaPrice20P.qty.Qty + "(" + str(FarmulaPrice20P.Price) + "Ksh)" + "\n"
     else :
-       res_20P = "Sorry 20kg peeled price is unavilable \n" 
+       res_20P = "Sorry price is unavilable \n" 
 
     if FarmulaPrice50 :
         res_50 = " "+ FarmulaPrice50.qty.Qty + "(" + str(FarmulaPrice50.Price) + "Ksh)" + "\n"
     else :
-       res_50 = "Sorry 50kg price is unavilable \n" 
+       res_50 = "Sorry price is unavilable \n" 
 
     if FarmulaPrice90 :
         res_90 = " "+ FarmulaPrice90.qty.Qty + "(" + str(FarmulaPrice90.Price) + "Ksh)" + "\n"
     else :
-       res_90 = "Sorry 90kg price is unavilable \n" 
+       res_90 = "Sorry price is unavilable \n" 
     
     if text == "":
         if not AllMarketPrice :
