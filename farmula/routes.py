@@ -3,7 +3,7 @@ from farmula.forms import PredicitForm , OrderForm
 from flask import redirect, url_for, render_template, request
 import urllib3, json, requests, calendar, random, string
 from datetime import datetime
-from farmula.models import Crop, Quantity, Market, Price, Orders, Prediction, Pricechecksession, Farmer
+from farmula.models import Crop, Quantity, Market, Price, Orders, Prediction, Pricechecksession, Farmer, Sales
 from farmula import config
 
 response = ""
@@ -73,6 +73,10 @@ def add_order():
             try :
                 NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = request.form['BusinesName'], PhoneNumber = request.form['PhoneNumber'], Address = request.form['Address'], IdCrop = request.form['Crop'], IdMarket = request.form['Market'],  IdQty = request.form['Qty'], IdOrderStatus = 1, Price = 20192.0)
                 db.session.add(NewOrder)
+                db.session.commit()
+
+                NewSales = Sales(IdOrder = NewOrder.IdOrder, Price = NewOrder.Price, Paid = 0.0)
+                db.session.add(NewSales)
                 db.session.commit()
             except :
                 return redirect(url_for('index'))

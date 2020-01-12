@@ -180,3 +180,15 @@ class Prediction(db.Model):
 
     def __repr__(self) :
         return f"Prediction('{self.IdPred}','{self.IdCrop},'{self.PredictionDate},'{self.AvgPrice}','{self.PrePrice}','{self.CreatedAt}')"
+
+class Sales(db.Model):
+    IdSale = db.Column(db.Integer, primary_key=True)
+    IdOrder = db.Column(db.Integer, db.ForeignKey('orders.IdOrder'))
+    Price  = db.Column(db.String(250), nullable=True)
+    Paid  = db.Column(db.String(250),  nullable=True)
+    CreatedAt = db.Column(db.DateTime, nullable=False) 
+    order = db.relationship("Orders", backref="Sales") 
+
+
+    def __repr__(self) :
+        return f"Sales('{self.IdSale}','{self.IdOrder},'{self.Price}','{self.Paid}','{self.CreatedAt}')"
