@@ -43,26 +43,7 @@ class Role(db.Model):
     def __repr__(self) :
         return f"Role('{self.IdRole}','{self.Role},'{self.CreatedAt}')"
 
-class Users(db.Model):
-    IdUser = db.Column(db.Integer, primary_key=True)
-    IdRole = db.Column(db.Integer, db.ForeignKey('role.IdRole'))
-    FirstName = db.Column(db.String(250), nullable=True)
-    LastName = db.Column(db.String(250), nullable=True)
-    Email = db.Column(db.String(250), nullable=True)
-    PhoneNumber = db.Column(db.String(250), nullable=True)
-    Address = db.Column(db.String(250), nullable=True)
-    Pasword = db.Column(db.String(250), nullable=True)
-    CreatedAt = db.Column(db.DateTime, nullable=False) 
-    Enabled = db.Column(db.Integer, db.ForeignKey('situation.IdSituation'))
-    role = db.relationship('Role',  backref="Users")
-    situation = db.relationship('Situation', backref='Users')
 
-
-    def __repr__(self) :
-        return f"Users('{self.IdUser}','{self.IdRole},'{self.FirstName}','{self.LastName}','{self.Email}','{self.PhoneNumber}','{self.Address}','{self.Pasword}','{self.CreatedAt}','{self.Enabled}')"        
-
-    def get_id(self):
-        return (self.IdUser)
 
 class Farmer(db.Model):
     Idfarmer = db.Column(db.Integer, primary_key=True)
@@ -98,6 +79,7 @@ class Price(db.Model):
     IdCrop = db.Column(db.Integer, db.ForeignKey('crop.IdCrop'))
     IdMarket = db.Column(db.Integer, db.ForeignKey('market.IdMarket'))
     IdQty = db.Column(db.Integer, db.ForeignKey('quantity.IdQty'))
+    IdCondition = db.Column(db.Integer, db.ForeignKey('conditions.IdCondition'))
     IdUser  = db.Column(db.Integer, db.ForeignKey('users.IdUser'))
     Price  = db.Column(db.String(250), nullable=True)
     CreatedAt = db.Column(db.DateTime, nullable=False)
@@ -107,8 +89,9 @@ class Price(db.Model):
     user = db.relationship("Users", backref="Price")
     co = db.relationship("Conditions", backref="Price")
 
+
     def __repr__(self) :
-        return f"Price('{self.IdPrice}',{self.IdCrop}','{self.IdMarket}','{self.IdQty}','{self.IdUser}','{self.Price}','{self.CreatedAt}')"        
+        return f"Price('{self.IdPrice}',{self.IdCrop}','{self.IdMarket}','{self.IdQty}','{self.IdCondition}','{self.IdUser}','{self.Price}','{self.CreatedAt}')"        
 
 class Pricechecksession(db.Model):
     IdSession = db.Column(db.Integer, primary_key=True)
@@ -138,6 +121,15 @@ class Situation(db.Model):
     def __repr__(self) :
         return f"Situation('{self.IdSituation}','{self.Situation}','{self.CreatedAt}')"
 
+
+class Conditions(db.Model):
+    IdCondition = db.Column(db.Integer, primary_key=True)
+    ConditionName = db.Column(db.String(250), nullable=False)
+    CreatedAt  = db.Column(db.DateTime, nullable=False) 
+
+    def __repr__(self) :
+        return f"Conditions('{self.IdCondition}','{self.ConditionName}','{self.CreatedAt}')"
+
 class Orders(db.Model):
     IdOrder = db.Column(db.Integer, primary_key=True)
     OrderNumber = db.Column(db.String(250), nullable=True)
@@ -162,7 +154,6 @@ class Orders(db.Model):
     def __repr__(self) :
         return f"Orders('{self.IdOrder}',{self.OrderNumber}','{self.BusinesName}','{self.PhoneNumber}','{self.Address}','{self.IdCrop}','{self.IdMarket}','{self.IdQty}','{self.IdOrderStatus}','{self.IdCondition}','{self.Price}','{self.CreatedAt}')"        
 
-
 class OrderStatus(db.Model):
     IdOrderStatus = db.Column(db.Integer, primary_key=True)
     OrderStatus  = db.Column(db.String(250), nullable=False)
@@ -185,6 +176,23 @@ class Prediction(db.Model):
     def __repr__(self) :
         return f"Prediction('{self.IdPred}','{self.IdCrop},'{self.PredictionDate},'{self.AvgPrice}','{self.PrePrice}','{self.CreatedAt}')"
 
+
+class Feedback(db.Model):
+    IdFeed = db.Column(db.Integer, primary_key=True)
+    IdBusines = db.Column(db.Integer, db.ForeignKey('business.IdBusines'))
+    Feedback   = db.Column(db.String(250), nullable=False)
+    IdUser  = db.Column(db.Integer, db.ForeignKey('users.IdUser'))
+    CreatedAt = db.Column(db.DateTime, nullable=False) 
+    business = db.relationship("Business", backref="Feedback")
+    user = db.relationship("Users", backref="Feedback")
+
+
+
+    def __repr__(self) :
+        return f"Feedback('{self.IdFeed}','{self.IdBusines},'{self.Feedback},'{self.IdUser}','{self.CreatedAt}')"
+
+
+
 class Sales(db.Model):
     IdSale = db.Column(db.Integer, primary_key=True)
     IdOrder = db.Column(db.Integer, db.ForeignKey('orders.IdOrder'))
@@ -196,11 +204,3 @@ class Sales(db.Model):
 
     def __repr__(self) :
         return f"Sales('{self.IdSale}','{self.IdOrder},'{self.Price}','{self.Paid}','{self.CreatedAt}')"
-
-class Conditions(db.Model):
-    IdCondition = db.Column(db.Integer, primary_key=True)
-    ConditionName = db.Column(db.String(250), nullable=False)
-    CreatedAt  = db.Column(db.DateTime, nullable=False) 
-
-    def __repr__(self) :
-        return f"Conditions('{self.IdCondition}','{self.ConditionName}','{self.CreatedAt}')"

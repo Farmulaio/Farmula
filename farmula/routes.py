@@ -3,7 +3,7 @@ from farmula.forms import PredicitForm , OrderForm
 from flask import redirect, url_for, render_template, request
 import urllib3, json, requests, calendar, random, string
 from datetime import datetime
-from farmula.models import Crop, Quantity, Market, Price, Orders, Prediction, Pricechecksession, Farmer, Sales
+from farmula.models import Crop, Quantity, Market, Price, Orders, Prediction, Pricechecksession, Farmer, Sales, Conditions
 from farmula import config
 
 # response = ""
@@ -23,7 +23,7 @@ def price():
     try:
         PredictionItems = db.session.query(Prediction).all()
         PriceItems = db.session.query(Price).filter_by(CreatedAt = datetime.date(datetime.now())).all()
-
+    
     except:
         print(" Cant connect to database ")
 

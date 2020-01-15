@@ -9,7 +9,7 @@
     <div class="container">
         <section class="customer-logos slider">
                 {% for item in PriceItems %}
-            <div class="slide"><p> {{ item.qty.Qty  }} {{ item.co.ConditionName }} {{ item.crop.Name }} at {{ item.market.Name }} = Sh{{ item.Price }} </p></div>
+            <div class="slide"><p> {{ item.qty.Qty  }} {{ item.crop.Name }} at {{ item.market.Name }} = Sh{{ item.Price }} </p></div>
             {% endfor %}
        </section>
     </div>
