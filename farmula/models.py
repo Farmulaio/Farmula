@@ -105,6 +105,7 @@ class Price(db.Model):
     market = db.relationship("Market", backref="Price")
     qty = db.relationship("Quantity", backref="Price")
     user = db.relationship("Users", backref="Price")
+    co = db.relationship("Conditions", backref="Price")
 
     def __repr__(self) :
         return f"Price('{self.IdPrice}',{self.IdCrop}','{self.IdMarket}','{self.IdQty}','{self.IdUser}','{self.Price}','{self.CreatedAt}')"        
@@ -147,6 +148,7 @@ class Orders(db.Model):
     IdMarket = db.Column(db.Integer, db.ForeignKey('market.IdMarket'))
     IdQty = db.Column(db.Integer, db.ForeignKey('quantity.IdQty'))
     IdOrderStatus  = db.Column(db.Integer, db.ForeignKey('order_status.IdOrderStatus'))
+    IdCondition  = db.Column(db.Integer, db.ForeignKey('conditions.IdCondition'))
     Price  = db.Column(db.String(250), nullable=True)
     CreatedAt = db.Column(db.DateTime, nullable=False)
     crop = db.relationship("Crop", backref="Orders") 
@@ -154,10 +156,12 @@ class Orders(db.Model):
     qty = db.relationship("Quantity", backref="Orders")
     orderstatus = db.relationship("OrderStatus", backref="Orders")
     business = db.relationship("Business", backref="Orders") 
+    co = db.relationship("Conditions", backref="Orders")
 
 
     def __repr__(self) :
-        return f"Orders('{self.IdOrder}',{self.OrderNumber}','{self.BusinesName}','{self.PhoneNumber}','{self.Address}','{self.IdCrop}','{self.IdMarket}','{self.IdQty}'),'{self.IdOrderStatus}'),'{self.Price}','{self.CreatedAt}')"        
+        return f"Orders('{self.IdOrder}',{self.OrderNumber}','{self.BusinesName}','{self.PhoneNumber}','{self.Address}','{self.IdCrop}','{self.IdMarket}','{self.IdQty}','{self.IdOrderStatus}','{self.IdCondition}','{self.Price}','{self.CreatedAt}')"        
+
 
 class OrderStatus(db.Model):
     IdOrderStatus = db.Column(db.Integer, primary_key=True)
@@ -192,3 +196,11 @@ class Sales(db.Model):
 
     def __repr__(self) :
         return f"Sales('{self.IdSale}','{self.IdOrder},'{self.Price}','{self.Paid}','{self.CreatedAt}')"
+
+class Conditions(db.Model):
+    IdCondition = db.Column(db.Integer, primary_key=True)
+    ConditionName = db.Column(db.String(250), nullable=False)
+    CreatedAt  = db.Column(db.DateTime, nullable=False) 
+
+    def __repr__(self) :
+        return f"Conditions('{self.IdCondition}','{self.ConditionName}','{self.CreatedAt}')"
