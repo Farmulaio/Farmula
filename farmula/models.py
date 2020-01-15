@@ -35,14 +35,6 @@ class Quantity(db.Model):
     def __repr__(self) :
         return f"Quantity('{self.IdQty}','{self.Qty},'{self.Enabled}','{self.CreatedAt}')"
 
-class Role(db.Model):
-    IdRole = db.Column(db.Integer, primary_key=True)
-    Role = db.Column(db.String(250), nullable=False)
-    CreatedAt = db.Column(db.DateTime, nullable=False) 
-
-    def __repr__(self) :
-        return f"Role('{self.IdRole}','{self.Role},'{self.CreatedAt}')"
-
 
 
 class Farmer(db.Model):
@@ -58,6 +50,14 @@ class Farmer(db.Model):
 
     def __repr__(self) :
         return f"Farmer('{self.Idfarmer}',{self.FirstName}','{self.LastName}','{self.PhoneNumber}','{self.Address}','{self.IdCrop}','{self.Harvestime}','{self.CreatedAt}')"        
+
+class Conditions(db.Model):
+    IdCondition = db.Column(db.Integer, primary_key=True)
+    ConditionName = db.Column(db.String(250), nullable=False)
+    CreatedAt  = db.Column(db.DateTime, nullable=False) 
+
+    def __repr__(self) :
+        return f"Conditions('{self.IdCondition}','{self.ConditionName}','{self.CreatedAt}')"
 
 
 
@@ -86,9 +86,7 @@ class Price(db.Model):
     crop = db.relationship("Crop", backref="Price") 
     market = db.relationship("Market", backref="Price")
     qty = db.relationship("Quantity", backref="Price")
-    user = db.relationship("Users", backref="Price")
     co = db.relationship("Conditions", backref="Price")
-
 
     def __repr__(self) :
         return f"Price('{self.IdPrice}',{self.IdCrop}','{self.IdMarket}','{self.IdQty}','{self.IdCondition}','{self.IdUser}','{self.Price}','{self.CreatedAt}')"        
@@ -122,14 +120,6 @@ class Situation(db.Model):
         return f"Situation('{self.IdSituation}','{self.Situation}','{self.CreatedAt}')"
 
 
-class Conditions(db.Model):
-    IdCondition = db.Column(db.Integer, primary_key=True)
-    ConditionName = db.Column(db.String(250), nullable=False)
-    CreatedAt  = db.Column(db.DateTime, nullable=False) 
-
-    def __repr__(self) :
-        return f"Conditions('{self.IdCondition}','{self.ConditionName}','{self.CreatedAt}')"
-
 class Orders(db.Model):
     IdOrder = db.Column(db.Integer, primary_key=True)
     OrderNumber = db.Column(db.String(250), nullable=True)
@@ -149,7 +139,6 @@ class Orders(db.Model):
     orderstatus = db.relationship("OrderStatus", backref="Orders")
     business = db.relationship("Business", backref="Orders") 
     co = db.relationship("Conditions", backref="Orders")
-
 
     def __repr__(self) :
         return f"Orders('{self.IdOrder}',{self.OrderNumber}','{self.BusinesName}','{self.PhoneNumber}','{self.Address}','{self.IdCrop}','{self.IdMarket}','{self.IdQty}','{self.IdOrderStatus}','{self.IdCondition}','{self.Price}','{self.CreatedAt}')"        
@@ -175,22 +164,6 @@ class Prediction(db.Model):
 
     def __repr__(self) :
         return f"Prediction('{self.IdPred}','{self.IdCrop},'{self.PredictionDate},'{self.AvgPrice}','{self.PrePrice}','{self.CreatedAt}')"
-
-
-class Feedback(db.Model):
-    IdFeed = db.Column(db.Integer, primary_key=True)
-    IdBusines = db.Column(db.Integer, db.ForeignKey('business.IdBusines'))
-    Feedback   = db.Column(db.String(250), nullable=False)
-    IdUser  = db.Column(db.Integer, db.ForeignKey('users.IdUser'))
-    CreatedAt = db.Column(db.DateTime, nullable=False) 
-    business = db.relationship("Business", backref="Feedback")
-    user = db.relationship("Users", backref="Feedback")
-
-
-
-    def __repr__(self) :
-        return f"Feedback('{self.IdFeed}','{self.IdBusines},'{self.Feedback},'{self.IdUser}','{self.CreatedAt}')"
-
 
 
 class Sales(db.Model):
