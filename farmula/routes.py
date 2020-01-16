@@ -8,8 +8,8 @@ from farmula import config
 
 # response = ""
 
-# def random_string_generator(size=5,  chars=string.ascii_uppercase + string.digits):
-#     return ''.join(random.choice(chars) for _ in range(size))
+def random_string_generator(size=5,  chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
 
 # index route 
 @app.route('/', methods=['GET','POST'])
@@ -64,14 +64,15 @@ def order():
     CropItems = db.session.query(Crop).filter_by(Enabled = 1).all()
     QuantityItems = db.session.query(Quantity).filter_by(Enabled = 1).all()
     MarketItems = db.session.query(Market).filter_by(Enabled = 1).all()
-    return render_template('order.html' , CropItems = CropItems, QuantityItems = QuantityItems, MarketItems = MarketItems)
+    ConditionsItems = db.session.query(Conditions).all()
+    return render_template('order.html' , CropItems = CropItems, QuantityItems = QuantityItems, MarketItems = MarketItems, ConditionsItems = ConditionsItems)
 
 
 @app.route('/order/new', methods=['POST', 'GET'])
 def add_order():
         if request.method == 'POST':
             try :
-                NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = request.form['BusinesName'], PhoneNumber = request.form['PhoneNumber'], Address = request.form['Address'], IdCrop = request.form['Crop'], IdMarket = request.form['Market'],  IdQty = request.form['Qty'], IdOrderStatus = 1, Price = 20192.0)
+                NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = request.form['BusinesName'], PhoneNumber = request.form['PhoneNumber'], Address = request.form['Address'], IdCrop = request.form['Crop'], IdMarket = request.form['Market'],  IdQty = request.form['Qty'], IdCondition = request.form['Condition'], IdOrderStatus = 1, Price = 20192.0)
                 db.session.add(NewOrder)
                 db.session.commit()
 
