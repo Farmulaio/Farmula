@@ -59,6 +59,16 @@
                     </div>
                     <div class="form-row">
                       <div class="form-group col-12">
+                        <label for="exampleFormControlSelect1">Choose Condition :</label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="Condition">
+                          {% for item in ConditionsItems %}
+                          <option value="{{ item.IdCondition }}">{{ item.ConditionName }}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-12">
                         <label for="inputEmail4">Business name :</label>
                         <input type="text" class="form-control" id="inputEmail4" placeholder="Business Name"
                           name="BusinesName">
