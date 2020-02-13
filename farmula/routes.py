@@ -69,14 +69,15 @@ def order():
 @app.route('/order/new', methods=['POST', 'GET'])
 def add_order():
         if request.method == 'POST':
-            try :
-                NewOrder = Orders(OrderNumber = "O"+random_string_generator(), IdBusines =  '', BusinesName = request.form['BusinesName'], PhoneNumber = request.form['PhoneNumber'], Address = request.form['Address'], IdCrop = request.form['Crop'],  IdQty = request.form['Qty'], Ordertime = datetime.date(datetime.now()) , IdOrderStatus = 1, Price = 20192.0)
-                db.session.add(NewOrder)
-                db.session.commit()
+            NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = request.form['BusinesName'], PhoneNumber = request.form['PhoneNumber'], Address = request.form['Address'] , IdBusines = , IdCrop = request.form['Crop'], IdQty = request.form['Qty'], IdOrderStatus = 1, Price = r20192.0, Ordertime = str(datetime.date(datetime.now())))
+        try :
+            db.session.add(NewOrder)
+            db.session.commit()
+    
+            NewSales = Sales(IdOrder = NewOrder.IdOrder, Price = NewOrder.Price, Paid = 0.0, IdBusines =  NewOrder.IdBusines )
+            db.session.add(NewSales)
+            db.session.commit()
 
-                NewSales = Sales(IdOrder = NewOrder.IdOrder, Price = NewOrder.Price, Paid = 0.0, IdBusines =  '')
-                db.session.add(NewSales)
-                db.session.commit()
             except :
                 return redirect(url_for('index'))
 
