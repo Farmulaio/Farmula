@@ -70,13 +70,13 @@ def order():
 def add_order():
         if request.method == 'POST':
             NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = request.form['BusinesName'], PhoneNumber = request.form['PhoneNumber'], Address = request.form['Address'] , IdBusines = 0, IdCrop = request.form['Crop'], IdQty = request.form['Qty'], IdOrderStatus = 1, Price = 20192.0 , Ordertime = str(datetime.date(datetime.now())))
-        try :
-            db.session.add(NewOrder)
-            db.session.commit()
+            try :
+                db.session.add(NewOrder)
+                db.session.commit()
     
-            NewSales = Sales(IdOrder = NewOrder.IdOrder, Price = NewOrder.Price, Paid = 0.0, IdBusines =  NewOrder.IdBusines )
-            db.session.add(NewSales)
-            db.session.commit()
+                NewSales = Sales(IdOrder = NewOrder.IdOrder, Price = NewOrder.Price, Paid = 0.0, IdBusines =  NewOrder.IdBusines )
+                db.session.add(NewSales)
+                db.session.commit()
 
             except :
                 return redirect(url_for('index'))
