@@ -69,7 +69,7 @@ def order():
 @app.route('/order/new', methods=['POST', 'GET'])
 def add_order():
         if request.method == 'POST':
-            NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = request.form['BusinesName'], PhoneNumber = request.form['PhoneNumber'], Address = request.form['Address'] , IdBusines = , IdCrop = request.form['Crop'], IdQty = request.form['Qty'], IdOrderStatus = 1, Price = r20192.0, Ordertime = str(datetime.date(datetime.now())))
+            NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = request.form['BusinesName'], PhoneNumber = request.form['PhoneNumber'], Address = request.form['Address'] , IdBusines = 0, IdCrop = request.form['Crop'], IdQty = request.form['Qty'], IdOrderStatus = 1, Price = r20192.0, Ordertime = str(datetime.date(datetime.now())))
         try :
             db.session.add(NewOrder)
             db.session.commit()
