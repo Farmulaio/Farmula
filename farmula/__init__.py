@@ -5,8 +5,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'farmula'
 socket_location = "/var/run/mysqld/mysqld.sock"
 # app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:mysql@localhost/farmula"
-# app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:ahmed@12345@159.203.0.249/farmula"
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:ahmed@12345@localhost/farmula"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:ahmed@12345@159.203.0.249/farmula"
+# app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:ahmed@12345@localhost/farmula"
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
