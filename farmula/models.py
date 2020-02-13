@@ -126,6 +126,7 @@ class Orders(db.Model):
     BusinesName = db.Column(db.String(250), nullable=True)
     PhoneNumber = db.Column(db.String(250), db.ForeignKey('business.PhoneNumber'))
     Address = db.Column(db.String(250),  nullable=True)
+    IdBusines = db.Column(db.Integer, db.ForeignKey('business.IdBusines'))
     IdCrop = db.Column(db.Integer, db.ForeignKey('crop.IdCrop'))
     IdQty = db.Column(db.Integer, db.ForeignKey('quantity.IdQty'))
     IdOrderStatus  = db.Column(db.Integer, db.ForeignKey('order_status.IdOrderStatus'))

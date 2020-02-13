@@ -70,7 +70,7 @@ def order():
 def add_order():
         if request.method == 'POST':
             try :
-                NewOrder = Orders(OrderNumber = "O"+random_string_generator(), BusinesName = request.form['BusinesName'], PhoneNumber = request.form['PhoneNumber'], Address = request.form['Address'], IdCrop = request.form['Crop'],  IdQty = request.form['Qty'], Ordertime = datetime.date(datetime.now()) , IdOrderStatus = 1, Price = 20192.0)
+                NewOrder = Orders(OrderNumber = "O"+random_string_generator(), IdBusines =  '', BusinesName = request.form['BusinesName'], PhoneNumber = request.form['PhoneNumber'], Address = request.form['Address'], IdCrop = request.form['Crop'],  IdQty = request.form['Qty'], Ordertime = datetime.date(datetime.now()) , IdOrderStatus = 1, Price = 20192.0)
                 db.session.add(NewOrder)
                 db.session.commit()
 
