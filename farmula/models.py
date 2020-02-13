@@ -139,7 +139,7 @@ class Orders(db.Model):
     business = db.relationship("Business", backref="Orders") 
 
     def __repr__(self) :
-        return f"Orders('{self.IdOrder}',{self.OrderNumber}','{self.BusinesName}','{self.PhoneNumber}','{self.Address}','{self.IdCrop}','{self.IdQty}','{self.IdOrderStatus}','{self.Price}','{self.Ordertime}','{self.CreatedAt}')"        
+        return f"Orders('{self.IdOrder}','{self.OrderNumber}','{self.BusinesName}','{self.PhoneNumber}','{self.IdBusines}','{self.Address}','{self.IdCrop}','{self.IdQty}','{self.IdOrderStatus}','{self.Price}','{self.Ordertime}','{self.CreatedAt}')"        
 
 class OrderStatus(db.Model):
     IdOrderStatus = db.Column(db.Integer, primary_key=True)
