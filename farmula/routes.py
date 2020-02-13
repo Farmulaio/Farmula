@@ -63,9 +63,7 @@ def price():
 def order():   
     CropItems = db.session.query(Crop).filter_by(Enabled = 1).all()
     QuantityItems = db.session.query(Quantity).filter_by(Enabled = 1).all()
-    MarketItems = db.session.query(Market).filter_by(Enabled = 1).all()
-    ConditionsItems = db.session.query(Conditions).all()
-    return render_template('order.html' , CropItems = CropItems, QuantityItems = QuantityItems, MarketItems = MarketItems, ConditionsItems = ConditionsItems)
+    return render_template('order.html' , CropItems = CropItems, QuantityItems = QuantityItems)
 
 
 @app.route('/order/new', methods=['POST', 'GET'])
@@ -76,7 +74,7 @@ def add_order():
                 db.session.add(NewOrder)
                 db.session.commit()
 
-                NewSales = Sales(IdOrder = NewOrder.IdOrder, Price = NewOrder.Price, Paid = 0.0)
+                NewSales = Sales(IdOrder = NewOrder.IdOrder, Price = NewOrder.Price, Paid = 0.0, IdBusines =  '')
                 db.session.add(NewSales)
                 db.session.commit()
             except :
