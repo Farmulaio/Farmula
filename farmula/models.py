@@ -124,7 +124,7 @@ class Orders(db.Model):
     IdOrder = db.Column(db.Integer, primary_key=True)
     OrderNumber = db.Column(db.String(250), nullable=True)
     BusinesName = db.Column(db.String(250), nullable=True)
-    PhoneNumber = db.Column(db.String(250), db.ForeignKey('business.PhoneNumber'))
+    PhoneNumber = db.Column(db.String(250), nullable=True)
     Address = db.Column(db.String(250),  nullable=True)
     IdBusines = db.Column(db.Integer, db.ForeignKey('business.IdBusines'))
     IdCrop = db.Column(db.Integer, db.ForeignKey('crop.IdCrop'))
