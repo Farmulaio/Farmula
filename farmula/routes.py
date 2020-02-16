@@ -22,7 +22,7 @@ def index():
 def price():
     try:
         PredictionItems = db.session.query(Prediction).all()
-        PriceItems = db.session.query(Price).filter_by(CreatedAt = datetime.date(datetime.now())).all()
+        # PriceItems = db.session.query(Price).all()
     
     except:
         print(" Cant connect to database ")
@@ -50,11 +50,11 @@ def price():
             pre_prams = str(response['values'][0][4])
             price_round = ("%.2f" % round(response['values'][0][5],2))
             price = str("Predict Price :  "+ price_round + " KSH (50KG)")
-            return render_template('price.html', form=form, month_i=month_i, day=day, year=year, price=price, crop_txt_temp=crop_txt_temp, PredictionItems = PredictionItems, PriceItems = PriceItems)
+            return render_template('price.html', form=form, month_i=month_i, day=day, year=year, price=price, crop_txt_temp=crop_txt_temp, PredictionItems = PredictionItems)
         except KeyError :
             print('Cant get response ')
-        return render_template('price.html', form = form, PredictionItems = PredictionItems, PriceItems = PriceItems)
-    return render_template('price.html', form = form, PredictionItems = PredictionItems, PriceItems = PriceItems)
+        # return render_template('price.html', form = form, PredictionItems = PredictionItems, PriceItems = PriceItems)
+    return render_template('price.html', form = form, PredictionItems = PredictionItems)
 
 
 
