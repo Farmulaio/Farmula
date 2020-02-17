@@ -131,6 +131,7 @@ class Orders(db.Model):
     IdQty = db.Column(db.Integer, db.ForeignKey('quantity.IdQty'))
     IdOrderStatus  = db.Column(db.Integer, db.ForeignKey('order_status.IdOrderStatus'))
     Price  = db.Column(db.String(250), nullable=True)
+    Logistic  = db.Column(db.String(250), nullable=True)
     Ordertime = db.Column(db.String(250), nullable=True)
     CreatedAt = db.Column(db.DateTime, nullable=False)
     crop = db.relationship("Crop", backref="Orders") 
