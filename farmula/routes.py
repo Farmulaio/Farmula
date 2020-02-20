@@ -20,13 +20,9 @@ def index():
 # getting daily price and predicted prices
 @app.route('/price', methods=['GET','POST'])
 def price():
-    try:
-        PredictionItems = db.session.query(Prediction).all()
-        # PriceItems = db.session.query(Price).all()
-    
-    except:
-        print(" Cant connect to database ")
-
+    PredictionItems = db.session.query(Prediction).all()
+    PriceItems = db.session.query(Price).join(Market).filter(Market.Name=='Farmula').order_by(Price.IdPrice.desc()).limit(4)
+    print(PriceItems)
     form = PredicitForm(request.form)
     if request.method == 'POST' and form.validate():
      
@@ -50,11 +46,11 @@ def price():
             pre_prams = str(response['values'][0][4])
             price_round = ("%.2f" % round(response['values'][0][5],2))
             price = str("Predict Price :  "+ price_round + " KSH (50KG)")
-            return render_template('price.html', form=form, month_i=month_i, day=day, year=year, price=price, crop_txt_temp=crop_txt_temp, PredictionItems = PredictionItems)
-        except KeyError :
-            print('Cant get response ')
-        # return render_template('price.html', form = form, PredictionItems = PredictionItems, PriceItems = PriceItems)
-    return render_template('price.html', form = form, PredictionItems = PredictionItems)
+            return render_template('price.html', form=form, month_i=month_i, day=day, year=year, price=price, crop_txt_temp=crop_txt_temp, PredictionItems = PredictionItems, PriceItems = PriceItems)
+        except KeyError as error :
+            print('error getting response from IBM watson')
+        return render_template('price.html', form = form, PredictionItems = PredictionItems, PriceItems = PriceItems)
+    return render_template('price.html', form = form, PredictionItems = PredictionItems, PriceItems = PriceItems)
 
 
 

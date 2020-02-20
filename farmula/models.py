@@ -79,17 +79,15 @@ class Price(db.Model):
     IdCrop = db.Column(db.Integer, db.ForeignKey('crop.IdCrop'))
     IdMarket = db.Column(db.Integer, db.ForeignKey('market.IdMarket'))
     IdQty = db.Column(db.Integer, db.ForeignKey('quantity.IdQty'))
-    IdCondition = db.Column(db.Integer, db.ForeignKey('conditions.IdCondition'))
     IdUser  = db.Column(db.Integer, db.ForeignKey('users.IdUser'))
     Price  = db.Column(db.String(250), nullable=True)
     CreatedAt = db.Column(db.DateTime, nullable=False)
     crop = db.relationship("Crop", backref="Price") 
     market = db.relationship("Market", backref="Price")
     qty = db.relationship("Quantity", backref="Price")
-    co = db.relationship("Conditions", backref="Price")
 
     def __repr__(self) :
-        return f"Price('{self.IdPrice}',{self.IdCrop}','{self.IdMarket}','{self.IdQty}','{self.IdCondition}','{self.IdUser}','{self.Price}','{self.CreatedAt}')"        
+        return f"Price('{self.IdPrice}',{self.IdCrop}','{self.IdMarket}','{self.IdQty}','{self.IdUser}','{self.Price}','{self.CreatedAt}')"        
 
 class Pricechecksession(db.Model):
     IdSession = db.Column(db.Integer, primary_key=True)
@@ -131,6 +129,7 @@ class Orders(db.Model):
     IdQty = db.Column(db.Integer, db.ForeignKey('quantity.IdQty'))
     IdOrderStatus  = db.Column(db.Integer, db.ForeignKey('order_status.IdOrderStatus'))
     Price  = db.Column(db.String(250), nullable=True)
+    Amount  = db.Column(db.String(250), nullable=True)
     Logistic  = db.Column(db.String(250), nullable=True)
     Ordertime = db.Column(db.String(250), nullable=True)
     CreatedAt = db.Column(db.DateTime, nullable=False)
@@ -140,7 +139,7 @@ class Orders(db.Model):
     business = db.relationship("Business", backref="Orders") 
 
     def __repr__(self) :
-        return f"Orders('{self.IdOrder}',{self.OrderNumber}','{self.BusinesName}','{self.PhoneNumber}','{self.Address}','{self.IdBusines}','{self.IdCrop}','{self.IdQty}','{self.IdOrderStatus}','{self.Price}','{self.Ordertime}','{self.CreatedAt}')"        
+        return f"Orders('{self.IdOrder}',{self.OrderNumber}','{self.BusinesName}','{self.PhoneNumber}','{self.Address}','{self.IdBusines}','{self.IdCrop}','{self.IdQty}','{self.IdOrderStatus}','{self.Price}','{self.Amount}','{self.Ordertime}','{self.CreatedAt}')"        
 
 class OrderStatus(db.Model):
     IdOrderStatus = db.Column(db.Integer, primary_key=True)
