@@ -216,20 +216,20 @@ jQuery(document).ready(function($) {
 	};
 	siteStellar();
 
-	// var windowScroll = function() {
+	var windowScroll = function() {
 
- //    $(window).scroll(function(){
- //      var $win = $(window);
- //      if ($win.scrollTop() > 200) {
- //        $('.js-site-header').addClass('scrolled');
- //      } else {
- //        $('.js-site-header').removeClass('scrolled');
- //      }
+    $(window).scroll(function(){
+      var $win = $(window);
+      if ($win.scrollTop() > 200) {
+        $('.js-site-header').addClass('scrolled');
+      } else {
+        $('.js-site-header').removeClass('scrolled');
+      }
 
- //    });
+    });
 
- //  };
- //  windowScroll();
+  };
+  windowScroll();
 
 	var siteCountDown = function() {
 
