@@ -11,3 +11,4 @@ response  = requests.post( url, headers=headers, data=data, auth=( IBM_cloud_IAM
 iam_token = response.json()["access_token"]
 
 header = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + iam_token, 'ML-Instance-ID': "6a216236-adcc-48b5-901f-41e4cafbf033"}
+# header = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + iam_token, 'ML-Instance-ID': ml_instance_id}
