@@ -166,12 +166,18 @@ class Prediction(db.Model):
 
 class Sales(db.Model):
     IdSale = db.Column(db.Integer, primary_key=True)
-    IdOrder = db.Column(db.Integer, db.ForeignKey('orders.IdOrder'))
+    IdBusines = db.Column(db.Integer, db.ForeignKey('business.IdBusines'))
+    DocumentNumber = db.Column(db.String(250), nullable=True)
     Price  = db.Column(db.String(250), nullable=True)
-    Paid  = db.Column(db.String(250),  nullable=True)
+    PaidAmount  = db.Column(db.String(250),  nullable=True)
+    Amount  = db.Column(db.String(250), nullable=True)
+    PaymentDate  = db.Column(db.String(250), nullable=True)
+    PhoneNumber = db.Column(db.String(250), nullable=True)
     CreatedAt = db.Column(db.DateTime, nullable=False) 
-    order = db.relationship("Orders", backref="Sales") 
+    business = db.relationship("Business", backref="Sales") 
 
 
     def __repr__(self) :
-        return f"Sales('{self.IdSale}','{self.IdOrder},'{self.Price}','{self.Paid}','{self.CreatedAt}')"
+        return f"Sales('{self.IdSale}','{self.IdBusines}','{self.DocumentNumber}','{self.PhoneNumber}','{self.Price}','{self.PaidAmount}','{self.Amount}','{self.PaymentDate}','{self.CreatedAt}')"
+
+

@@ -73,8 +73,8 @@ def add_order():
                 db.session.add(NewOrder)
                 db.session.commit()
     
-                NewSales = Sales(IdOrder = NewOrder.IdOrder, Price = NewOrder.Price, Paid = 0.0, IdBusines =  NewOrder.IdBusines )
-                db.session.add(NewSales)
+                NewSale = Sales(DocumentNumber = NewOrder.OrderNumber, IdBusines = NewOrder.IdBusines, Price = NewOrder.Price, Amount = NewOrder.Amount, PhoneNumber = '' , PaidAmount = 0.0, PaymentDate = '')
+                db.session.add(NewSale)
                 db.session.commit()
 
             except :
