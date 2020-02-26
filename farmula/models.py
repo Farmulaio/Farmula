@@ -180,4 +180,3 @@ class Sales(db.Model):
     def __repr__(self) :
         return f"Sales('{self.IdSale}','{self.IdBusines}','{self.DocumentNumber}','{self.PhoneNumber}','{self.Price}','{self.PaidAmount}','{self.Amount}','{self.PaymentDate}','{self.CreatedAt}')"
 
-
