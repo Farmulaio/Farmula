@@ -3,7 +3,7 @@ from wtforms import Form, StringField, IntegerField, validators, SelectField, Da
 
 class PredicitForm(Form):
     crop = SelectField(u'Pick a Crop', choices=[('1', 'Red Irish Patoto'), ('2', 'White Irish Patoto')])
-    month = SelectField(u'Pick a Month', choices=[('1', 'January'), ('2', 'February'), ('3', 'March'), ('3', 'March'), ('4', 'April'), ('5', 'May'), ('6', 'June'), ('7', 'July'), ('8', 'August'), ('9', 'September'), ('10', 'October'), ('11', 'Novmber'), ('12', 'December')])
+    month = SelectField(u'Pick a Month', choices=[('1', 'January'), ('2', 'February'), ('3', 'March'), ('4', 'April'), ('5', 'May'), ('6', 'June'), ('7', 'July'), ('8', 'August'), ('9', 'September'), ('10', 'October'), ('11', 'Novmber'), ('12', 'December')])
     day = IntegerField(u'Enter a Day', [validators.NumberRange(min=1, max=31)])
     year = IntegerField(u'Enter a Year', [validators.NumberRange(min=1970, max=2050)])
 
