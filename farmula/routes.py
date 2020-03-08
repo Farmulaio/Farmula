@@ -1,10 +1,12 @@
 from farmula import app, db
 from farmula.forms import PredicitForm , OrderForm
-from flask import redirect, url_for, render_template, request
+from flask import redirect, url_for, render_template, request, make_response
 import urllib3, json, requests, calendar, random, string
 from datetime import datetime
 from farmula.models import Crop, Quantity, Market, Price, Orders, Prediction, Pricechecksession, Farmer, Sales, Conditions
 from farmula import config
+from datetime import timedelta
+
 
 response = ""
 
@@ -98,3 +100,23 @@ def farmer():
 
     return render_template('farmer.html', FarmerItems = FarmerItems, CropItems = CropItems)
 
+@app.route('/sitemap.xml', methods=['GET'])
+def sitemap():
+    try:
+      """Generate sitemap.xml. Makes a list of urls and date modified."""
+      pages=[]
+      ten_days_ago=(datetime.now() - timedelta(days=7)).date().isoformat()
+      # static pages
+      for rule in app.url_map.iter_rules():
+          if "GET" in rule.methods and len(rule.arguments)==0:
+              pages.append(
+                           ["https://farmula.io"+str(rule.rule),ten_days_ago]
+                           )
+
+      sitemap_xml = render_template('sitemap_template.xml', pages=pages)
+      response= make_response(sitemap_xml)
+      response.headers["Content-Type"] = "application/xml"    
+    
+      return response
+    except Exception as e:
+        return(str(e))	 
