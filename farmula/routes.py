@@ -100,6 +100,7 @@ def farmer():
 
     return render_template('farmer.html', FarmerItems = FarmerItems, CropItems = CropItems)
 
+@app.route('/robots.txt')
 @app.route('/sitemap.xml', methods=['GET'])
 def sitemap():
     try:
