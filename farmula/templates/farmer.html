@@ -25,16 +25,12 @@
             name="Address">
         </div>
         <div class="form-group">
-          <label for="exampleFormControlSelect1">Choose crop :</label>
-          <select class="form-control" id="exampleFormControlSelect1" name="Crop">
-            {% for crop in CropItems %}
-            <option value="{{ crop.IdCrop }}">{{ crop.Name}}</option>
-            {% endfor %}
-          </select>
+          <label for="exampleFormControlSelect1">Insert crop :</label>
+          <input type="text" class="form-control" id="inputCrop" placeholder="Insert Crop" name="Crop">
         </div>
         <div class="form-group">
           <label for="inputAddress2">Harvest time :</label>
-          <input type="date" class="form-control" id="inputAddress2" name="Harvestime">
+          <input type="text" class="form-control" id="inputAddress2" name="Harvestime" placeholder="How often do you harvest daily or weekly ....">
         </div>
         <button type="submit" class="btn save">Submit</button>
     </div>

@@ -90,7 +90,7 @@ def partener():
     FarmerItems = db.session.query(Farmer).all()
     CropItems = db.session.query(Crop).filter_by(Enabled = 1).all()
     if request.method == 'POST':
-        NewFarmer = Farmer(FirstName = request.form['FirstName'], LastName = request.form['LastName'], PhoneNumber = request.form['PhoneNumber'], Address = request.form['Address'], IdCrop = request.form['Crop'], Harvestime = request.form['Harvestime'])
+        NewFarmer = Farmer(FirstName = request.form['FirstName'], LastName = request.form['LastName'], PhoneNumber = request.form['PhoneNumber'], Address = request.form['Address'], Crop = request.form['Crop'], Harvestime = request.form['Harvestime'])
         try :
             db.session.add(NewFarmer)
             db.session.commit()
