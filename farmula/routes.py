@@ -85,8 +85,8 @@ def add_order():
         return redirect(url_for('index'))
 
 # farmer route 
-@app.route('/partener', methods=['GET','POST'])
-def partener():
+@app.route('/partner', methods=['GET','POST'])
+def partner():
     FarmerItems = db.session.query(Farmer).all()
     CropItems = db.session.query(Crop).filter_by(Enabled = 1).all()
     if request.method == 'POST':
