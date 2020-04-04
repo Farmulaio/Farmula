@@ -44,12 +44,12 @@ class Farmer(db.Model):
     PhoneNumber = db.Column(db.String(250), nullable=True)
     Address = db.Column(db.String(250), nullable=True)
     Crop = db.Column(db.String(250) , nullable=True)
-    Harvestime = db.Column(db.String(250), nullable=True)
+    Partner = db.Column(db.String(250), nullable=True)
     CreatedAt = db.Column(db.DateTime, nullable=False) 
     # crop = db.relationship('Crop',  backref="Farmer")
 
     def __repr__(self) :
-        return f"Farmer('{self.Idfarmer}',{self.FirstName}','{self.LastName}','{self.PhoneNumber}','{self.Address}','{self.Crop}','{self.Harvestime}','{self.CreatedAt}')"        
+        return f"Farmer('{self.Idfarmer}',{self.FirstName}','{self.LastName}','{self.PhoneNumber}','{self.Address}','{self.Crop}','{self.Partner}','{self.CreatedAt}')"        
 
 class Conditions(db.Model):
     IdCondition = db.Column(db.Integer, primary_key=True)
