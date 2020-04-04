@@ -29,7 +29,7 @@
           <select class="form-control" id="exampleFormControlSelect1" name="Partner" onchange="OnPartner(this)">
             <option value="Farmer">Farmer</option>
             <option value="Supplier">Supplier</option>
-            <option value="Transport">Transport</option>
+            <option value="Transporter">Transporter</option>
           </select>
         </div>
         <div class="form-group" id="crop">
@@ -779,7 +779,7 @@
     if (partner.value == "Supplier") {
         document.getElementById("crop").style.display = "block";
     } 
-    if (partner.value == "Transport") {
+    if (partner.value == "Transporter") {
         document.getElementById("crop").style.display = "none";
     } 
     if (partner.value == "Farmer") {
