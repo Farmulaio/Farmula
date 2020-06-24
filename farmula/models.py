@@ -180,3 +180,26 @@ class Sales(db.Model):
     def __repr__(self) :
         return f"Sales('{self.IdSale}','{self.IdBusines}','{self.DocumentNumber}','{self.PhoneNumber}','{self.Price}','{self.PaidAmount}','{self.Amount}','{self.PaymentDate}','{self.CreatedAt}')"
 
+    
+class Blog(db.Model):
+    IdBlog = db.Column(db.Integer, primary_key=True)
+    Content = db.Column(db.String(250), nullable=False)
+    IdType   = db.Column(db.Integer, db.ForeignKey('blog_type.IdType'))
+    IdUser  = db.Column(db.Integer, db.ForeignKey('users.IdUser'))
+    CreatedAt = db.Column(db.DateTime, nullable=False) 
+    user = db.relationship("Users", backref="Blog")
+    blogtype = db.relationship("BlogType", backref="Blog")
+
+
+
+    def __repr__(self) :
+        return f"Blog('{self.IdBlog}','{self.Content},'{self.IdType},'{self.IdUser}','{self.CreatedAt}')"
+
+
+class BlogType(db.Model):
+    IdType = db.Column(db.Integer, primary_key=True)
+    BlogType = db.Column(db.String(250), nullable=False)
+    CreatedAt  = db.Column(db.DateTime, nullable=False) 
+
+    def __repr__(self) :
+        return f"BlogType('{self.IdType}','{self.BlogType}','{self.CreatedAt}')"
