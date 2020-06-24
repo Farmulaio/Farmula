@@ -3,7 +3,7 @@ from farmula.forms import PredicitForm , OrderForm
 from flask import redirect, url_for, render_template, request, make_response
 import urllib3, json, requests, calendar, random, string
 from datetime import datetime
-from farmula.models import Crop, Quantity, Market, Price, Orders, Prediction, Pricechecksession, Farmer, Sales, Conditions
+from farmula.models import Crop, Quantity, Market, Price, Orders, Prediction, Pricechecksession, Farmer, Sales, Conditions, Blog, BlogType
 from farmula import config
 from datetime import timedelta
 
@@ -16,7 +16,9 @@ def random_string_generator(size=5,  chars=string.ascii_uppercase + string.digit
 # index route 
 @app.route('/', methods=['GET','POST'])
 def index():
-    return render_template('index.html')
+    BlogTypeItems = db.session.query(BlogType).all()
+    BlogItems = db.session.query(Blog).all()   
+    return render_template('index.html', BlogItems = BlogItems)
 
 
 # getting daily price and predicted prices

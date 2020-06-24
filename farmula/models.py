@@ -1,4 +1,5 @@
 from farmula import app, db
+from flask_login import UserMixin
 
 class Crop(db.Model):
     IdCrop = db.Column(db.Integer, primary_key=True)
@@ -203,3 +204,50 @@ class BlogType(db.Model):
 
     def __repr__(self) :
         return f"BlogType('{self.IdType}','{self.BlogType}','{self.CreatedAt}')"
+
+class Users(db.Model, UserMixin):
+    IdUser = db.Column(db.Integer, primary_key=True)
+    IdRole = db.Column(db.Integer, db.ForeignKey('role.IdRole'))
+    FirstName = db.Column(db.String(250), nullable=True)
+    LastName = db.Column(db.String(250), nullable=True)
+    Email = db.Column(db.String(250), nullable=True)
+    PhoneNumber = db.Column(db.String(250), nullable=True)
+    Address = db.Column(db.String(250), nullable=True)
+    Pasword = db.Column(db.String(250), nullable=True)
+    CreatedAt = db.Column(db.DateTime, nullable=False) 
+    Enabled = db.Column(db.Integer, db.ForeignKey('situation.IdSituation'))
+    role = db.relationship('Role',  backref="Users")
+    situation = db.relationship('Situation', backref='Users')
+
+    def get_reset_token(self, expires_sec=1800):
+        s = Serializer(app.config['SECRET_KEY'], expires_sec)
+        return s.dumps({'user_id': self.IdUser}).decode('utf-8')
+
+    @staticmethod
+    def verify_reset_token(token):
+        s = Serializer(app.config['SECRET_KEY'])
+        try:
+            user_id = s.loads(token)['user_id']
+        except TypeError :
+            print('Type error in verify reset token') 
+        except Exception as e :
+            print("Error '{0}' occurred. Arguments {1}.".format(e.message, e.args))
+        finally :
+            if user_id is None :
+                user_id = None
+        return Users.query.get(user_id)
+    def __repr__(self) :
+        return f"Users('{self.IdUser}','{self.IdRole},'{self.FirstName}','{self.LastName}','{self.Email}','{self.PhoneNumber}','{self.Address}','{self.Pasword}','{self.CreatedAt}','{self.Enabled}')"        
+
+    def get_id(self):
+        return (self.IdUser)
+
+
+
+class Role(db.Model):
+    IdRole = db.Column(db.Integer, primary_key=True)
+    Role = db.Column(db.String(250), nullable=False)
+    CreatedAt = db.Column(db.DateTime, nullable=False) 
+
+    def __repr__(self) :
+        return f"Role('{self.IdRole}','{self.Role},'{self.CreatedAt}')"
