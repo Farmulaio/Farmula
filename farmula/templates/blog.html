@@ -1,8 +1,7 @@
 {% extends 'layout.html' %} 
 {% block body %}
-<div class="banner-blocks-cover overlay" style="background-image: url(static/images/hero_bg_2.jpg)">
-    <div class="banner-text">
-    </div>
+<div class="banner-blocks-cover overlay">
+        <img src="{{url_for('static' , filename = 'images/' + ViewBlog.ImageUrl ) }}" alt="Image" class="banner-blocks-cover overlay" style="  object-fit: cover; width: 100%; height: 100%;">
   </div>
 
 
