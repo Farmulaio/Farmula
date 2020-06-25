@@ -123,3 +123,11 @@ def sitemap():
       return response
     except Exception as e:
         return(str(e))	 
+
+@app.route('/blog/<int:IdBlog>/view', methods=['POST', 'GET'])
+def view_blog(IdBlog):
+    if request.method == 'GET' :
+        ViewBlog = db.session.query(Blog).filter_by(IdBlog = IdBlog).one()
+        return render_template('blog.html',ViewBlog = ViewBlog)
+    else :
+        return redirect(url_for('index'))
