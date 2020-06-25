@@ -131,3 +131,12 @@ def view_blog(IdBlog):
         return render_template('blog.html',ViewBlog = ViewBlog)
     else :
         return redirect(url_for('index'))
+
+
+@app.route('/blogs', methods=['POST', 'GET'])
+def view_blogs():
+    if request.methods == 'GET':
+        Blogs = db.session.query(Blog).all()
+        return render_template('blogs.html',Blogs = Blogs)
+    else :
+        return redirect(url_for('index')) 
