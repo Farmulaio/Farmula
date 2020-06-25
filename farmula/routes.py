@@ -17,7 +17,7 @@ def random_string_generator(size=5,  chars=string.ascii_uppercase + string.digit
 @app.route('/', methods=['GET','POST'])
 def index():
     BlogTypeItems = db.session.query(BlogType).all()
-    BlogItems = db.session.query(Blog).all()   
+    BlogItems = db.session.query(Blog).all() 
     return render_template('index.html', BlogItems = BlogItems)
 
 
