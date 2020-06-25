@@ -185,6 +185,7 @@ class Sales(db.Model):
 class Blog(db.Model):
     IdBlog = db.Column(db.Integer, primary_key=True)
     Content = db.Column(db.String(250), nullable=False)
+    BlogTitle = db.Column(db.String(250), nullable=False)
     IdType   = db.Column(db.Integer, db.ForeignKey('blog_type.IdType'))
     IdUser  = db.Column(db.Integer, db.ForeignKey('users.IdUser'))
     CreatedAt = db.Column(db.DateTime, nullable=False) 
@@ -194,7 +195,7 @@ class Blog(db.Model):
 
 
     def __repr__(self) :
-        return f"Blog('{self.IdBlog}','{self.Content},'{self.IdType},'{self.IdUser}','{self.CreatedAt}')"
+        return f"Blog('{self.IdBlog}','{self.Content}','{self.IdType}','{self.IdType}','{self.IdUser}','{self.CreatedAt}')"
 
 
 class BlogType(db.Model):
