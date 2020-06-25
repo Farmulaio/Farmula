@@ -135,8 +135,8 @@ def view_blog(IdBlog):
 
 @app.route('/blogs', methods=['POST', 'GET'])
 def view_blogs():
-    if request.methods == 'GET':
-        Blogs = db.session.query(Blog).all()
-        return render_template('blogs.html',Blogs = Blogs)
+    if request.method == 'GET':
+        BlogItems = db.session.query(Blog).all()
+        return render_template('blogs.html',BlogItems = BlogItems)
     else :
         return redirect(url_for('index')) 
