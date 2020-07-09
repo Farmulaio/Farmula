@@ -6,7 +6,7 @@ from datetime import datetime
 from farmula.models import Crop, Quantity, Market, Price, Orders, Prediction, Pricechecksession, Farmer, Sales, Conditions, Blog, BlogType
 from farmula import config
 from datetime import timedelta
-
+import os
 
 response = ""
 
@@ -18,6 +18,8 @@ def random_string_generator(size=5,  chars=string.ascii_uppercase + string.digit
 def index():
     BlogTypeItems = db.session.query(BlogType).all()
     BlogItems = db.session.query(Blog).all() 
+    for item in BlogItems :
+        print(item.ImageUrl)
     return render_template('index.html', BlogItems = BlogItems)
 
 
@@ -137,6 +139,8 @@ def view_blog(IdBlog):
 def view_blogs():
     if request.method == 'GET':
         BlogItems = db.session.query(Blog).all()
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        print(dir_path)
         return render_template('blogs.html',BlogItems = BlogItems)
     else :
         return redirect(url_for('index')) 
