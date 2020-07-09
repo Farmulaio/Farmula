@@ -635,7 +635,7 @@
           {% for item in BlogItems %}
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">
             <div class="h-entry">
-              <img src="{{url_for('static' , filename = 'images/' + item.ImageUrl  ) }}" alt="Image" class="img-fluid">
+              <img src="{{url_for('static' , filename = 'images/' + item.ImageUrl  ) }}" alt="Image" class="img-fluid" style="width: 250px; height: 250px !important;">
               <h2 class="font-size-regular"><a href="{{url_for('view_blog', IdBlog = item.IdBlog )}}">{{ item.BlogTitle }}</a></h2>
               <div class="meta mb-4">by {{ item.user.FirstName }} <span class="mx-2">&bullet;</span> {{ item.CreatedAt }} <span class="mx-2">&bullet;</span> <a href="#">{{ item.blogtype.BlogType }}</a></div>
               <p style=" -webkit-line-clamp: 3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200ch;">{{ item.Content }}</p>
