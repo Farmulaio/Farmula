@@ -139,8 +139,6 @@ def view_blog(IdBlog):
 def view_blogs():
     if request.method == 'GET':
         BlogItems = db.session.query(Blog).all()
-        dir_path = os.path.dirname(os.path.realpath(__file__))
-        print(dir_path)
         return render_template('blogs.html',BlogItems = BlogItems)
     else :
         return redirect(url_for('index')) 
